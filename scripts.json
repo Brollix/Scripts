@@ -10288,8 +10288,8 @@
       "class"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AlphaPirate.cs",
-    "size": 1442,
-    "sha256": "54d9e9c6db224f2350b7fbd42512cf90a1c378df484dcc99a19473dd8c6697a3",
+    "size": 1760,
+    "sha256": "17ebda717b4a12dc47193ac23f7e362af885b17b0b97b438e2cd05ae9d6d2fc0",
     "fileName": "AlphaPirate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AlphaPirate.cs"
   },
@@ -32465,8 +32465,8 @@
       "merge"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs",
-    "size": 8885,
-    "sha256": "62df41e3f00a8c233c79a6a14027bf330d510710f44154ddb8452607dcf56426",
+    "size": 8959,
+    "sha256": "66898feac588446c719724bc015dd2409b00e8ead6d2956dba5c740cff03d489",
     "fileName": "BlazeBeardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs"
   },

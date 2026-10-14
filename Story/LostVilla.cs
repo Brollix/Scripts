@@ -70,7 +70,13 @@ public class LostVilla
         Story.KillQuest(9564, "lostvilla", "Diabolical Hoard");
 
         // Uninvited Guests (9565)
-        Story.KillQuest(9565, "lostvilla", new[] { "Gorewyrm", "Eldritch Parasite" });
+        if (!Story.QuestProgression(9565))
+        {
+            Core.EnsureAccept(9565);
+            Core.HuntMonster("lostvilla", "Gorewyrm", "Gorewyrm Gored", 4);
+            Core.HuntMonster("lostvilla", "Eldritch Parasite", "Parasite Exoskeleton", 6);
+            Core.EnsureComplete(9565);
+        }
 
         // Key of Life (9566)
         Story.MapItemQuest(9566, "lostvilla", 12653);

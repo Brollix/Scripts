@@ -35,17 +35,15 @@ public class SeraphicWar_Story
         Story.PreLoad(this);
 
         //Get the Parts
-        Story.KillQuest(
-            6238,
-            "worldsoul",
-            new[]
-            {
-                "Dwakel Infiltrator",
-                "Dwakel Infiltrator",
-                "Dwakel Infiltrator",
-                "Dwakel Infiltrator",
-            }
-        );
+        if (!Story.QuestProgression(6238))
+        {
+            Core.EnsureAccept(6238);
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Dwakel Defeated", 6);
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Void Cortex", 1);
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Paradox Processor", 1);
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Thermal Vent", 1);
+            Core.EnsureComplete(6238);
+        }
         //Get the Water
         Story.KillQuest(6239, "worldsoul", "Divine Water Elemental");
         //Get the Fire

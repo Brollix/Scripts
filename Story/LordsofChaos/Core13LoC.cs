@@ -123,7 +123,13 @@ public class Core13LoC
         Story.KillQuest(6218, "chaoscrypt", "Chaorrupted Knight");
 
         //Forest of Chaos
-        Story.KillQuest(6219, "forestchaos", new[] { "Chaorrupted Bear", "Chaorrupted Wolf" });
+        if (!Story.QuestProgression(6219))
+        {
+            Core.EnsureAccept(6219);
+            Core.HuntMonster("forestchaos", "Chaorrupted Bear", "Chaorrupted Bear Defeated", 1);
+            Core.HuntMonster("forestchaos", "Chaorrupted Wolf", "Chaorrupted Wolf Defeated", 7);
+            Core.EnsureComplete(6219);
+        }
     }
 
     public void Escherion()
@@ -374,7 +380,14 @@ public class Core13LoC
         Story.KillQuest(355, "dwarfprison", "Warden Elfis");
 
         //Explosives 101
-        Story.KillQuest(356, "dwarfprison", new[] { "Albino Bat", "Balboa", "Chaos Drow" });
+        if (!Story.QuestProgression(356))
+        {
+            Core.EnsureAccept(356);
+            Core.HuntMonster("dwarfprison", "Albino Bat", "Nitrate Elements", 3);
+            Core.HuntMonster("dwarfprison", "Chaos Drow", "Drow Shoelaces", 3);
+            Core.HuntMonster("dwarfprison", "Balboa", "Flint Stone", 2);
+            Core.EnsureComplete(356);
+        }
 
         //Big Bada-Boom
         if (!Story.QuestProgression(357))
@@ -459,7 +472,13 @@ public class Core13LoC
         Story.MapItemQuest(466, "bamboo", 90);
 
         //Yokai Bandits
-        Story.KillQuest(467, "bamboo", new[] { "Tanuki", "Tanuki" });
+        if (!Story.QuestProgression(467))
+        {
+            Core.EnsureAccept(467);
+            Core.HuntMonster("bamboo", "Tanuki", "Jinmenju Fruit Core", 5);
+            Core.HuntMonster("bamboo", "Tanuki", "Charred Paper Talisman", 1);
+            Core.EnsureComplete(467);
+        }
 
         //The Fiery Fiend
         Story.KillQuest(468, "bamboo", "SoulTaker");
@@ -483,7 +502,14 @@ public class Core13LoC
         Story.KillQuest(471, "junkyard", "Onibaba");
 
         //Su-she
-        Story.KillQuest(473, "yokairiver", new[] { "Funa-Yurei", "Funa-Yurei", "Funa-Yurei" });
+        if (!Story.QuestProgression(473))
+        {
+            Core.EnsureAccept(473);
+            Core.HuntMonster("yokairiver", "Funa-yurei", "Nori Recipe", 1);
+            Core.HuntMonster("yokairiver", "Funa-yurei", "Cucumber Recipe", 1);
+            Core.HuntMonster("yokairiver", "Funa-yurei", "Sumeshi Recipe", 1);
+            Core.EnsureComplete(473);
+        }
 
         //Kappa Cuisine
         if (!Story.QuestProgression(474))
@@ -503,7 +529,13 @@ public class Core13LoC
         Story.KillQuest(477, "yokaigrave", "Skello Kitty");
 
         //The Face Off
-        Story.KillQuest(478, "yokaigrave", new[] { "Ninja Nopperabo", "Samurai Nopperabo" });
+        if (!Story.QuestProgression(478))
+        {
+            Core.EnsureAccept(478);
+            Core.HuntMonster("yokaigrave", "Ninja Nopperabo", "Ninja Face Mask", 4);
+            Core.HuntMonster("yokaigrave", "Samurai Nopperabo", "Samurai Face Mask", 4);
+            Core.EnsureComplete(478);
+        }
 
         //Confront Neko Mata
         Story.KillQuest(479, "yokaigrave", "Neko Mata");
@@ -602,7 +634,13 @@ public class Core13LoC
         Story.KillQuest(534, "lycan", "Dire Wolf");
 
         //No Respect
-        Story.KillQuest(535, "lycan", new[] { "Lycan Knight", "Lycan" });
+        if (!Story.QuestProgression(535))
+        {
+            Core.EnsureAccept(535);
+            Core.HuntMonster("lycan", "Lycan Knight", "Lycan Knight Defeated", 2);
+            Core.HuntMonster("lycan", "Lycan", "Lycan Defeated", 5);
+            Core.EnsureComplete(535);
+        }
 
         //Vampire Knights
         Story.KillQuest(536, "lycan", "Chaos Vampire Knight");
@@ -665,7 +703,13 @@ public class Core13LoC
         Story.PreLoad(this);
 
         //Stairway to Heaven
-        Story.KillQuest(648, "stairway", new[] { "Grateful Undead", "Rock Lobster" });
+        if (!Story.QuestProgression(648))
+        {
+            Core.EnsureAccept(648);
+            Core.HuntMonster("stairway", "Grateful Undead", "Grateful Undead Shirt", 4);
+            Core.HuntMonster("stairway", "Rock Lobster", "Rock Lobster Tail", 4);
+            Core.EnsureComplete(648);
+        }
 
         //Rolling Stones
         Story.KillQuest(649, "stairway", "Rock Lobster");
@@ -674,7 +718,13 @@ public class Core13LoC
         Story.KillQuest(650, "stairway", "Grateful Undead");
 
         //Knockin' on Haven's Door
-        Story.KillQuest(651, "stairway", new[] { "Elwood Bruise", "Jake Bruise" });
+        if (!Story.QuestProgression(651))
+        {
+            Core.EnsureAccept(651);
+            Core.HuntMonster("stairway", "Elwood Bruise", "Defeated Elwood", 1);
+            Core.HuntMonster("stairway", "Jake Bruise", "Defeated Jake", 1);
+            Core.EnsureComplete(651);
+        }
 
         //Staying Alive
         Story.KillQuest(658, "beehive", "Stinger");
@@ -721,7 +771,13 @@ public class Core13LoC
         Story.KillQuest(678, "orchestra", "Faust");
 
         //Great gig in the Sky
-        Story.KillQuest(4827, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
+        if (!Story.QuestProgression(4827))
+        {
+            Core.EnsureAccept(4827);
+            Core.HuntMonster("stairway", "Rock Lobster", "Lobster Rocked", 5);
+            Core.HuntMonster("stairway", "Grateful Undead", "Ungrateful Undead", 5);
+            Core.EnsureComplete(4827);
+        }
 
         //Mythsong War Cutscene
         Story.ChainQuest(707);
@@ -1372,7 +1428,13 @@ public class Core13LoC
         }
 
         //The Time Grows Closer
-        Story.KillQuest(1227, "crossroads", new[] { "Lemurphant", "Koalion" });
+        if (!Story.QuestProgression(1227))
+        {
+            Core.EnsureAccept(1227);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Stones", 5);
+            Core.HuntMonster("crossroads", "Koalion", "Golden Down-Fur", 5);
+            Core.EnsureComplete(1227);
+        }
 
         //Like Calls to Like
         if (!Story.QuestProgression(1228))
@@ -1445,7 +1507,13 @@ public class Core13LoC
         Story.MapItemQuest(1369, "alliance", new[] { 679, 680 });
 
         //Treat Nullification, Good and Bad
-        Story.KillQuest(1370, "alliance", new[] { "Good Soldier", "Evil Soldier" });
+        if (!Story.QuestProgression(1370))
+        {
+            Core.EnsureAccept(1370);
+            Core.HuntMonster("alliance", "Good Soldier", "Good Soldier Vanquished", 6);
+            Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier Vanquished", 6);
+            Core.EnsureComplete(1370);
+        }
 
         //Trap the Keepers
         Story.MapItemQuest(1371, "alliance", 675, 10);
@@ -1457,7 +1525,13 @@ public class Core13LoC
         Story.KillQuest(1373, "alliance", "Chaorrupted Evil Soldier");
 
         //Alliance Demotion
-        Story.KillQuest(1374, "alliance", new[] { "General Cynari", "General Tibias" });
+        if (!Story.QuestProgression(1374))
+        {
+            Core.EnsureAccept(1374);
+            Core.HuntMonster("alliance", "General Cynari", "Cynari Defeated!", 1);
+            Core.HuntMonster("alliance", "General Tibias", "Tibias Defeated!", 1);
+            Core.EnsureComplete(1374);
+        }
 
         //Contain the Chaorruption
         Story.KillQuest(1419, "ancienttemple", "Chaotic Vulture");
@@ -1510,7 +1584,13 @@ public class Core13LoC
         Story.MapItemQuest(1466, "dreamnexus", 739, 11);
 
         //Master the Flames
-        Story.KillQuest(1467, "dreamnexus", new[] { "Solar Phoenix", "Solar Phoenix" });
+        if (!Story.QuestProgression(1467))
+        {
+            Core.EnsureAccept(1467);
+            Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Tear", 10);
+            Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Blood", 5);
+            Core.EnsureComplete(1467);
+        }
 
         //Choose: Khasaanda Confrontation?
         Story.KillQuest(1468, "dreamnexus", "Khasaanda");
@@ -1527,7 +1607,14 @@ public class Core13LoC
         Story.MapItemQuest(2239, "thespan", new[] { 1358, 1359, 1360, 1361, 1362, 1363 });
 
         //Gain Access to Doors
-        Story.KillQuest(2240, "timelibrary", new[] { "Sneak", "Tog", "Shadowscythe" });
+        if (!Story.QuestProgression(2240))
+        {
+            Core.EnsureAccept(2240);
+            Core.HuntMonster("timelibrary", "Sneak", "AQ Dimension Key", 1);
+            Core.HuntMonster("timelibrary", "Tog", "DF Dimension Key", 1);
+            Core.HuntMonster("timelibrary", "Shadowscythe", "MQ Dimension Key", 1);
+            Core.EnsureComplete(2240);
+        }
 
         //Adventures and Quests
         if (!Story.QuestProgression(2241))
@@ -1583,7 +1670,13 @@ public class Core13LoC
         Story.KillQuest(2255, "timevoid", new[] { "Ephemerite", "Time-Travel Fairy" });
 
         //Fill the Empty Hours
-        Story.KillQuest(2256, "timevoid", new[] { "Time-Travel Fairy", "Void Phoenix" });
+        if (!Story.QuestProgression(2256))
+        {
+            Core.EnsureAccept(2256);
+            Core.HuntMonster("timevoid", "Time-Travel Fairy", "Powdered Fairy Wings", 6);
+            Core.HuntMonster("timevoid", "Void Phoenix", "Dried Phoenix Tears", 6);
+            Core.EnsureComplete(2256);
+        }
 
         //Clock of the Long Now
         Story.MapItemQuest(2257, "timevoid", new[] { 1440, 1441, 1442, 1443 });
@@ -1669,10 +1762,22 @@ public class Core13LoC
         Story.KillQuest(2476, "dflesson", "Chaorrupted Evil Soldier");
 
         //Defend the Town!
-        Story.KillQuest(2477, "dflesson", new[] { "Lava Golem", "Fire Elemental" });
+        if (!Story.QuestProgression(2477))
+        {
+            Core.EnsureAccept(2477);
+            Core.HuntMonster("dflesson", "Lava Golem", "Golem Crushed", 6);
+            Core.HuntMonster("dflesson", "Fire Elemental", "Elemental Eliminated", 3);
+            Core.EnsureComplete(2477);
+        }
 
         //ChickenCows, Bacon, and Battle!
-        Story.KillQuest(2478, "dflesson", new[] { "Chaotic Horcboar", "Chaotic Chicken" });
+        if (!Story.QuestProgression(2478))
+        {
+            Core.EnsureAccept(2478);
+            Core.HuntMonster("dflesson", "Chaotic Horcboar", "Hero Protein", 1);
+            Core.HuntMonster("dflesson", "Chaotic Chicken", "Spell Rune", 8);
+            Core.EnsureComplete(2478);
+        }
 
         //The 2nd Proto-Chaos Beast
         Story.KillQuest(2479, "dflesson", "Fluffy the Dracolich");
@@ -1833,7 +1938,13 @@ public class Core13LoC
         Story.MapItemQuest(2667, "falguard", 1628, 6);
 
         //Feeding On The Fallen
-        Story.KillQuest(2668, "falguard", new[] { "Chaonslaught Warrior", "Chaonslaught Cavalry" });
+        if (!Story.QuestProgression(2668))
+        {
+            Core.EnsureAccept(2668);
+            Core.HuntMonster("falguard", "Chaonslaught Warrior", "Chaonslaught Shield", 2);
+            Core.HuntMonster("falguard", "Chaonslaught Cavalry", "Chaonslaught Sword", 3);
+            Core.EnsureComplete(2668);
+        }
 
         //Special Delivery
         Story.MapItemQuest(2669, "falguard", 1629);
@@ -2182,7 +2293,13 @@ public class Core13LoC
         Story.KillQuest(3078, "archives", "Camouflaged Sp-eye");
 
         //Fight Chaos With Clerics
-        Story.KillQuest(3079, "archives", new[] { "Chaos Bandit", "Camouflaged Sp-eye" });
+        if (!Story.QuestProgression(3079))
+        {
+            Core.EnsureAccept(3079);
+            Core.HuntMonster("archives", "Chaos Bandit", "Clump of Tentacles", 3);
+            Core.HuntMonster("archives", "Camouflaged Sp-eye", "Chaorrupted Humor", 3);
+            Core.EnsureComplete(3079);
+        }
 
         //Locate the Source
         Story.MapItemQuest(3080, "archives", 1937);
@@ -2195,7 +2312,13 @@ public class Core13LoC
         Story.KillQuest(3082, "archives", "Chaos Spider");
 
         //Still More Research To Be Done!
-        Story.KillQuest(3083, "archives", new[] { "Chaos Rat", "Chaos Spider" });
+        if (!Story.QuestProgression(3083))
+        {
+            Core.EnsureAccept(3083);
+            Core.HuntMonster("archives", "Chaos Rat", "Intact Rat Brain", 5);
+            Core.HuntMonster("archives", "Chaos Spider", "Vial of Ichor", 5);
+            Core.EnsureComplete(3083);
+        }
 
         //That's One Big Sludgebeast.
         Story.KillQuest(3084, "archives", "Sludgelord");

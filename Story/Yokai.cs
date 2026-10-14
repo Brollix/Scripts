@@ -116,7 +116,14 @@ public class YokaiQuests
         Story.KillQuest(6460, "ShogunWar", "Shadow Samurai");
 
         // Tea for Me 6461
-        Story.KillQuest(6461, "ShogunWar", new[] { "Kijimuna", "Reishi", "Bamboo Treeant" });
+        if (!Story.QuestProgression(6461))
+        {
+            Core.EnsureAccept(6461);
+            Core.HuntMonster("shogunwar", "Kijimuna", "Kijimuna Pollen", 3);
+            Core.HuntMonster("shogunwar", "Reishi", "Glowing Mushroom Cap", 3);
+            Core.HuntMonster("shogunwar", "Bamboo Treeant", "Bamboo Leaf", 3);
+            Core.EnsureComplete(6461);
+        }
     }
 
     public void ShinrinGrove()

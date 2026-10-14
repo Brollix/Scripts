@@ -41,7 +41,13 @@ public class ShadowVault
         Story.KillQuest(6782, "ShadowVault", "Fallen Adventurer");
 
         //A Clue! A Clue! 6783
-        Story.KillQuest(6783, "ShadowVault", new[] { "Shadowscythe Minion", "Fallen Adventurer" });
+        if (!Story.QuestProgression(6783))
+        {
+            Core.EnsureAccept(6783);
+            Core.HuntMonster("shadowvault", "Shadowscythe Minion", "Aliens \"Talked\" With", 8);
+            Core.HuntMonster("shadowvault", "Fallen Adventurer", "A Clue", 1);
+            Core.EnsureComplete(6783);
+        }
 
         //Un-Cloaky! 6784
         if (!Story.QuestProgression(6784))
@@ -61,11 +67,14 @@ public class ShadowVault
         Story.KillQuest(6788, "ShadowVault", new[] { "Spiderscythe", "Shadowscythe Minion" });
 
         //An Actual Skeleton... key? 6789
-        Story.KillQuest(
-            6789,
-            "ShadowVault",
-            new[] { "Fallen Adventurer", "Spiderscythe", "Shadowscythe Minion" }
-        );
+        if (!Story.QuestProgression(6789))
+        {
+            Core.EnsureAccept(6789);
+            Core.HuntMonster("shadowvault", "Fallen Adventurer", "Random Bones", 7);
+            Core.HuntMonster("shadowvault", "Spiderscythe", "Webbing", 5);
+            Core.HuntMonster("shadowvault", "Shadowscythe Minion", "Super Hard Claw", 1);
+            Core.EnsureComplete(6789);
+        }
 
         //Open Sesame 6790
         Story.MapItemQuest(6790, "ShadowVault", 6314);

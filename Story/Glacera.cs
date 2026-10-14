@@ -60,7 +60,12 @@ public class GlaceraStory
         Story.MapItemQuest(3910, "frozentower", 3004, 13);
 
         // Refugee Roundup
-        Story.KillQuest(3911, "frozentower", MonsterNames: new[] { "Frostwyrm", "Frostwyrm" });
+        if (!Story.QuestProgression(3911))
+        {
+            Core.EnsureAccept(3911);
+            Core.HuntMonster("frozentower", "Frostwyrm", "Refugee Saved", 7);
+            Core.EnsureComplete(3911);
+        }
 
         // Retrieve the Water Starstone
         Story.KillQuest(3912, "frozentower", "FrostDeep Dweller");
@@ -250,7 +255,12 @@ public class GlaceraStory
         // FrozenRuins encore
 
         // // Rescue the Refugees
-        Story.KillQuest(3951, "frozenruins", new[] { "Frost Invader", "Frozen Moglinster" });
+        if (!Story.QuestProgression(3951))
+        {
+            Core.EnsureAccept(3951);
+            Core.HuntMonster("frozenruins", "Frost Invader", "Ice Beast Destroyed", 10);
+            Core.EnsureComplete(3951);
+        }
 
         // Defeat the Fangbeasts
         Story.KillQuest(3952, "frozenruins", "Frost Fangbeast");
@@ -272,10 +282,21 @@ public class GlaceraStory
         // Northstar
 
         // From Refugee to Enemy
-        Story.KillQuest(3958, "northstar", new[] { "Monstrous Refugee", "Frost Invader" });
+        if (!Story.QuestProgression(3958))
+        {
+            Core.EnsureAccept(3958);
+            Core.HuntMonster("northstar", "Monstrous Refugee", "Monstrous Refugee defeated", 3);
+            Core.HuntMonster("northstar", "Frost Invader", "Frost Invader defeated", 5);
+            Core.EnsureComplete(3958);
+        }
 
         // Fangs and Blades
-        Story.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader" });
+        if (!Story.QuestProgression(3959))
+        {
+            Core.EnsureAccept(3959);
+            Core.HuntMonster("northstar", "Frost Fangbeast", "FrostSpawn defeated", 7);
+            Core.EnsureComplete(3959);
+        }
 
         // Reaping the Refugees
         Story.KillQuest(3960, "northstar", "Frost Reaper");
@@ -291,33 +312,21 @@ public class GlaceraStory
         Story.MapItemQuest(3972, "northstar", 3063, 10);
 
         // Feast or Famine
-        Story.KillQuest(
-            3973,
-            "northstar",
-            new[]
-            {
-                "Frost Fangbeast",
-                "Frost Invader",
-                "Frost Reaper",
-                "Frost Superreaper",
-                "Monstrous Refugee",
-            }
-        );
+        if (!Story.QuestProgression(3973))
+        {
+            Core.EnsureAccept(3973);
+            Core.HuntMonster("northstar", "Frost Fangbeast", "Frozen Dinners", 10);
+            Core.EnsureComplete(3973);
+        }
 
         // Decipher the Freezing
-        Story.KillQuest(
-            3974,
-            "northstar",
-            new[]
-            {
-                "Frost Fangbeast",
-                "Monstrous Refugee",
-                "Frost Fangbeast",
-                "Frost Invader",
-                "Frost Reaper",
-                "Monstrous Refugee",
-            }
-        );
+        if (!Story.QuestProgression(3974))
+        {
+            Core.EnsureAccept(3974);
+            Core.HuntMonster("northstar", "Frost Fangbeast", "FrostSpawn Spine", 10);
+            Core.HuntMonster("northstar", "Frost Fangbeast", "FrostSpawn Scale", 10);
+            Core.EnsureComplete(3974);
+        }
 
         // A New Frost Monster
         Story.KillQuest(3970, "northstar", "The Queen's Gift");
@@ -377,10 +386,22 @@ public class GlaceraStory
         Story.KillQuest(5594, "IceWindPass", "Frostspawn Horror");
 
         // Keep the Frostspawn Away!
-        Story.KillQuest(5595, "IceWindPass", new[] { "Frostspawn Troll", "Frost Invader" });
+        if (!Story.QuestProgression(5595))
+        {
+            Core.EnsureAccept(5595);
+            Core.HuntMonster("icewindpass", "Frost Invader", "Frost Invader Slain", 5);
+            Core.HuntMonster("icewindpass", "Frostspawn Troll", "Frostspawn Troll Slain", 5);
+            Core.EnsureComplete(5595);
+        }
 
         // Take a Break from Fighting
-        Story.KillQuest(5596, "IceWindPass", new[] { "Polar Golem", "Glacial Elemental" });
+        if (!Story.QuestProgression(5596))
+        {
+            Core.EnsureAccept(5596);
+            Core.HuntMonster("icewindpass", "Polar Golem", "Living Snow", 3);
+            Core.HuntMonster("icewindpass", "Glacial Elemental", "Elemental Icicles", 3);
+            Core.EnsureComplete(5596);
+        }
 
         // As these quests are pre-unlocked.. it wont do them if we put them under a quest check. annoyingly.
 
@@ -406,25 +427,34 @@ public class GlaceraStory
         IceWindPass();
 
         // Cold Open
-        Story.KillQuest(
-            7832,
-            "IceDungeon",
-            new[] { "Ice Symbiote", "Frosted Banshee", "Frozen Undead" }
-        );
+        if (!Story.QuestProgression(7832))
+        {
+            Core.EnsureAccept(7832);
+            Core.HuntMonster("icedungeon", "Ice Symbiote", "Ice Symbiote Shattered", 5);
+            Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Cloth Scrap", 5);
+            Core.HuntMonster("icedungeon", "Frozen Undead", "Frozen Undead Laid to Rest", 5);
+            Core.EnsureComplete(7832);
+        }
 
         // Frost Fight
-        Story.KillQuest(
-            7833,
-            "IceDungeon",
-            new[] { "Spirit of Ice", "Ice Crystal", "Frigid Spirit" }
-        );
+        if (!Story.QuestProgression(7833))
+        {
+            Core.EnsureAccept(7833);
+            Core.HuntMonster("icedungeon", "Spirit of Ice", "Spirit of Ice Captured", 5);
+            Core.HuntMonster("icedungeon", "Ice Crystal", "Ice Crystal Collected", 5);
+            Core.HuntMonster("icedungeon", "Frigid Spirit", "Frigid Spirit Banished", 3);
+            Core.EnsureComplete(7833);
+        }
 
         // Freeze Frame
-        Story.KillQuest(
-            7834,
-            "IceDungeon",
-            new[] { "Living Ice", "Crystallized Elemental", "Frozen Demon" }
-        );
+        if (!Story.QuestProgression(7834))
+        {
+            Core.EnsureAccept(7834);
+            Core.HuntMonster("icedungeon", "Living Ice", "Living Ice Shattered", 5);
+            Core.HuntMonster("icedungeon", "Crystallized Elemental", "Crystalized Elemental Defeated", 5);
+            Core.HuntMonster("icedungeon", "Frozen Demon", "Frozen Demon Banished", 3);
+            Core.EnsureComplete(7834);
+        }
 
         // Glace's Trial
         Story.KillQuest(7835, "IceDungeon", "Image of Glace");
@@ -436,27 +466,43 @@ public class GlaceraStory
         Story.KillQuest(7837, "IceDungeon", "Shade of Kyanos");
 
         // Basic Ingredients
-        Story.KillQuest(
-            7838,
-            "IceDungeon",
-            new[] { "Frosted Banshee", "Frozen Undead", "Ice Symbiote" }
-        );
+        if (!Story.QuestProgression(7838))
+        {
+            Core.EnsureAccept(7838);
+            Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Defeated", 10);
+            Core.HuntMonster("icedungeon", "Frozen Undead", "Frozen Undead Defeated", 10);
+            Core.HuntMonster("icedungeon", "Ice Symbiote", "Ice Symbiote Defeated", 10);
+            Core.EnsureComplete(7838);
+        }
 
         // Cool Flavor
-        Story.KillQuest(
-            7839,
-            "IceDungeon",
-            new[] { "Spirit of Ice", "Ice Crystal", "Frigid Spirit" }
-        );
+        if (!Story.QuestProgression(7839))
+        {
+            Core.EnsureAccept(7839);
+            Core.HuntMonster("icedungeon", "Spirit of Ice", "Spirit of Ice Defeated", 10);
+            Core.HuntMonster("icedungeon", "Ice Crystal", "Ice Crystal Defeated", 10);
+            Core.HuntMonster("icedungeon", "Frigid Spirit", "Frigid Spirit Defeated", 10);
+            Core.EnsureComplete(7839);
+        }
 
         // Chilled to Perfection
-        Story.KillQuest(
-            7840,
-            "IceDungeon",
-            new[] { "Living Ice", "Crystallized Elemental", "Frozen Demon" }
-        );
+        if (!Story.QuestProgression(7840))
+        {
+            Core.EnsureAccept(7840);
+            Core.HuntMonster("icedungeon", "Living Ice", "Living Ice Defeated", 5);
+            Core.HuntMonster("icedungeon", "Crystallized Elemental", "Crystallized Elemental Defeated", 5);
+            Core.HuntMonster("icedungeon", "Frozen Demon", "Frozen Demon Defeated", 5);
+            Core.EnsureComplete(7840);
+        }
 
         // Icing on the Cake
-        Story.KillQuest(7841, "IceDungeon", new[] { "Image of Glace", "Abel", "Shade of Kyanos" });
+        if (!Story.QuestProgression(7841))
+        {
+            Core.EnsureAccept(7841);
+            Core.HuntMonster("icedungeon", "Image of Glace", "Glace's Approval", 1);
+            Core.HuntMonster("icedungeon", "Abel", "Abel's Approval", 1);
+            Core.HuntMonster("icedungeon", "Shade of Kyanos", "Kyanos' Approval", 1);
+            Core.EnsureComplete(7841);
+        }
     }
 }

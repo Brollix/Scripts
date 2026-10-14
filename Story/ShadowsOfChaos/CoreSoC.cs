@@ -76,7 +76,13 @@ public class CoreSoC
         Story.KillQuest(7564, "dualplane", "Terrarsite");
 
         //Time to un-decorate 7565
-        Story.KillQuest(7565, "dualplane", new[] { "SpiderWing", "Terrarsite" });
+        if (!Story.QuestProgression(7565))
+        {
+            Core.EnsureAccept(7565);
+            Core.HuntMonster("dualplane", "SpiderWing", "Batwings", 4);
+            Core.HuntMonster("dualplane", "Terrarsite", "Horns", 4);
+            Core.EnsureComplete(7565);
+        }
 
         //Interrogation Time 7566
         Story.KillQuest(7566, "dualplane", "Droognax");
@@ -88,7 +94,13 @@ public class CoreSoC
         Story.KillQuest(7568, "dualplane", "Netherpit Bruiser");
 
         //They Never Learn 7569
-        Story.KillQuest(7569, "dualplane", new[] { "Terrarsite", "Netherpit Lackey" });
+        if (!Story.QuestProgression(7569))
+        {
+            Core.EnsureAccept(7569);
+            Core.HuntMonster("dualplane", "Terrarsite", "Monsters Defeated", 10);
+            Core.HuntMonster("dualplane", "Netherpit Lackey", "Willing Lackey", 1);
+            Core.EnsureComplete(7569);
+        }
 
         //Get the Mirror! 7570
         Story.MapItemQuest(7570, "dualplane", 7460);
@@ -133,7 +145,13 @@ public class CoreSoC
         }
 
         //Goldun Wants Revenge 7688
-        Story.KillQuest(7688, "chaosamulet", new[] { "Goldun", "Shadowflame Berserker" });
+        if (!Story.QuestProgression(7688))
+        {
+            Core.EnsureAccept(7688);
+            Core.HuntMonster("chaosamulet", "Goldun", "Goldun Defeated", 1);
+            Core.HuntMonster("chaosamulet", "Shadowflame Berserker", "Minion Quelled", 30);
+            Core.EnsureComplete(7688);
+        }
     }
 
     public void LagunaBeach()
@@ -245,17 +263,12 @@ public class CoreSoC
         Story.PreLoad(this);
 
         // Invasion!
-        Story.KillQuest(
-            7728,
-            "Shadowoff",
-            new[]
-            {
-                "Shadowflame Militia",
-                "Shadowflame Paladin",
-                "Shadowflame Scout",
-                "Shadowflame Sorcerer",
-            }
-        );
+        if (!Story.QuestProgression(7728))
+        {
+            Core.EnsureAccept(7728);
+            Core.HuntMonster("shadowoff", "Shadowflame Militia", "Invader Slain", 10);
+            Core.EnsureComplete(7728);
+        }
 
         //Rescue Needed
         Story.MapItemQuest(7729, "Shadowoff", 7699, 6);
@@ -265,11 +278,14 @@ public class CoreSoC
         Story.KillQuest(7730, "Shadowoff", "Shadowflame Militia");
 
         //Clue me in
-        Story.KillQuest(
-            7731,
-            "Shadowoff",
-            new[] { "Shadowflame Militia", "Shadowflame Scout", "Shadowflame Sorcerer" }
-        );
+        if (!Story.QuestProgression(7731))
+        {
+            Core.EnsureAccept(7731);
+            Core.HuntMonster("shadowoff", "Shadowflame Militia", "Militia Clue", 2);
+            Core.HuntMonster("shadowoff", "Shadowflame Scout", "Scout Clue", 2);
+            Core.HuntMonster("shadowoff", "Shadowflame Sorcerer", "Sorcerer Clue", 2);
+            Core.EnsureComplete(7731);
+        }
 
         //So Familiar
         Story.KillQuest(7732, "Shadowoff", "Shadowflame Paladin");
@@ -291,7 +307,12 @@ public class CoreSoC
         Story.KillQuest(7733, "BrightShadow", "BrightFall light");
 
         //Fend Them Off 7734
-        Story.KillQuest(7734, "BrightShadow", new[] { "BrightFall Guard", "ShadowFlame Paladin" });
+        if (!Story.QuestProgression(7734))
+        {
+            Core.EnsureAccept(7734);
+            Core.HuntMonster("brightshadow", "Brightfall Guard", "Invader Slain", 10);
+            Core.EnsureComplete(7734);
+        }
 
         //Get The Keys 7735
         Story.KillQuest(7735, "BrightShadow", "BrightFall Guard");
@@ -303,11 +324,13 @@ public class CoreSoC
         Story.KillQuest(7737, "BrightShadow", "Gravelyn the Good", AutoCompleteQuest: false);
 
         //Restoring Order 7738
-        Story.KillQuest(
-            7738,
-            "BrightShadow",
-            new[] { "Brightfall light", "Brightfall Guard", "Shadowflame Paladin" }
-        );
+        if (!Story.QuestProgression(7738))
+        {
+            Core.EnsureAccept(7738);
+            Core.HuntMonster("brightshadow", "Brightfall Guard", "BrightFall Dark", 10);
+            Core.HuntMonster("brightshadow", "Brightfall Light", "BrightFall Light", 5);
+            Core.EnsureComplete(7738);
+        }
     }
 
     public void BrightChaos()
@@ -327,11 +350,12 @@ public class CoreSoC
         Story.KillQuest(7741, "BrightChaos", "Shadowflame Sorcerer");
 
         //Percision Strike 7742
-        Story.KillQuest(
-            7742,
-            "BrightChaos",
-            new[] { "Shadowflame Militia", "Shadowflame Sorcerer" }
-        );
+        if (!Story.QuestProgression(7742))
+        {
+            Core.EnsureAccept(7742);
+            Core.HuntMonster("brightchaos", "Shadowflame Militia", "Captain's Tags", 5);
+            Core.EnsureComplete(7742);
+        }
 
         //Pants On Fire 7743
         Story.MapItemQuest(7743, "BrightChaos", 7731, 6);
@@ -370,10 +394,21 @@ public class CoreSoC
         BrightChaos();
         Story.PreLoad(this);
         //Blood And Ashes 7756
-        Story.KillQuest(7756, "BrightForest", new[] { "Shadow Flame", "ShadowFlame Scout" });
+        if (!Story.QuestProgression(7756))
+        {
+            Core.EnsureAccept(7756);
+            Core.HuntMonster("brightforest", "Shadow Flame", "Ashes of Death", 5);
+            Core.HuntMonster("brightforest", "Shadowflame Scout", "Blood of Life", 5);
+            Core.EnsureComplete(7756);
+        }
 
         //Drink and Fight 7757
-        Story.KillQuest(7757, "BrightForest", new[] { "ShadowFlame Scout" });
+        if (!Story.QuestProgression(7757))
+        {
+            Core.EnsureAccept(7757);
+            Core.HuntMonster("brightforest", "Shadowflame Scout", "Essence of Time", 10);
+            Core.EnsureComplete(7757);
+        }
 
         //Oooommm 7758
         Story.MapItemQuest(7758, "BrightForest", 7754, 2);
@@ -404,7 +439,12 @@ public class CoreSoC
         Story.KillQuest(7762, "BrightForestPast", "Undead Minion");
 
         //Ooh, That Smell 7763
-        Story.KillQuest(7763, "BrightForestPast", new[] { "Undead Minion", "Twisted Treeant" });
+        if (!Story.QuestProgression(7763))
+        {
+            Core.EnsureAccept(7763);
+            Core.HuntMonster("brightforestpast", "Undead Minion", "Elemental Evil", 8);
+            Core.EnsureComplete(7763);
+        }
 
         //So Twisted 7764
         if (!Story.QuestProgression(7764))

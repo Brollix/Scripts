@@ -62,7 +62,13 @@ public class VoidRefuge
         Story.MapItemQuest(9529, "voidrefuge", new[] { 12575, 12576, 12577 });
 
         // Family Feud (9530)
-        Story.KillQuest(9530, "voidrefuge", new[] { "Paladin Ascendant", "Nation Outrider" });
+        if (!Story.QuestProgression(9530))
+        {
+            Core.EnsureAccept(9530);
+            Core.HuntMonster("voidrefuge", "Paladin Ascendant", "Shimmering Blood", 4);
+            Core.HuntMonster("voidrefuge", "Nation Outrider", "Caustic Blood", 8);
+            Core.EnsureComplete(9530);
+        }
 
         // Twisted Helix (9531)
         Story.KillQuest(9531, "voidrefuge", "Carnage");

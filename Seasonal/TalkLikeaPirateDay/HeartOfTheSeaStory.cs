@@ -56,7 +56,14 @@ public class HeartOfTheSeaStory
         Story.KillQuest(6516, "HeartOfTheSea", "Grislytooth Pirate");
 
         // Interrogate the Pirates 6517
-        Story.KillQuest(6517, "HeartOfTheSea", new[] { "First Mate Blackfang", "Quartermaster Greenfin", "Boatswain Rotbelly" });
+        if (!Story.QuestProgression(6517))
+        {
+            Core.EnsureAccept(6517);
+            Core.HuntMonster("heartofthesea", "First Mate Blackfang", "First Mate Interrogated", 1);
+            Core.HuntMonster("heartofthesea", "Quartermaster Greenfin", "Quartermaster Interrogated", 1);
+            Core.HuntMonster("heartofthesea", "Boatswain Rotbelly", "Boatswain Interrogated", 1);
+            Core.EnsureComplete(6517);
+        }
 
         // Find the Hold 6518
         Story.MapItemQuest(6518, "HeartOfTheSea", 6002, 5);

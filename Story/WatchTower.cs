@@ -39,7 +39,13 @@ public class WatchTower
         Story.KillQuest(2602, "watchtower", new[] { "Chaorrupted Wolf", "Chaotic Gorillaphant" });
 
         //Hunt for Answers 2603
-        Story.KillQuest(2603, "watchtower", new[] { "Chaos Spider", "Storagebox" });
+        if (!Story.QuestProgression(2603))
+        {
+            Core.EnsureAccept(2603);
+            Core.HuntMonster("watchtower", "Chaos Spider", "Vermin Cleared", 5);
+            Core.HuntMonster("watchtower", "StorageBox", "Tattered Page 1", 1);
+            Core.EnsureComplete(2603);
+        }
 
         //Decryption Hunt 2604
         Story.MapItemQuest(2604, "watchtower", 1606);

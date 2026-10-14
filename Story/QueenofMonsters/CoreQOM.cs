@@ -160,7 +160,13 @@ public class CoreQOM
         Story.KillQuest(4508, "lostruinswar", "Diabolical Warlord");
 
         //Infernal Destruction
-        Story.KillQuest(5374, "infernalspire", new[] { "Fallen Knight", "Underworld Hound" });
+        if (!Story.QuestProgression(5374))
+        {
+            Core.EnsureAccept(5374);
+            Core.HuntMonster("infernalspire", "Fallen Knight", "Fallen Knight Slain", 8);
+            Core.HuntMonster("infernalspire", "Underworld Hound", "Underworld Hound Slain", 8);
+            Core.EnsureComplete(5374);
+        }
 
         //Gone Without A Trace
         Story.MapItemQuest(5375, "infernalspire", 4729);
@@ -295,7 +301,13 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //Hounds and Infernals and Imp, Oh my!
-        Story.KillQuest(5487, "DarkoviaInvasion", new[] { "Underworld Hound", "Infernal Imp" });
+        if (!Story.QuestProgression(5487))
+        {
+            Core.EnsureAccept(5487);
+            Core.HuntMonster("darkoviainvasion", "Underworld Hound", "Underworld Hound Slain", 5);
+            Core.HuntMonster("darkoviainvasion", "Infernal Imp", "Infernal Imp Slain", 5);
+            Core.EnsureComplete(5487);
+        }
 
         //Like Imps in A Pod
         Story.MapItemQuest(5488, "DarkoviaInvasion", 4905, 6);
@@ -307,7 +319,13 @@ public class CoreQOM
         Story.MapItemQuest(5490, "SafiriaInvasion", 4904);
 
         //What We Need Is A Big Can Of Raid
-        Story.KillQuest(5491, "SafiriaInvasion", new[] { "Fallen Knight", "Infernal Knight" });
+        if (!Story.QuestProgression(5491))
+        {
+            Core.EnsureAccept(5491);
+            Core.HuntMonster("safiriainvasion", "Fallen Knight", "Fallen Knights Slain", 5);
+            Core.HuntMonster("safiriainvasion", "Infernal Knight", "Infernal Knights Slain", 5);
+            Core.EnsureComplete(5491);
+        }
 
         //Trapped!
         Story.MapItemQuest(5492, "SafiriaInvasion", 4895, 6);
@@ -327,7 +345,13 @@ public class CoreQOM
         Story.MapItemQuest(5496, "LycanInvasion", 4900);
 
         //The Best Way To Slay An Infernal
-        Story.KillQuest(5497, "LycanInvasion", new[] { "Infernal Knight", "Fallen Knight" });
+        if (!Story.QuestProgression(5497))
+        {
+            Core.EnsureAccept(5497);
+            Core.HuntMonster("lycaninvasion", "Infernal Knight", "Celestial Spear", 6);
+            Core.HuntMonster("lycaninvasion", "Fallen Knight", "Celestial Lightblade", 6);
+            Core.EnsureComplete(5497);
+        }
 
         //A Dire Situation
         Story.KillQuest(5498, "LycanInvasion", "Dire Wolf");
@@ -344,7 +368,13 @@ public class CoreQOM
         Story.KillQuest(5501, "SafiriaInvasion", "Fallen Knight");
 
         //Revenant Slayer
-        Story.KillQuest(5502, "SafiriaInvasion", new[] { "Shadow Imp", "Revenant" });
+        if (!Story.QuestProgression(5502))
+        {
+            Core.EnsureAccept(5502);
+            Core.HuntMonster("safiriainvasion", "Shadow Imp", "Shadow Imp Slain", 8);
+            Core.HuntMonster("safiriainvasion", "Revenant", "Revenant Slain", 8);
+            Core.EnsureComplete(5502);
+        }
 
         //Noddharath
         Story.KillQuest(5503, "SafiriaInvasion", "Noddharath");
@@ -365,7 +395,13 @@ public class CoreQOM
         Story.MapItemQuest(5543, "shadowfallinvasion", 5024);
 
         //Clear the Walls
-        Story.KillQuest(5544, "shadowfallinvasion", new[] { "Infernal Imp", "Infernal Knight" });
+        if (!Story.QuestProgression(5544))
+        {
+            Core.EnsureAccept(5544);
+            Core.HuntMonster("shadowfallinvasion", "Infernal Imp", "Infernal Imp Slain", 6);
+            Core.HuntMonster("shadowfallinvasion", "Infernal Knight", "Infernal Knight Slain", 6);
+            Core.EnsureComplete(5544);
+        }
 
         //Load the Ballistas
         Story.MapItemQuest(5545, "shadowfallinvasion", 5025, 4);
@@ -464,11 +500,14 @@ public class CoreQOM
         Story.MapItemQuest(5580, "castleinvasion", 5058, 5);
 
         //Destroy the Infernals
-        Story.KillQuest(
-            5581,
-            "castleinvasion",
-            new[] { "Infernal Knight", "Fallen Knight", "Nethermage" }
-        );
+        if (!Story.QuestProgression(5581))
+        {
+            Core.EnsureAccept(5581);
+            Core.HuntMonster("castleinvasion", "Infernal Knight", "Infernal Knights Slain", 3);
+            Core.HuntMonster("castleinvasion", "Fallen Knight", "Fallen Knights Slain", 3);
+            Core.HuntMonster("castleinvasion", "Nethermage", "Nethermages Slain", 3);
+            Core.EnsureComplete(5581);
+        }
 
         //What is THAT??
         if (!Story.QuestProgression(5582))
@@ -484,7 +523,13 @@ public class CoreQOM
         Story.MapItemQuest(5583, "castleinvasion", 5057, 4);
 
         //Get Those Beasts
-        Story.KillQuest(5584, "castleinvasion", new[] { "Infernal Imp", "Underworld Hound" });
+        if (!Story.QuestProgression(5584))
+        {
+            Core.EnsureAccept(5584);
+            Core.HuntMonster("castleinvasion", "Infernal Imp", "Infernal Imps Slain", 4);
+            Core.HuntMonster("castleinvasion", "Underworld Hound", "Underworld Hounds Slain", 4);
+            Core.EnsureComplete(5584);
+        }
 
         Core.Logger("Relaoding the map for the worm");
         Bot.Map.Reload();
@@ -632,7 +677,13 @@ public class CoreQOM
         Story.MapItemQuest(5837, "underglade", 5271);
 
         //Into the Underglade
-        Story.KillQuest(5838, "underglade", new[] { "Tree Nymph", "Forest Spirit" });
+        if (!Story.QuestProgression(5838))
+        {
+            Core.EnsureAccept(5838);
+            Core.HuntMonster("underglade", "Tree Nymph", "Tree Nymph", 5);
+            Core.HuntMonster("underglade", "Forest Spirit", "Forest Spirit", 5);
+            Core.EnsureComplete(5838);
+        }
 
         //Clear the Spores
         Story.KillQuest(5839, "underglade", "Slime Spore");
@@ -674,7 +725,13 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //Capture the Misshapen
-        Story.KillQuest(5849, "Pilgrimage", new[] { "SpiderWing", "Urstrix" });
+        if (!Story.QuestProgression(5849))
+        {
+            Core.EnsureAccept(5849);
+            Core.HuntMonster("pilgrimage", "SpiderWing", "Spiderwing Captured", 4);
+            Core.HuntMonster("pilgrimage", "Urstrix", "Urstrix Captured", 4);
+            Core.EnsureComplete(5849);
+        }
 
         //Defeat the Parasites
         Story.KillQuest(5850, "Pilgrimage", "Ravenous Parasite");
@@ -802,7 +859,13 @@ public class CoreQOM
         Story.KillQuest(5864, "TwistedCavern", "Lore Golem");
 
         //Time for a Dose
-        Story.KillQuest(5866, "BrokenWoods", new[] { "Urstrix", "SpiderWing" });
+        if (!Story.QuestProgression(5866))
+        {
+            Core.EnsureAccept(5866);
+            Core.HuntMonster("brokenwoods", "Urstrix", "Urstrix Dosed", 3);
+            Core.HuntMonster("brokenwoods", "SpiderWing", "Spiderwing Dosed", 3);
+            Core.EnsureComplete(5866);
+        }
 
         //Comparing Samples
         if (!Story.QuestProgression(5867))
@@ -824,10 +887,22 @@ public class CoreQOM
         Story.KillQuest(5869, "BrokenWoods", "Extrikiti");
 
         //Second Dose
-        Story.KillQuest(5870, "BrokenWoods", new[] { "Urstrix", "SpiderWing" });
+        if (!Story.QuestProgression(5870))
+        {
+            Core.EnsureAccept(5870);
+            Core.HuntMonster("brokenwoods", "Urstrix", "Urstrix Dosed", 3);
+            Core.HuntMonster("brokenwoods", "SpiderWing", "Spiderwing Dosed", 3);
+            Core.EnsureComplete(5870);
+        }
 
         //Still Not Working
-        Story.KillQuest(5871, "charredpath", new[] { "Ravenous Parasite", "Plague Spreader" });
+        if (!Story.QuestProgression(5871))
+        {
+            Core.EnsureAccept(5871);
+            Core.HuntMonster("charredpath", "Ravenous Parasite", "Captured Parasite", 3);
+            Core.HuntMonster("charredpath", "Plague Spreader", "Captured Plague Spreader", 3);
+            Core.EnsureComplete(5871);
+        }
 
         //Get the Final Ingredients
         if (!Story.QuestProgression(5872))
@@ -865,7 +940,13 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //8048 | Time to Study
-        Story.KillQuest(8048, "forestreach", new[] { "Monstrous Imp", "Eldritch Parasite" });
+        if (!Story.QuestProgression(8048))
+        {
+            Core.EnsureAccept(8048);
+            Core.HuntMonster("forestreach", "Monstrous Imp", "Monstrous Imp Captured", 8);
+            Core.HuntMonster("forestreach", "Eldritch Parasite", "Eldritch Parasite Captured", 8);
+            Core.EnsureComplete(8048);
+        }
 
         //8049 | Calm Them Down
         Story.KillQuest(8049, "forestreach", "Chaos Spitter");
@@ -879,13 +960,31 @@ public class CoreQOM
         Story.KillQuest(8051, "forestreach", "Chaos Spitter");
 
         //8052 | More Testing Required
-        Story.KillQuest(8052, "forestreach", new[] { "EldritchWing", "Chaos Sp-eye" });
+        if (!Story.QuestProgression(8052))
+        {
+            Core.EnsureAccept(8052);
+            Core.HuntMonster("forestreach", "EldritchWing", "EldritchWing Captured", 8);
+            Core.HuntMonster("forestreach", "Chaos Sp-eye", "Chaos Sp-Eye Captured", 8);
+            Core.EnsureComplete(8052);
+        }
 
         //8053 | Tidy Up
-        Story.KillQuest(8053, "forestreach", new[] { "Eldritch Parasite", "Monstrous Imp" });
+        if (!Story.QuestProgression(8053))
+        {
+            Core.EnsureAccept(8053);
+            Core.HuntMonster("forestreach", "Eldritch Parasite", "Eldritch Parasite Slain", 8);
+            Core.HuntMonster("forestreach", "Monstrous Imp", "Monstrous Imp Slain", 8);
+            Core.EnsureComplete(8053);
+        }
 
         //8054 | We Need Neutralizer
-        Story.KillQuest(8054, "forestreach", new[] { "Chaos Spitter", "Chaos Sp-eye" });
+        if (!Story.QuestProgression(8054))
+        {
+            Core.EnsureAccept(8054);
+            Core.HuntMonster("forestreach", "Chaos Spitter", "Acidic Pollen", 6);
+            Core.HuntMonster("forestreach", "Chaos Sp-eye", "Eye Gunk", 4);
+            Core.EnsureComplete(8054);
+        }
 
         //8055 | Neutralize 'Em
         Story.MapItemQuest(8055, "forestreach", 8364, 5);
@@ -992,7 +1091,13 @@ public class CoreQOM
         Story.KillQuest(8091, "transformation", "Monstrite");
 
         //8092 | Acid and Scratch Test
-        Story.KillQuest(8092, "transformation", new[] { "Tentastrike", "Deep Tunneler" });
+        if (!Story.QuestProgression(8092))
+        {
+            Core.EnsureAccept(8092);
+            Core.HuntMonster("transformation", "Tentastrike", "Acid Venom", 5);
+            Core.HuntMonster("transformation", "Deep Tunneler", "Sharpest Fang", 1);
+            Core.EnsureComplete(8092);
+        }
 
         //8093 | The Largest Monstrite
         Story.KillQuest(8093, "transformation", "Eldritch Abomination");

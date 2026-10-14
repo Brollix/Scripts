@@ -170,30 +170,51 @@ public class CoreToD
         Story.KillQuest(4985, "bonecastle", "Turtle");
 
         // Adolescent Inhuman Samurai Reptiles
-        Story.KillQuest(4986, "bonecastle", new[] { "Turtle", "Turtle", "Turtle", "Turtle" });
+        if (!Story.QuestProgression(4986))
+        {
+            Core.EnsureAccept(4986);
+            Core.HuntMonster("bonecastle", "Turtle", "Dali's Bo", 1);
+            Core.HuntMonster("bonecastle", "Turtle", "Basquiat's Sai", 2);
+            Core.HuntMonster("bonecastle", "Turtle", "Warhol's Nunchaku", 1);
+            Core.HuntMonster("bonecastle", "Turtle", "Picasso's Katanas", 2);
+            Core.EnsureComplete(4986);
+        }
 
         // Snuggles!
         Story.KillQuest(4987, "bonecastle", "Snuggles, Torturer");
 
         // Game of Bones
-        Story.KillQuest(
-            4988,
-            "bonecastle",
-            new[] { "Jon Bones", "Oberon Marrowtell", "Baskerville", "Knight of Lichens" }
-        );
+        if (!Story.QuestProgression(4988))
+        {
+            Core.EnsureAccept(4988);
+            Core.HuntMonster("bonecastle", "Jon Bones", "Jon Bones' Cape", 1);
+            Core.HuntMonster("bonecastle", "Oberon Marrowtell", "Oberon Marrowtell's Armor", 1);
+            Core.HuntMonster("bonecastle", "Baskerville", "Baskerville's Helmet", 1);
+            Core.HuntMonster("bonecastle", "Knight of Lichens", "Knight of Lichens' Lance", 1);
+            Core.EnsureComplete(4988);
+        }
 
         // Rot Tin Tin!
         Story.KillQuest(4989, "bonecastle", "Rot Tin Tin");
 
         // Gold Digger
-        Story.KillQuest(
-            4990,
-            "bonecastle",
-            new[] { "Undead Golden Knight", "Undead Golden Knight", "Undead Golden Knight" }
-        );
+        if (!Story.QuestProgression(4990))
+        {
+            Core.EnsureAccept(4990);
+            Core.HuntMonster("bonecastle", "Undead Golden Knight", "Vaden's Gold", 50);
+            Core.HuntMonster("bonecastle", "Undead Golden Knight", "Gold Skull", 10);
+            Core.HuntMonster("bonecastle", "Undead Golden Knight", "Crystal Skull", 1);
+            Core.EnsureComplete(4990);
+        }
 
         // Gotta Hand It To Ya
-        Story.KillQuest(4991, "bonecastle", new[] { "Undead Knight", "Skeletal Warrior" });
+        if (!Story.QuestProgression(4991))
+        {
+            Core.EnsureAccept(4991);
+            Core.HuntMonster("bonecastle", "Undead Knight", "Knight Defeated", 5);
+            Core.HuntMonster("bonecastle", "Skeletal Warrior", "Warrior Defeated", 5);
+            Core.EnsureComplete(4991);
+        }
 
         // Vaden's Defeat
         Story.KillQuest(4992, "bonecastle", "Vaden");
@@ -359,11 +380,14 @@ public class CoreToD
         Story.KillQuest(5043, "portalmaze", "Bucket Zombie");
 
         // Sonnet of the Undead
-        Story.KillQuest(
-            5044,
-            "portalmaze",
-            new[] { "Bucket Zombie", "Dancing Zombie", "Tunneling Zombie" }
-        );
+        if (!Story.QuestProgression(5044))
+        {
+            Core.EnsureAccept(5044);
+            Core.HuntMonster("portalmaze", "Bucket Zombie", "Rain Bucket", 1);
+            Core.HuntMonster("portalmaze", "Dancing Zombie", "Coral's Sunglasses", 1);
+            Core.HuntMonster("portalmaze", "Tunneling Zombie", "Grick's Pickaxe", 1);
+            Core.EnsureComplete(5044);
+        }
 
         // Through the Zombie Portal!
         Story.KillQuest(5045, "portalmaze", "Time Wraith");
@@ -707,7 +731,13 @@ public class CoreToD
         Story.KillQuest(5137, "DeathPit", "Hattori");
 
         // Battle: You vs the Slime Horde!
-        Story.KillQuest(5138, "DeathPit", new[] { "Slime", "Giant Green Slime" });
+        if (!Story.QuestProgression(5138))
+        {
+            Core.EnsureAccept(5138);
+            Core.HuntMonster("deathpit", "Giant Green Slime", "Giant Slime Defeated", 1);
+            Core.HuntMonster("deathpit", "Slime", "Slime Defeated", 4);
+            Core.EnsureComplete(5138);
+        }
 
         // Battle: You vs the Sludge Lord!
         Story.KillQuest(5139, "DeathPit", "Sludgelord");
@@ -1116,7 +1146,13 @@ public class CoreToD
         Story.MapItemQuest(5220, "yasaris", 4591);
 
         //Cross the Chasm 5221
-        Story.KillQuest(5221, "yasaris", new[] { "Avatar of Anubyx", "Inverted Avatar" });
+        if (!Story.QuestProgression(5221))
+        {
+            Core.EnsureAccept(5221);
+            Core.HuntMonster("yasaris", "Avatar of Anubyx", "Baboon, Jackal", 1);
+            Core.HuntMonster("yasaris", "Inverted Avatar", "Falcon, Human", 1);
+            Core.EnsureComplete(5221);
+        }
 
         //Enter the Code 5222
         Story.MapItemQuest(5222, "yasaris", 4580);
@@ -1125,7 +1161,13 @@ public class CoreToD
         Story.MapItemQuest(5223, "yasaris", 4581);
 
         //Needs More Energy 5224
-        Story.KillQuest(5224, "yasaris", new[] { "Avatar of Anubyx", "Negastri Hound" });
+        if (!Story.QuestProgression(5224))
+        {
+            Core.EnsureAccept(5224);
+            Core.HuntMonster("yasaris", "Avatar of Anubyx", "Energy Vessel", 1);
+            Core.HuntMonster("yasaris", "Negastri Hound", "Tesseract Energy", 5);
+            Core.EnsureComplete(5224);
+        }
 
         //Charge the Spear 5225
         Story.MapItemQuest(5225, "yasaris", 4582);
@@ -1285,14 +1327,26 @@ public class CoreToD
         Story.PreLoad(this);
 
         // Drink Me
-        Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle", "Glass Serpent" });
+        if (!Story.QuestProgression(5314))
+        {
+            Core.EnsureAccept(5314);
+            Core.HuntMonster("towerofmirrors", "Glassgoyle", "Glass Powder", 8);
+            Core.HuntMonster("towerofmirrors", "Glass Serpent", "Reflective Venom", 4);
+            Core.EnsureComplete(5314);
+        }
 
         // The Key To Success
         Story.MapItemQuest(5315, "towerofmirrors", new[] { 4691, 4692 });
         Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");
 
         // Phanatics
-        Story.KillQuest(5316, "towerofmirrors", new[] { "Phans", "Phans" });
+        if (!Story.QuestProgression(5316))
+        {
+            Core.EnsureAccept(5316);
+            Core.HuntMonster("towerofmirrors", "Phans", "Mosh Past the Phans", 8);
+            Core.HuntMonster("towerofmirrors", "Phans", "Backstage Pass", 1);
+            Core.EnsureComplete(5316);
+        }
 
         // But I Have A Backstage Pass!
         if (!Story.QuestProgression(5317))
@@ -1308,11 +1362,15 @@ public class CoreToD
         Story.KillQuest(5318, "towerofmirrors", "Silver Elemental");
 
         // Turn to the Left
-        Story.KillQuest(
-            5319,
-            "towerofmirrors",
-            new[] { "Runway Wraith", "Runway Wraith", "Runway Wraith", "Runway Wraith" }
-        );
+        if (!Story.QuestProgression(5319))
+        {
+            Core.EnsureAccept(5319);
+            Core.HuntMonster("towerofmirrors", "Runway Wraith", "Runway Wraith Defeated", 6);
+            Core.HuntMonster("towerofmirrors", "Runway Wraith", "Avant-Garde Footwear", 1);
+            Core.HuntMonster("towerofmirrors", "Runway Wraith", "Retro Wig", 1);
+            Core.HuntMonster("towerofmirrors", "Runway Wraith", "Someone's Wearable Art Project", 1);
+            Core.EnsureComplete(5319);
+        }
 
         // Now Turn to the Right
         if (!Story.QuestProgression(5320))
@@ -1328,7 +1386,13 @@ public class CoreToD
         Story.KillQuest(5321, "towerofmirrors", "Silver Elemental");
 
         // Those Harpies!
-        Story.KillQuest(5322, "towerofmirrors", new[] { "Pageant Mom", "Pageant Mom" });
+        if (!Story.QuestProgression(5322))
+        {
+            Core.EnsureAccept(5322);
+            Core.HuntMonster("towerofmirrors", "Pageant Mom", "Pageant Mom Defeated", 8);
+            Core.HuntMonster("towerofmirrors", "Pageant Mom", "Pageant Sash", 1);
+            Core.EnsureComplete(5322);
+        }
 
         // Drink your Go-Go Juice
         if (!Story.QuestProgression(5323))

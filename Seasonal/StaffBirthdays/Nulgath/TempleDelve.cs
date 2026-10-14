@@ -78,7 +78,13 @@ public class TempleDelve
         Story.KillQuest(9087, "templedelve", "Delirious Elemental");
 
         //Sunspotty (9088)
-        Story.KillQuest(9088, "templedelve", new[] { "Delirious Elemental", "Infested Nation" });
+        if (!Story.QuestProgression(9088))
+        {
+            Core.EnsureAccept(9088);
+            Core.HuntMonster("templedelve", "Delirious Elemental", "Frenzied Essence", 6);
+            Core.HuntMonster("templedelve", "Infested Nation", "Nation Essence", 6);
+            Core.EnsureComplete(9088);
+        }
 
         //Feeding Time (9089)
         Core.EquipClass(ClassType.Solo);
@@ -95,8 +101,13 @@ public class TempleDelve
         Story.MapItemQuest(9136, "siegefortress", 11313);
 
         // Banal Barage 9137
-        Story.KillQuest(9137, "siegefortress", new[] { "Legion Dread Knight", "Legion Dreadmarch" }
-        );
+        if (!Story.QuestProgression(9137))
+        {
+            Core.EnsureAccept(9137);
+            Core.HuntMonster("siegefortress", "Legion Dread Knight", "Knight Demolished", 6);
+            Core.HuntMonster("siegefortress", "Legion Dreadmarch", "Dreadmarch Demolished", 6);
+            Core.EnsureComplete(9137);
+        }
 
         // Bluebirds 9138
         Story.KillQuest(9138, "siegefortress", "Shadow Traitor");

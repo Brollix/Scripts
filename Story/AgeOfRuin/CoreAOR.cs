@@ -184,7 +184,13 @@ public class CoreAOR
         Story.KillQuest(9245, "sunlightzone", "Spectral Jellyfish");
 
         // Plugging Leaks (9246)
-        Story.KillQuest(9246, "sunlightzone", new[] { "Spectral Jellyfish", "Blighted Water" });
+        if (!Story.QuestProgression(9246))
+        {
+            Core.EnsureAccept(9246);
+            Core.HuntMonster("sunlightzone", "Spectral Jellyfish", "Stinging Tentacles", 6);
+            Core.HuntMonster("sunlightzone", "Blighted Water", "Grainy Water", 6);
+            Core.EnsureComplete(9246);
+        }
 
         // Shared History (9247)
         Story.MapItemQuest(9247, "sunlightzone", new[] { 11708, 11709, 11710 });
@@ -223,7 +229,13 @@ public class CoreAOR
         Story.MapItemQuest(9260, "twilightzone", 11750, 4);
 
         // Parched Throats (9261)
-        Story.KillQuest(9261, "twilightzone", new[] { "Whale Louse", "Polymelia Lamprey" });
+        if (!Story.QuestProgression(9261))
+        {
+            Core.EnsureAccept(9261);
+            Core.HuntMonster("twilightzone", "Whale Louse", "Louse Antennae", 6);
+            Core.HuntMonster("twilightzone", "Polymelia Lamprey", "Lamprey Tooth", 6);
+            Core.EnsureComplete(9261);
+        }
 
         // Morning Stretches (9262)
         Story.MapItemQuest(9262, "twilightzone", new[] { 11751, 11752 });
@@ -238,7 +250,13 @@ public class CoreAOR
         Story.MapItemQuest(9265, "twilightzone", new[] { 11753, 11754, 11755 });
 
         // Exhausted Spirits (9266)
-        Story.KillQuest(9266, "twilightzone", new[] { "Decay Spirit", "Ice Guardian" });
+        if (!Story.QuestProgression(9266))
+        {
+            Core.EnsureAccept(9266);
+            Core.HuntMonster("twilightzone", "Decay Spirit", "Spirit Restrained", 7);
+            Core.HuntMonster("twilightzone", "Ice Guardian", "Guardian Restrained", 7);
+            Core.EnsureComplete(9266);
+        }
 
         // Singing to Whales (9267)
         if (!Story.QuestProgression(9267))
@@ -267,7 +285,13 @@ public class CoreAOR
         Story.KillQuest(9271, "sunlightzone", "Blighted Water");
 
         // Dollar Store Mogloween Costume (9272)
-        Story.KillQuest(9272, "sunlightzone", new[] { "Infernal Illusion", "Astravian Illusion" });
+        if (!Story.QuestProgression(9272))
+        {
+            Core.EnsureAccept(9272);
+            Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Dispersed", 4);
+            Core.HuntMonster("sunlightzone", "Astravian Illusion", "Astravian Dispersed", 4);
+            Core.EnsureComplete(9272);
+        }
 
         // Sea Snow Angels (9273)
         Story.KillQuest(9273, "sunlightzone", "Marine Snow");
@@ -297,7 +321,13 @@ public class CoreAOR
         Story.KillQuest(9293, "midnightzone", "Polymelia Lamprey");
 
         // Graveyard Shift (9294)
-        Story.KillQuest(9294, "midnightzone", new[] { "Vowed ShadowSlayer", "Vowed ShadowSlayer" });
+        if (!Story.QuestProgression(9294))
+        {
+            Core.EnsureAccept(9294);
+            Core.HuntMonster("midnightzone", "Vowed Shadowslayer", "Slayer Subdued", 8);
+            Core.HuntMonster("midnightzone", "Vowed Shadowslayer", "Key Card", 1);
+            Core.EnsureComplete(9294);
+        }
 
         // Educational Execution (9295)
         Story.MapItemQuest(9295, "midnightzone", 11846);
@@ -315,7 +345,13 @@ public class CoreAOR
         Story.KillQuest(9298, "midnightzone", "Venerated Wraith");
 
         // Designated Taunters (9299)
-        Story.KillQuest(9299, "midnightzone", new[] { "Shadow Viscera", "Venerated Wraith" });
+        if (!Story.QuestProgression(9299))
+        {
+            Core.EnsureAccept(9299);
+            Core.HuntMonster("midnightzone", "Shadow Viscera", "Shadow Captured", 7);
+            Core.HuntMonster("midnightzone", "Venerated Wraith", "Wraith Appeased", 7);
+            Core.EnsureComplete(9299);
+        }
 
         // Beloved Simulacrum (9230)
         Story.MapItemQuest(9300, "midnightzone", 11849, 4);
@@ -354,7 +390,13 @@ public class CoreAOR
         Story.KillQuest(9309, "abyssalzone", "Shadow Viscera");
 
         // The Hidden Corpse (9310)
-        Story.KillQuest(9310, "abyssalzone", new[] { "Shadow Viscera", "Blighted Water" });
+        if (!Story.QuestProgression(9310))
+        {
+            Core.EnsureAccept(9310);
+            Core.HuntMonster("abyssalzone", "Shadow Viscera", "Shadow Organs", 6);
+            Core.HuntMonster("abyssalzone", "Blighted Water", "Decayed Elemental Gem", 6);
+            Core.EnsureComplete(9310);
+        }
 
         // Octo-Flake Fish Feed (9311)
         Story.MapItemQuest(9311, "abyssalzone", 11896);
@@ -592,7 +634,13 @@ public class CoreAOR
         Story.MapItemQuest(9757, "loughshine", 13275);
 
         // Wisened Yew (9758)
-        Story.KillQuest(9758, "loughshine", new[] { "Skye Cailleach", "Scorched Elder Yew" });
+        if (!Story.QuestProgression(9758))
+        {
+            Core.EnsureAccept(9758);
+            Core.HuntMonster("loughshine", "Skye Cailleach", "Cailleach's Twine", 3);
+            Core.HuntMonster("loughshine", "Scorched Elder Yew", "Yew Aril", 3);
+            Core.EnsureComplete(9758);
+        }
 
         // Dragonflare (9759)
         Story.MapItemQuest(9759, "loughshine", 13276);
@@ -681,7 +729,13 @@ public class CoreAOR
         Story.KillQuest(9806, "liatarahill", "Garde Wraith");
 
         // True Nature (9807)
-        Story.KillQuest(9807, "liatarahill", new[] { "Undead Garde", "Garde Wraith" });
+        if (!Story.QuestProgression(9807))
+        {
+            Core.EnsureAccept(9807);
+            Core.HuntMonster("liatarahill", "Undead Garde ", "Garde's Sprouts", 6);
+            Core.HuntMonster("liatarahill", "Garde Wraith", "Wraith's Breath", 12);
+            Core.EnsureComplete(9807);
+        }
 
         // Deafly Pride (9808)
         Story.MapItemQuest(9808, "liatarahill", new[] { 13364, 13365 });
@@ -736,7 +790,13 @@ public class CoreAOR
         Story.MapItemQuest(9821, "castlegaheris", new[] { 13379, 13380, 13381 });
 
         // Strangled Sobs (9822)
-        Story.KillQuest(9822, "castlegaheris", new[] { "Energy Elemental", "Ice Guardian" });
+        if (!Story.QuestProgression(9822))
+        {
+            Core.EnsureAccept(9822);
+            Core.HuntMonster("castlegaheris", "Energy Elemental ", "Shock Enhancer", 9);
+            Core.HuntMonster("castlegaheris", "Ice Guardian", "Frozen Eye", 9);
+            Core.EnsureComplete(9822);
+        }
 
         // Distant Care (9823)
         Story.KillQuest(9823, "castlegaheris", "Dark Cage");
@@ -751,7 +811,13 @@ public class CoreAOR
         Story.MapItemQuest(9826, "castlegaheris", new[] { 13382, 13383 });
 
         // Life's Latest Lows (9827)
-        Story.KillQuest(9827, "castlegaheris", new[] { "Glacial Crystal", "Elemental Hybrid" });
+        if (!Story.QuestProgression(9827))
+        {
+            Core.EnsureAccept(9827);
+            Core.HuntMonster("castlegaheris", "Glacial Crystal", "Glaceran Ice", 32);
+            Core.HuntMonster("castlegaheris", "Elemental Hybrid", "Hybrid Remnants", 32);
+            Core.EnsureComplete(9827);
+        }
 
         // Vow of Misery (9828)
         if (!Story.QuestProgression(9828))

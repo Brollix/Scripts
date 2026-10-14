@@ -134,7 +134,13 @@ public class CoreDOY
         Story.MapItemQuest(9403, "yokaitreasure", 12167, 4);
 
         // Sons of Biscuit Eaters (9404)
-        Story.KillQuest(9404, "yokaitreasure", new[] { "Needle Mouth", "Imperial Warrior" });
+        if (!Story.QuestProgression(9404))
+        {
+            Core.EnsureAccept(9404);
+            Core.HuntMonster("yokaitreasure", "Needle Mouth", "Criminal Marker", 6);
+            Core.HuntMonster("yokaitreasure", "Imperial Warrior", "Imperial Scale", 6);
+            Core.EnsureComplete(9404);
+        }
 
         // Pearl of my Heart (9405)
         Core.EquipClass(ClassType.Solo);
@@ -316,7 +322,13 @@ public class CoreDOY
         Story.KillQuest(9686, "yokairealm", "Kitsune Spirits");
 
         // Yokai's Cycle (9687)
-        Story.KillQuest(9687, "yokairealm", new[] { "Oni Spirits", "Kitsune Spirits" });
+        if (!Story.QuestProgression(9687))
+        {
+            Core.EnsureAccept(9687);
+            Core.HuntMonster("yokairealm", "Oni Spirits", "Oni Pacified", 15);
+            Core.HuntMonster("yokairealm", "Kitsune Spirits", "Kitsune Pacified", 15);
+            Core.EnsureComplete(9687);
+        }
 
         // Kojutsu (9688)
         if (!Story.QuestProgression(9688))
@@ -361,7 +373,13 @@ public class CoreDOY
         if (!Story.QuestProgression(9801))
         {
             Bot.Quests.UpdateQuest(9607);
-            Story.KillQuest(9801, "hakuwar", new[] { "Zakhvatchik", "Zmey Warrior" });
+            if (!Story.QuestProgression(9801))
+            {
+                Core.EnsureAccept(9801);
+                Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik Fang", 1);
+                Core.HuntMonster("hakuwar", "Zmey Warrior", "Zmey Fang", 15);
+                Core.EnsureComplete(9801);
+            }
         }
         // Hoshiyoru 9802
         Core.EquipClass(ClassType.Solo);

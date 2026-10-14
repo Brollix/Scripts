@@ -106,7 +106,13 @@ public class MemetsRealm
         Story.KillQuest(5561, "freakitiki", new[] { "Spineapple", "Palm Treeant" });
 
         //5562 | Needs a Little Kick
-        Story.KillQuest(5562, "pirates", new[] { "Undead Pirate", "Undead Pirate" });
+        if (!Story.QuestProgression(5562))
+        {
+            Core.EnsureAccept(5562);
+            Core.HuntMonster("pirates", "Undead Pirate", "Bone Powder", 5);
+            Core.HuntMonster("pirates", "Undead Pirate", "Pirate Spice", 5);
+            Core.EnsureComplete(5562);
+        }
         // if (!Story.QuestProgression(5562))
         // {
         //     Core.EnsureAccept(5562);
@@ -129,7 +135,14 @@ public class MemetsRealm
         Story.MapItemQuest(5566, "freakitiki", 5040);
 
         //5567 | System Cleanse
-        Story.KillQuest(5567, "freakitiki", new[] { "Sneak Venom", "Sugar Imp", "Spicy Heat" });
+        if (!Story.QuestProgression(5567))
+        {
+            Core.EnsureAccept(5567);
+            Core.HuntMonster("freakitiki", "Sneak Venom", "Sneak Venom Gathered", 3);
+            Core.HuntMonster("freakitiki", "Sugar Imp", "Sugar Imp Slain", 3);
+            Core.HuntMonster("freakitiki", "Spicy Heat", "Spicy Heat Slain", 3);
+            Core.EnsureComplete(5567);
+        }
 
         //5568 | Down the, um, Ear Hole
         Story.MapItemQuest(5568, "freakitiki", 5037);
@@ -202,7 +215,13 @@ public class MemetsRealm
         Story.KillQuest(6099, "moonlab", "Mutated Slime Mold");
 
         //Find the Key (6100)
-        Story.KillQuest(6100, "moonlab", new[] { "Infected Scientist", "Infected Scientist" });
+        if (!Story.QuestProgression(6100))
+        {
+            Core.EnsureAccept(6100);
+            Core.HuntMonster("moonlab", "Infected Scientist", "Infected Scientist Slain", 5);
+            Core.HuntMonster("moonlab", "Infected Scientist", "Storage Room Key", 1);
+            Core.EnsureComplete(6100);
+        }
 
         //Clear More Mold (6101)
         Story.MapItemQuest(6101, "moonlab", new[] { 5532, 5533 });
@@ -391,10 +410,22 @@ public class MemetsRealm
         Story.MapItemQuest(7525, "byrodax", 7396);
 
         //Flora and Fauna (7526)
-        Story.KillQuest(7526, "byrodax", new[] { "Mutated Critter", "Mutated Treeant" });
+        if (!Story.QuestProgression(7526))
+        {
+            Core.EnsureAccept(7526);
+            Core.HuntMonster("byrodax", "Mutated Critter", "Mutated Animal Slain", 5);
+            Core.HuntMonster("byrodax", "Mutated Treeant", "Mutated Plant Slain", 5);
+            Core.EnsureComplete(7526);
+        }
 
         //Erasertime (7527)
-        Story.KillQuest(7527, "byrodax", new[] { "Mutated Treeant", "Security Droid" });
+        if (!Story.QuestProgression(7527))
+        {
+            Core.EnsureAccept(7527);
+            Core.HuntMonster("byrodax", "Mutated Treeant", "Rubber", 8);
+            Core.HuntMonster("byrodax", "Security Droid", "Oil", 4);
+            Core.EnsureComplete(7527);
+        }
 
         //Erase it! (7528)
         Story.MapItemQuest(7528, "byrodax", 7397, 10);
@@ -413,7 +444,13 @@ public class MemetsRealm
         Story.MapItemQuest(7532, "byrodax", 7399, 10);
 
         //Cleaning Time (7533)
-        Story.KillQuest(7533, "byrodax", new[] { "Mutated Treeant", "Space Goop" });
+        if (!Story.QuestProgression(7533))
+        {
+            Core.EnsureAccept(7533);
+            Core.HuntMonster("byrodax", "Mutated Treeant", "Mutated Beings Cleaned", 5);
+            Core.HuntMonster("byrodax", "Space Goop", "Space-Goop Cleaned", 5);
+            Core.EnsureComplete(7533);
+        }
 
         //Chop Chop Fizz Fizz (7534)
         Story.MapItemQuest(7534, "byrodax", 7400);

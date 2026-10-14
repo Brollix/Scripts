@@ -268,11 +268,13 @@ public class CoreSoW
         Story.KillQuest(6891, "blackseakeep", "Blacksea Privateer");
 
         //We Need a Spell (6892)
-        Story.KillQuest(
-            6892,
-            "blackseakeep",
-            new[] { "Blacksea Pirate Mage", "Blacksea Pirate Mage" }
-        );
+        if (!Story.QuestProgression(6892))
+        {
+            Core.EnsureAccept(6892);
+            Core.HuntMonster("blackseakeep", "BlackSea Pirate Mage", "Spell Reagents", 8);
+            Core.HuntMonster("blackseakeep", "BlackSea Pirate Mage", "Compliant Mage", 1);
+            Core.EnsureComplete(6892);
+        }
 
         //Light up the Shadows (6893)
         Story.MapItemQuest(6893, "blackseakeep", 6449, 7);
@@ -364,13 +366,25 @@ public class CoreSoW
         Story.KillQuest(6967, "junkheap", "Dark Treeant");
 
         //First Aid (6968)
-        Story.KillQuest(6968, "junkheap", new[] { "Shadow Imp", "Shadow Imp" });
+        if (!Story.QuestProgression(6968))
+        {
+            Core.EnsureAccept(6968);
+            Core.HuntMonster("junkheap", "Shadow Imp", "Salve Weed", 2);
+            Core.HuntMonster("junkheap", "Shadow Imp", "Healing Potion", 3);
+            Core.EnsureComplete(6968);
+        }
 
         //Delivery Time (6969)
         Story.MapItemQuest(6969, "junkheap", 6504);
 
         //Need Food (6970)
-        Story.KillQuest(6970, "junkheap", new[] { "Dark Treeant", "Shadowflame Scout" });
+        if (!Story.QuestProgression(6970))
+        {
+            Core.EnsureAccept(6970);
+            Core.HuntMonster("junkheap", "Dark Treeant", "Questionable Fruit", 5);
+            Core.HuntMonster("junkheap", "Shadowflame Scout", "Canteen", 5);
+            Core.EnsureComplete(6970);
+        }
 
         //A New Coat (6971)
         Story.KillQuest(6971, "junkheap", "Shadow Imp");
@@ -493,7 +507,13 @@ public class CoreSoW
         Story.MapItemQuest(7109, "ghostnexus", 6701);
 
         //More Food (7110)
-        Story.KillQuest(7110, "ghostnexus", new[] { "Chaos Goat", "Chaos Wolf" });
+        if (!Story.QuestProgression(7110))
+        {
+            Core.EnsureAccept(7110);
+            Core.HuntMonster("ghostnexus", "Chaos Goat", "Goat Milk", 5);
+            Core.HuntMonster("ghostnexus", "Chaos Wolf", "Wolf Meat", 5);
+            Core.EnsureComplete(7110);
+        }
 
         //Clear the Way (7111)
         Story.KillQuest(7111, "ghostnexus", "Gnarltooth");
@@ -505,7 +525,13 @@ public class CoreSoW
         Story.KillQuest(7113, "ghostnexus", "Abumi Guchi");
 
         //Get the Supplies (7114)
-        Story.KillQuest(7114, "ghostnexus", new[] { "Infernal Knight", "Abumi Guchi" });
+        if (!Story.QuestProgression(7114))
+        {
+            Core.EnsureAccept(7114);
+            Core.HuntMonster("ghostnexus", "Infernal Knight", "Spare Weapon", 8);
+            Core.HuntMonster("ghostnexus", "Abumi Guchi", "Crate of Food", 8);
+            Core.EnsureComplete(7114);
+        }
 
         //Defeat the Nether Warlock (7115)
         Story.KillQuest(7115, "ghostnexus", "Nether Warlock");
@@ -578,7 +604,13 @@ public class CoreSoW
             Core.EnsureComplete(7419);
         }
 
-        Story.KillQuest(7420, "darkally", new[] { "Underworld Golem", "Underworld Golem" });
+        if (!Story.QuestProgression(7420))
+        {
+            Core.EnsureAccept(7420);
+            Core.HuntMonster("darkally", "Underworld Golem", "Underworld Granite", 8);
+            Core.HuntMonster("darkally", "Underworld Golem", "Underworld Diamond", 8);
+            Core.EnsureComplete(7420);
+        }
 
         Story.MapItemQuest(7421, "darkally", 7180, 1);
         Story.MapItemQuest(7421, "darkally", 7181, 8);
@@ -695,7 +727,13 @@ public class CoreSoW
         Story.MapItemQuest(7469, "innershadows", 7274, 5);
 
         //Gather Spell Reagents (7470)
-        Story.KillQuest(7470, "innershadows", new[] { "ShadowSpitter", "Shadowcrow" });
+        if (!Story.QuestProgression(7470))
+        {
+            Core.EnsureAccept(7470);
+            Core.HuntMonster("innershadows", "ShadowSpitter", "Blackened Herbs", 7);
+            Core.HuntMonster("innershadows", "Shadowcrow", "Shadowy Feathers", 7);
+            Core.EnsureComplete(7470);
+        }
 
         //Follow the Trail (7471)
         Story.MapItemQuest(7471, "innershadows", 7275, 5);
@@ -771,11 +809,13 @@ public class CoreSoW
         }
 
         // Blaze a Path
-        Story.KillQuest(
-            8141,
-            "shadowfireplane",
-            new[] { "Shadowfire Corporal", "Onslaught Knight" }
-        );
+        if (!Story.QuestProgression(8141))
+        {
+            Core.EnsureAccept(8141);
+            Core.HuntMonster("shadowfireplane", "Shadowfire Corporal", "Shadowfire Corporal Defeated", 5);
+            Core.HuntMonster("shadowfireplane", "Onslaught Knight", "Onslaught Knight Defeated", 5);
+            Core.EnsureComplete(8141);
+        }
 
         // Into the Tiger's Den
         Story.KillQuest(8142, "shadowfireplane", "Shadowfire Tiger");
@@ -834,7 +874,13 @@ public class CoreSoW
         Story.KillQuest(8191, "fireinvasion", "Shadowflame Kyron");
 
         // Fire Fighting
-        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame", "Shadefire Cavalry" });
+        if (!Story.QuestProgression(8192))
+        {
+            Core.EnsureAccept(8192);
+            Core.HuntMonster("fireinvasion", "Living Shadowflame", "ShadowFlame Tag", 15);
+            Core.HuntMonster("fireinvasion", "Shadefire Cavalry", "Corrupted Badge", 3);
+            Core.EnsureComplete(8192);
+        }
 
         // Shadefires of War
         Story.KillQuest(8193, "wartraining", "Simulated Shadefire");
@@ -915,7 +961,13 @@ public class CoreSoW
         }
 
         //Avatar of Fire 8243
-        Story.KillQuest(8243, "fireavatar", new[] { "Fire Orb", "Avatar Tyndarius" });
+        if (!Story.QuestProgression(8243))
+        {
+            Core.EnsureAccept(8243);
+            Core.HuntMonster("fireavatar", "Fire Orb", "Fire Orb Defeated", 2);
+            Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Avatar Tyndarius Defeated", 1);
+            Core.EnsureComplete(8243);
+        }
     }
 
     public void RuinedCrown()
@@ -927,11 +979,13 @@ public class CoreSoW
         Story.MapItemQuest(8778, "ruinedcrown", new[] { 10380, 10382, 10383 });
 
         // 8779 Scraping the Barrel
-        Story.KillQuest(
-            8779,
-            "ruinedcrown",
-            new[] { "Mana-Burdened Knight", "Mana-Burdened Minion" }
-        );
+        if (!Story.QuestProgression(8779))
+        {
+            Core.EnsureAccept(8779);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Knight", "Busted Helmet", 7);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Minion", "Brittle Bone", 7);
+            Core.EnsureComplete(8779);
+        }
 
         // 8780 Fractals
         Story.MapItemQuest(8780, "ruinedcrown", 10384, 6);
@@ -940,11 +994,13 @@ public class CoreSoW
         Story.KillQuest(8781, "ruinedcrown", "Mana-Burdened Mage");
 
         // 8782 Deafening Silence
-        Story.KillQuest(
-            8782,
-            "ruinedcrown",
-            new[] { "Mana-Burdened Knight", "Mana-Burdened Minion" }
-        );
+        if (!Story.QuestProgression(8782))
+        {
+            Core.EnsureAccept(8782);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Knight", "Swordhaven Crest", 7);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Minion", "Shadowscythe Crest", 7);
+            Core.EnsureComplete(8782);
+        }
 
         // 8784 Stilled Mind (Yes 8784 before 8783)
         Story.MapItemQuest(8784, "ruinedcrown", 10385, 6);
@@ -1003,16 +1059,35 @@ public class CoreSoW
         Story.KillQuest(8809, "Timekeep", "Mumbler");
 
         // 8810|Meniscus Point
-        Story.KillQuest(8810, "Timekeep", new[] { "Distorted Imp", "Mana-Burdened Mage" });
+        if (!Story.QuestProgression(8810))
+        {
+            Core.EnsureAccept(8810);
+            Core.HuntMonster("timekeep", "Distorted Imp", "Imp Bones", 7);
+            Core.HuntMonster("timekeep", "Mana-Burdened Mage", "Mage Quelled", 7);
+            Core.EnsureComplete(8810);
+        }
 
         // 8811|Distractions
-        Story.KillQuest(8811, "Timekeep", new[] { "Mumbler", "Decaying Locust" });
+        if (!Story.QuestProgression(8811))
+        {
+            Core.EnsureAccept(8811);
+            Core.HuntMonster("timekeep", "Mumbler", "Mumbler Crushed", 7);
+            Core.HuntMonster("timekeep", "Decaying Locust", "Locust Smashed", 7);
+            Core.EnsureComplete(8811);
+        }
 
         // 8812|Dog Bites Back
         Story.KillQuest(8812, "Timekeep", "Mal-formed Gar");
 
         // 8813|Janitorial Duties
-        Story.KillQuest(8813, "Timekeep", new[] { "Mal-formed Gar", "Mumbler", "Decaying Locust" });
+        if (!Story.QuestProgression(8813))
+        {
+            Core.EnsureAccept(8813);
+            Core.HuntMonster("timekeep", "Mal-formed Gar", "Gar's Resignation Letter", 1);
+            Core.HuntMonster("timekeep", "Mumbler", "Mumbler Drool", 8);
+            Core.HuntMonster("timekeep", "Decaying Locust", "Locust Wings", 8);
+            Core.EnsureComplete(8813);
+        }
     }
 
     public void TimestreamWar()
@@ -1162,7 +1237,13 @@ public class CoreSoW
         Story.MapItemQuest(9118, "manacradle", 11269, 3);
 
         // Doggy Paddle 9119
-        Story.KillQuest(9119, "manacradle", new[] { "Crystalized Mana", "Elemental Attempt" });
+        if (!Story.QuestProgression(9119))
+        {
+            Core.EnsureAccept(9119);
+            Core.HuntMonster("manacradle", "Crystalized Mana", "Crystal Shard", 8);
+            Core.HuntMonster("manacradle", "Elemental Attempt", "Elemental Drops", 8);
+            Core.EnsureComplete(9119);
+        }
 
         // Amethyst Memories 9120
         Story.KillQuest(9120, "manacradle", "Dark Tainted Mana");

@@ -61,7 +61,13 @@ public class CoreSepulchure
         Story.KillQuest(6335, "scarsgarde", "Tree");
 
         // (Take the) Watch Out 6336
-        Story.KillQuest(6336, "scarsgarde", new[] { "Garde Watch", "Garde Pikeman" });
+        if (!Story.QuestProgression(6336))
+        {
+            Core.EnsureAccept(6336);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Slain", 5);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 5);
+            Core.EnsureComplete(6336);
+        }
 
         // False Hoods 6337
         if (!Story.QuestProgression(6337))
@@ -98,18 +104,27 @@ public class CoreSepulchure
         Story.MapItemQuest(6339, "scarsgarde", 5869);
 
         // Stay Strong Keep Steady 6340
-        Story.KillQuest(6340, "scarsgarde", new[] { "Garde Knight", "Garde Pikeman" });
+        if (!Story.QuestProgression(6340))
+        {
+            Core.EnsureAccept(6340);
+            Core.HuntMonster("scarsgarde", "Garde Knight", "Knight Slain", 10);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 5);
+            Core.EnsureComplete(6340);
+        }
 
         // The Final Fight 6341
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(6341, "scarsgarde", "Garde Captain");
 
         // Arm the Army 6342
-        Story.KillQuest(
-            6342,
-            "scarsgarde",
-            new[] { "Garde Knight", "Garde Watch", "Garde Pikeman" }
-        );
+        if (!Story.QuestProgression(6342))
+        {
+            Core.EnsureAccept(6342);
+            Core.HuntMonster("scarsgarde", "Garde Knight", "Knight Slain", 3);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Slain", 3);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 3);
+            Core.EnsureComplete(6342);
+        }
     }
     #endregion
 
@@ -137,23 +152,27 @@ public class CoreSepulchure
         Story.KillQuest(6346, "scarsgarde", "Tree");
 
         // (Take the) Watch Out 6347
-        Story.KillQuest(6347, "scarsgarde", new[] { "Garde Watch", "Garde Pikeman" });
+        if (!Story.QuestProgression(6347))
+        {
+            Core.EnsureAccept(6347);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Slain", 5);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 5);
+            Core.EnsureComplete(6347);
+        }
 
         // False Hoods 6348
-        Story.KillQuest(
-            6348,
-            "scarsgarde",
-            new[]
-            {
-                "Garde Watch",
-                "Garde Watch",
-                "Garde Watch",
-                "Garde Watch",
-                "Garde Watch",
-                "Garde Watch",
-                "Garde Watch",
-            }
-        );
+        if (!Story.QuestProgression(6348))
+        {
+            Core.EnsureAccept(6348);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Hood", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Scarf", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Tunic", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Leggings", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Boots", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Dagger", 1);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Badge", 1);
+            Core.EnsureComplete(6348);
+        }
 
         // Pass for Real 6349
         if (!Story.QuestProgression(6349))
@@ -172,18 +191,27 @@ public class CoreSepulchure
         Story.MapItemQuest(6350, "scarsgarde", 5869);
 
         // Stay Strong Keep Steady 6351
-        Story.KillQuest(6351, "scarsgarde", new[] { "Garde Knight", "Garde Pikeman" });
+        if (!Story.QuestProgression(6351))
+        {
+            Core.EnsureAccept(6351);
+            Core.HuntMonster("scarsgarde", "Garde Knight", "Knight Slain", 10);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 5);
+            Core.EnsureComplete(6351);
+        }
 
         // The Final Fight 6352
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(6352, "scarsgarde", "Garde Captain");
 
         // Arm the Army 6353
-        Story.KillQuest(
-            6353,
-            "scarsgarde",
-            new[] { "Garde Knight", "Garde Watch", "Garde Pikeman" }
-        );
+        if (!Story.QuestProgression(6353))
+        {
+            Core.EnsureAccept(6353);
+            Core.HuntMonster("scarsgarde", "Garde Knight", "Knight Slain", 3);
+            Core.HuntMonster("scarsgarde", "Garde Watch", "Watch Slain", 3);
+            Core.HuntMonster("scarsgarde", "Garde Pikeman", "Pike Slain", 3);
+            Core.EnsureComplete(6353);
+        }
     }
     #endregion
 
@@ -209,7 +237,13 @@ public class CoreSepulchure
         Story.MapItemQuest(6359, "valleyofdoom", 5873, 8);
 
         // Get Through the Shadows 6360
-        Story.KillQuest(6360, "valleyofdoom", new[] { "Shadow Beast", "Shadow Person" });
+        if (!Story.QuestProgression(6360))
+        {
+            Core.EnsureAccept(6360);
+            Core.HuntMonster("valleyofdoom", "Shadow Beast", "Shadow Beasts Slain", 8);
+            Core.HuntMonster("valleyofdoom", "Shadow Person", "Shadow People Slain", 8);
+            Core.EnsureComplete(6360);
+        }
 
         // Get the Key 6361
         Story.KillQuest(6361, "valleyofdoom", "Doom Guardian");
@@ -315,10 +349,22 @@ public class CoreSepulchure
         Story.KillQuest(6385, "guardiantowerb", "Slime");
 
         // Garen's Key 6386
-        Story.KillQuest(6386, "guardiantowerb", new[] { "Guardian Selby", "Guardian Garen" });
+        if (!Story.QuestProgression(6386))
+        {
+            Core.EnsureAccept(6386);
+            Core.HuntMonster("guardiantowerb", "Guardian Selby", "Guardians Slain", 3);
+            Core.HuntMonster("guardiantowerb", "Guardian Garen", "Guardian Garen's Key", 1);
+            Core.EnsureComplete(6386);
+        }
 
         // Selby's Key 6387
-        Story.KillQuest(6387, "guardiantowerb", new[] { "Guardian Garen", "Guardian Selby" });
+        if (!Story.QuestProgression(6387))
+        {
+            Core.EnsureAccept(6387);
+            Core.HuntMonster("guardiantowerb", "Guardian Garen", "Guardians Slain", 3);
+            Core.HuntMonster("guardiantowerb", "Guardian Selby", "Guardian Selby's Key", 1);
+            Core.EnsureComplete(6387);
+        }
 
         // Get Rid of Bolton 6388
         Story.MapItemQuest(6388, "guardiantowerb", 5901);
@@ -415,11 +461,14 @@ public class CoreSepulchure
         Story.KillQuest(6546, "noxustower", "Lightguard Paladin");
 
         // Illusory Disguise 6547
-        Story.KillQuest(
-            6547,
-            "noxustower",
-            new[] { "Slimeskull", "Lightguard Caster", "Doomwood Treeant" }
-        );
+        if (!Story.QuestProgression(6547))
+        {
+            Core.EnsureAccept(6547);
+            Core.HuntMonster("noxustower", "Slimeskull", "Necrotic Ooze", 3);
+            Core.HuntMonster("noxustower", "Lightguard Caster", "Lightguard Armor", 4);
+            Core.HuntMonster("noxustower", "Doomwood Treeant", "Arcane Energy", 3);
+            Core.EnsureComplete(6547);
+        }
 
         // Test the Disguise 6548
         Story.MapItemQuest(6548, "noxustower", 6019);

@@ -35,11 +35,15 @@ public class CelestialPast
         Story.PreLoad(this);
 
         //Wayfarer Potion 7674
-        Story.KillQuest(
-            7674,
-            "CelestialPast",
-            new[] { "Blessed Deer", "Blessed Bear", "Blessed Centaur", "Blessed Hydra" }
-        );
+        if (!Story.QuestProgression(7674))
+        {
+            Core.EnsureAccept(7674);
+            Core.HuntMonster("celestialpast", "Blessed Deer", "Leaf of Visibility", 1);
+            Core.HuntMonster("celestialpast", "Blessed Bear", "Root of Clarity", 1);
+            Core.HuntMonster("celestialpast", "Blessed Centaur", "Spice of Direction", 1);
+            Core.HuntMonster("celestialpast", "Blessed Hydra", "Broth", 1);
+            Core.EnsureComplete(7674);
+        }
 
         //The Path Revealed 7675
         Story.MapItemQuest(7675, "CelestialPast", 7592);

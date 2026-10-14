@@ -211,39 +211,90 @@ public class AnniversaryofDoom
         Story.PreLoad(this);
 
         //Dungeons & DOOMFights 8899
-        Story.KillQuest(8899, "deathofgames", new[] { "8-Bit Skelly", "8-Bit Sepulchure" });
+        if (!Story.QuestProgression(8899))
+        {
+            Core.EnsureAccept(8899);
+            Core.HuntMonster("deathofgames", "8-Bit Skelly", "8-Bit Skeletons Destroyed", 8);
+            Core.HuntMonster("deathofgames", "8-Bit Sepulchure", "8-bit Sepulchure Deboned", 1);
+            Core.EnsureComplete(8899);
+        }
 
         //AQ3Destruction 8900
-        Story.KillQuest(8900, "deathofgames", new[] { "3D Flying Eye", "Trolluk", "Clawg" });
+        if (!Story.QuestProgression(8900))
+        {
+            Core.EnsureAccept(8900);
+            Core.HuntMonster("deathofgames", "3D Flying Eye", "Flying Eye De-Sighted", 5);
+            Core.HuntMonster("deathofgames", "Trolluk", "Trolluk Destroyed", 1);
+            Core.HuntMonster("deathofgames", "Clawg", "Clawg De-clawed", 3);
+            Core.EnsureComplete(8900);
+        }
 
         //OverSoul Under Attack 8901
-        Story.KillQuest(8901, "deathofgames", new[] { "Vampire Knight", "Black Dragon" });
+        if (!Story.QuestProgression(8901))
+        {
+            Core.EnsureAccept(8901);
+            Core.HuntMonster("deathofgames", "Vampire Knight", "Vampire Knight Defeated", 6);
+            Core.HuntMonster("deathofgames", "Black Dragon", "Black Dragon Defeated", 1);
+            Core.EnsureComplete(8901);
+        }
 
         //HeroSmashed 8902
-        Story.KillQuest(8902, "deathofgames", new[] { "Rider", "Blaster Master", "Super Death" });
+        if (!Story.QuestProgression(8902))
+        {
+            Core.EnsureAccept(8902);
+            Core.HuntMonster("deathofgames", "Rider", "Riders Run Off", 5);
+            Core.HuntMonster("deathofgames", "Blaster Master", "Blaster Master Blasted", 1);
+            Core.HuntMonster("deathofgames", "Super Death", "Super Death... Deaded", 1);
+            Core.EnsureComplete(8902);
+        }
 
         //EpicDuel vs DoG 8907
-        Story.KillQuest(8907, "deathofgames", new[] { "God of War", "Cyber Hunter" });
+        if (!Story.QuestProgression(8907))
+        {
+            Core.EnsureAccept(8907);
+            Core.HuntMonster("deathofgames", "God of War", "God of War Defeated", 1);
+            Core.HuntMonster("deathofgames", "Cyber Hunter", "Cyber Hunters Defeated", 6);
+            Core.EnsureComplete(8907);
+        }
 
         //AQWorlds At Risk 8920
-        Story.KillQuest(8920, "deathofgames", new[] { "Skeletal Fire Mage", "Drakath" });
+        if (!Story.QuestProgression(8920))
+        {
+            Core.EnsureAccept(8920);
+            Core.HuntMonster("deathofgames", "Skeletal Fire Mage", "Skeletal Enemies Defeated", 8);
+            Core.HuntMonster("deathofgames", "Drakath", "Drakath Defeated", 1);
+            Core.EnsureComplete(8920);
+        }
 
         //MechQuest For Glory 8921
-        Story.KillQuest(
-            8921,
-            "deathofgames",
-            new[] { "Newbatron Prime", "ShadowScythe Mecha", "SkullCrusher Mecha" }
-        );
+        if (!Story.QuestProgression(8921))
+        {
+            Core.EnsureAccept(8921);
+            Core.HuntMonster("deathofgames", "Newbatron Prime", "Newbatron Primes Defeated", 5);
+            Core.HuntMonster("deathofgames", "ShadowScythe Mecha", "ShadowScythe Mecha Defeated", 3);
+            Core.HuntMonster("deathofgames", "SkullCrusher Mecha", "Skull Crusher Mecha Defeated", 1);
+            Core.EnsureComplete(8921);
+        }
 
         //DragonFables &amp; Lore 8922
-        Story.KillQuest(8922, "deathofgames", new[] { "Titan Fluffy", "Fire Elemental", "Xan" });
+        if (!Story.QuestProgression(8922))
+        {
+            Core.EnsureAccept(8922);
+            Core.HuntMonster("deathofgames", "Titan Fluffy", "Titan Fluffy Defeated", 1);
+            Core.HuntMonster("deathofgames", "Fire Elemental", "Fire Elementals Snuffed", 5);
+            Core.HuntMonster("deathofgames", "Xan", "Xan Defeated", 1);
+            Core.EnsureComplete(8922);
+        }
 
         //AdventureQuest for Victory 8923
-        Story.KillQuest(
-            8923,
-            "deathofgames",
-            new[] { "Halenro the Paladin", "Moglin Ghost", "Mysterious Stranger" }
-        );
+        if (!Story.QuestProgression(8923))
+        {
+            Core.EnsureAccept(8923);
+            Core.HuntMonster("deathofgames", "Halenro the Paladin", "Halenro Run Off", 1);
+            Core.HuntMonster("deathofgames", "Moglin Ghost", "Moglin Ghosts Banished", 5);
+            Core.HuntMonster("deathofgames", "Mysterious Stranger", "Mysterious Stranger Defeated", 1);
+            Core.EnsureComplete(8923);
+        }
 
         //Battle On... FOREVER! 8924
         Story.KillQuest(8924, "deathofgames", "Death of Games");

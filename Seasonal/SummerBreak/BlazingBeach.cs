@@ -48,7 +48,14 @@ public class BlazingBeachStory
         Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");
 
         // Piracy for Pyromancers
-        Story.KillQuest(8703, "blazingbeach", new[] { "Magma Pirate", "Scalding Shooter", "Red-Hot Raider" });
+        if (!Story.QuestProgression(8703))
+        {
+            Core.EnsureAccept(8703);
+            Core.HuntMonster("blazingbeach", "Magma Pirate", "Superheated Blade", 7);
+            Core.HuntMonster("blazingbeach", "Scalding Shooter", "Burning Blunderbuss", 5);
+            Core.HuntMonster("blazingbeach", "Magma Pirate", "Stolen Supplies", 10);
+            Core.EnsureComplete(8703);
+        }
 
         // Canned Heat
         Story.MapItemQuest(8704, "blazingbeach", 10252);

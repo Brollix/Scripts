@@ -442,7 +442,12 @@ public class CoreMogloween
         Story.PreLoad(this);
 
         //Stop the Hurting 6568
-        Story.KillQuest(6568, "twigsarcade", new[] { "Scotty Sneevil", "Clucky Moo" });
+        if (!Story.QuestProgression(6568))
+        {
+            Core.EnsureAccept(6568);
+            Core.HuntMonster("twigsarcade", "SCOTTY SNEEVIL", "Mascots \"Stopped\"", 8);
+            Core.EnsureComplete(6568);
+        }
 
         //Gather the Goods 6569
         if (!Story.QuestProgression(6569))
@@ -467,7 +472,12 @@ public class CoreMogloween
         Story.MapItemQuest(6572, "twigsarcade", 6071);
 
         //Test the Ghost box 6573
-        Story.KillQuest(6573, "twigsarcade", new[] { "Scotty Sneevil", "Clucky Moo" });
+        if (!Story.QuestProgression(6573))
+        {
+            Core.EnsureAccept(6573);
+            Core.HuntMonster("twigsarcade", "SCOTTY SNEEVIL", "Ghost Caught", 5);
+            Core.EnsureComplete(6573);
+        }
 
         //Get Wid of CWEEPY TWIG 6574
         Story.KillQuest(6574, "twigsarcade", "Cweepy Twig");
@@ -574,7 +584,12 @@ public class CoreMogloween
         Story.MapItemQuest(7171, "that", 6791);
 
         //Cweepie-cwawlie Time 7172
-        Story.KillQuest(7172, "that", new[] { "Well Spider", "Congealed Fear" });
+        if (!Story.QuestProgression(7172))
+        {
+            Core.EnsureAccept(7172);
+            Core.HuntMonster("that", "Well Spider", "Minion Slain", 10);
+            Core.EnsureComplete(7172);
+        }
 
         //Gwoop Destruction 7173
         Story.KillQuest(7173, "that", "Congealed Fear");

@@ -114,7 +114,15 @@ public class OrbHunt
         Story.KillQuest(8325, "queenreign", "Sa-Laatan");
 
         // 8326|Water. Earth. Energy? Air.
-        Story.KillQuest(8326, "queenreign", new[] { "Sa-Laatan", "Grou'luu", "Extriki", "Jaaku" });
+        if (!Story.QuestProgression(8326))
+        {
+            Core.EnsureAccept(8326);
+            Core.HuntMonster("queenreign", "Sa-Laatan", "Sa-Lataan Defeated", 1);
+            Core.HuntMonster("queenreign", "Grou'luu", "Grou'luu Defeated", 1);
+            Core.HuntMonster("queenreign", "Extriki", "Extriki Defeated", 1);
+            Core.HuntMonster("queenreign", "Jaaku", "Jaaku Defeated", 1);
+            Core.EnsureComplete(8326);
+        }
 
         // 8328|Plant Stalk-ers
         Story.KillQuest(8328, "orbhunt", "Seed Stalker");
@@ -179,16 +187,28 @@ public class OrbHunt
         Story.KillQuest(8346, "orbhunt", "Animus of Ice");
 
         // 8347|Bones For Stones
-        Story.KillQuest(
-            8347,
-            "orbhunt",
-            new[] { "Lotus Spider", "Hive", "Ice Infernal", "Seed Stalker" }
-        );
+        if (!Story.QuestProgression(8347))
+        {
+            Core.EnsureAccept(8347);
+            Core.HuntMonster("orbhunt", "Lotus Spider", "Bones of Light", 4);
+            Core.HuntMonster("orbhunt", "Hive", "Bones of Monster", 4);
+            Core.HuntMonster("orbhunt", "Ice Infernal", "Bones of Ice", 4);
+            Core.HuntMonster("orbhunt", "Seed Stalker", "Bones of Mana", 4);
+            Core.EnsureComplete(8347);
+        }
 
         // 8348|The Ice Orb
         Story.KillQuest(8348, "orbhunt", "Quetzal");
 
         // 8349|A Hymn of Ice and Fire, and Light and Dark
-        Story.KillQuest(8349, "orbhunt", new[] { "Chamat", "Horothotep", "Kolyaban", "Quetzal" });
+        if (!Story.QuestProgression(8349))
+        {
+            Core.EnsureAccept(8349);
+            Core.HuntMonster("orbhunt", "Chamat", "Chamat Defeated", 1);
+            Core.HuntMonster("orbhunt", "Horothotep", "Horothotep Defeated", 1);
+            Core.HuntMonster("orbhunt", "Kolyaban", "Kolyaban Defeated", 1);
+            Core.HuntMonster("orbhunt", "Quetzal", "Quetzal Defeated", 1);
+            Core.EnsureComplete(8349);
+        }
     }
 }

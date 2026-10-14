@@ -39,7 +39,13 @@ public class Tournament
         Story.KillQuest(2708, "tournament", "Suspicious Spy Bot");
 
         //Stalkers and Mercenaries 2709
-        Story.KillQuest(2709, "tournament", new[] {  "Mercenary","SandStalker" });
+        if (!Story.QuestProgression(2709))
+        {
+            Core.EnsureAccept(2709);
+            Core.HuntMonster("tournament", "Mercenary", "Mercenary Slain", 4);
+            Core.HuntMonster("tournament", "SandStalker", "Intruder Slain", 3);
+            Core.EnsureComplete(2709);
+        }
 
         //Brave the Bandits 2710
         Story.KillQuest(2710, "tournament", "Greenguard Bandit");

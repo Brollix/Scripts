@@ -68,7 +68,13 @@ public class DreadForest
         Story.KillQuest(8718, "dreadforest", "Taxidermied Servant");
 
         // Piercing the Veil 8719
-        Story.KillQuest(8719, "dreadforest", new[] { "Taxidermied Servant", "Reignolds' Knight" });
+        if (!Story.QuestProgression(8719))
+        {
+            Core.EnsureAccept(8719);
+            Core.HuntMonster("dreadforest", "Taxidermied Servant", "Servants Eliminated", 7);
+            Core.HuntMonster("dreadforest", "Reignolds' Knight", "Knights Eliminated", 7);
+            Core.EnsureComplete(8719);
+        }
 
         // Any Means Necessary 8720
         Story.KillQuest(8720, "dreadforest", "Lord Reignolds");
@@ -77,10 +83,13 @@ public class DreadForest
         Story.MapItemQuest(8721, "dreadforest", 10272);
 
         // Vulture Pickings 8722
-        Story.KillQuest(
-            8722,
-            "dreadforest",
-            new[] { "Reignolds' Knight", "Taxidermied Servant", "Lord Reignolds" }
-        );
+        if (!Story.QuestProgression(8722))
+        {
+            Core.EnsureAccept(8722);
+            Core.HuntMonster("dreadforest", "Reignolds' Knight", "Valuable Metals", 8);
+            Core.HuntMonster("dreadforest", "Taxidermied Servant", "Gold Pouches", 8);
+            Core.HuntMonster("dreadforest", "Lord Reignolds", "Reignolds' Brooch", 1);
+            Core.EnsureComplete(8722);
+        }
     }
 }

@@ -81,7 +81,13 @@ public class Core7DD
         Story.KillQuest(5910, "Gluttony", "Skeletal Slayer");
 
         // Bile Burns 5911
-        Story.KillQuest(5911, "Gluttony", new[] { "Bowel Worm", "Bile" });
+        if (!Story.QuestProgression(5911))
+        {
+            Core.EnsureAccept(5911);
+            Core.HuntMonster("gluttony", "Bowel Worm", "Bowel Worm Slain", 5);
+            Core.HuntMonster("gluttony", "Bile", "Bile Slain", 5);
+            Core.EnsureComplete(5911);
+        }
 
         // Find the Chest 5912
         Story.MapItemQuest(5912, "Gluttony", 5349);
@@ -173,7 +179,13 @@ public class Core7DD
         Story.MapItemQuest(5939, "Greed", new[] { 5377, 5378 });
 
         // Crystal-eyes 5940
-        Story.KillQuest(5940, "Greed", new[] { "Ice Crystal", "Glacial Horror" });
+        if (!Story.QuestProgression(5940))
+        {
+            Core.EnsureAccept(5940);
+            Core.HuntMonster("greed", "Ice Crystal", "Ice Crystal Slain", 5);
+            Core.HuntMonster("greed", "Glacial Horror", "Glacial Horror Slain", 10);
+            Core.EnsureComplete(5940);
+        }
 
         // Go-bolds? 5941
         Story.MapItemQuest(5941, "Greed", 5375, 5);
@@ -204,7 +216,13 @@ public class Core7DD
         Story.KillQuest(5945, "Sloth", "Plague Zombie");
 
         // Gathering Samples 5946
-        Story.KillQuest(5946, "Sloth", new[] { "Snotgoblin", "Wandering Plague" });
+        if (!Story.QuestProgression(5946))
+        {
+            Core.EnsureAccept(5946);
+            Core.HuntMonster("sloth", "SnotGoblin", "Snot Sample", 6);
+            Core.HuntMonster("sloth", "Wandering Plague", "Plague Sample", 6);
+            Core.EnsureComplete(5946);
+        }
 
         // Find a ‘Volunteer’ 5947
         Story.KillQuest(5947, "Sloth", "Plague Zombie");
@@ -304,7 +322,13 @@ public class Core7DD
         Story.KillQuest(5971, "Lust", "Elite Guard");
 
         // Lascivia Stunk Pretty 5972
-        Story.KillQuest(5972, "Lust", new[] { "Golden Vase", "Golden Vase" });
+        if (!Story.QuestProgression(5972))
+        {
+            Core.EnsureAccept(5972);
+            Core.HuntMonster("lust", "Golden Vase", "Gold Vase", 1);
+            Core.HuntMonster("lust", "Golden Vase", "Lascivia's \"Smell-Good\"", 5);
+            Core.EnsureComplete(5972);
+        }
 
         // You Broke It, You Fix It 5973
         Story.KillQuest(5973, "Lust", "Devoted Admirer");
@@ -342,10 +366,22 @@ public class Core7DD
         Story.KillQuest(5985, "DragonCrown", "Fire Sprite");
 
         // Round ‘em Up 5986
-        Story.KillQuest(5986, "DragonCrown", new[] { "Llama", "Rampaging Boar" });
+        if (!Story.QuestProgression(5986))
+        {
+            Core.EnsureAccept(5986);
+            Core.HuntMonster("dragoncrown", "Llama", "Llamas Rustled", 5);
+            Core.HuntMonster("dragoncrown", "Rampaging Boar", "Boars Rustled", 5);
+            Core.EnsureComplete(5986);
+        }
 
         // Get Rockin’ 5987
-        Story.KillQuest(5987, "DragonCrown", new[] { "Rock Elemental", "Earth Elemental" });
+        if (!Story.QuestProgression(5987))
+        {
+            Core.EnsureAccept(5987);
+            Core.HuntMonster("dragoncrown", "Rock Elemental", "Strong Rocks", 10);
+            Core.HuntMonster("dragoncrown", "Earth Elemental", "Sticky Mud", 5);
+            Core.EnsureComplete(5987);
+        }
 
         // Stop Fightin’ 5988
         Story.MapItemQuest(5988, "DragonCrown", 5423);
@@ -397,11 +433,16 @@ public class Core7DD
         Story.KillQuest(6003, "Maloth", "Golgar");
 
         // Hand over the Entry Code 6004
-        Story.KillQuest(
-            6004,
-            "Maloth",
-            new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" }
-        );
+        if (!Story.QuestProgression(6004))
+        {
+            Core.EnsureAccept(6004);
+            Core.HuntMonster("maloth", "Golgar", "Final Word", 1);
+            Core.HuntMonster("maloth", "Castle Guard", "First Word", 1);
+            Core.HuntMonster("maloth", "Scroll Keeper", "Second Word", 1);
+            Core.HuntMonster("maloth", "Nervous Serf", "Third Word", 1);
+            Core.HuntMonster("maloth", "Locked Chest", "Fourth Word", 1);
+            Core.EnsureComplete(6004);
+        }
 
         // Confront the Dragon King 6005
         Story.KillQuest(6005, "Maloth", "Maloth");
@@ -419,7 +460,13 @@ public class Core7DD
         Story.PreLoad(this);
 
         // Decimate the Horde 6110
-        Story.KillQuest(6110, "Wrath", new[] { "Fishbones", "Bone Terror" });
+        if (!Story.QuestProgression(6110))
+        {
+            Core.EnsureAccept(6110);
+            Core.HuntMonster("wrath", "Fishbones", "Fishbones Slain", 5);
+            Core.HuntMonster("wrath", "Bone Terror", "Bone Terror Slain", 5);
+            Core.EnsureComplete(6110);
+        }
 
         // Douse with Flames 6111
         Story.KillQuest(6111, "Wrath", "Dark Fire");
@@ -458,7 +505,13 @@ public class Core7DD
         Story.KillQuest(6116, "Wrath", "Undead Pirate");
 
         // Get the Cargo Hold Key 6117
-        Story.KillQuest(6117, "Wrath", new[] { "Mutineer", "Mutineer" });
+        if (!Story.QuestProgression(6117))
+        {
+            Core.EnsureAccept(6117);
+            Core.HuntMonster("wrath", "Mutineer", "Mutineers Slain", 8);
+            Core.HuntMonster("wrath", "Mutineer", "Cargo Hold Key", 1);
+            Core.EnsureComplete(6117);
+        }
 
         // Find the Jewel 6118
         Story.MapItemQuest(6118, "Wrath", 5545);

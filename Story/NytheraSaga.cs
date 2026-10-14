@@ -54,7 +54,14 @@ public class NytheraSaga
         Story.KillQuest(438, "NorthLands", "Snow Golem");
 
         //Locked on Combinations 439
-        Story.KillQuest(439, "NorthLands", new[] { "Snow Golem", "Snow Golem", "Snow Golem" });
+        if (!Story.QuestProgression(439))
+        {
+            Core.EnsureAccept(439);
+            Core.HuntMonster("northlands", "Snow Golem", "Second Combination Number 3", 1);
+            Core.HuntMonster("northlands", "Snow Golem", "Third Combination Number 4", 1);
+            Core.HuntMonster("northlands", "Snow Golem", "Fourth Combination Number 7", 1);
+            Core.EnsureComplete(439);
+        }
 
         //Combo Breaker 440
         Story.KillQuest(440, "NorthLands", "Snow Golem");
@@ -78,7 +85,13 @@ public class NytheraSaga
             return;
 
         //Yellow Snow Cone 447
-        Story.KillQuest(447, "KingCoal", new[] { "Snow Golem", "Ice Elemental" });
+        if (!Story.QuestProgression(447))
+        {
+            Core.EnsureAccept(447);
+            Core.HuntMonster("kingcoal", "Snow Golem", "Yellow Snow Syrup Bottle", 2);
+            Core.HuntMonster("kingcoal", "Snow Golem", "Shaved Ice Bundle", 8);
+            Core.EnsureComplete(447);
+        }
 
         //Cool Down Items 448
         Story.KillQuest(448, "KingCoal", "Snow Golem");
@@ -154,11 +167,15 @@ public class NytheraSaga
         Story.KillQuest(902, "Void", "Void Elemental");
 
         //Null and Void Spheres 903
-        Story.KillQuest(
-            903,
-            "palooza",
-            new[] { "Discordia", "Discordia", "Discordia", "Discordia" }
-        );
+        if (!Story.QuestProgression(903))
+        {
+            Core.EnsureAccept(903);
+            Core.HuntMonster("palooza", "Discordia", "Red Void Sphere", 1, isTemp: false);
+            Core.HuntMonster("palooza", "Discordia", "Blue Void Sphere", 1, isTemp: false);
+            Core.HuntMonster("palooza", "Discordia", "Green Void Sphere", 1, isTemp: false);
+            Core.HuntMonster("palooza", "Discordia", "Yellow Void Sphere", 1, isTemp: false);
+            Core.EnsureComplete(903);
+        }
 
         //Enter the Great Void Dragon's Lair 904
         Story.KillQuest(904, "Void", "Void Dragon");

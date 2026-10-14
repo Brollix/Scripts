@@ -59,7 +59,13 @@ public class TempleSiege
         Story.MapItemQuest(9061, "templesiege", new[] { 11130, 11131, 11132 });
 
         //Banging on Light's Door || 9062
-        Story.KillQuest(9062, "templesiege", new[] { "Overdriven Paladin", "Light Elemental" });
+        if (!Story.QuestProgression(9062))
+        {
+            Core.EnsureAccept(9062);
+            Core.HuntMonster("templesiege", "Overdriven Paladin", "Engraved Vambrace", 3);
+            Core.HuntMonster("templesiege", "Light Elemental", "Elemental Bracelet", 3);
+            Core.EnsureComplete(9062);
+        }
 
         //Words Bind || 9063
         Story.MapItemQuest(9063, "templesiege", 11133, 6);
@@ -72,7 +78,13 @@ public class TempleSiege
         Story.KillQuest(9065, "templesiege", "Doomed Troll");
 
         //The Emperor's Shadow || 9066
-        Story.KillQuest(9066, "templesiege", new[] { "Doomed Troll", "Doomed Beast" });
+        if (!Story.QuestProgression(9066))
+        {
+            Core.EnsureAccept(9066);
+            Core.HuntMonster("templesiege", "Doomed Troll", "Troll Tusks", 6);
+            Core.HuntMonster("templesiege", "Doomed Beast", "Beast Eyes", 6);
+            Core.EnsureComplete(9066);
+        }
 
         //Throat Sores || 9067
         Story.KillQuest(9067, "templesiege", "Doomed Oblivion");

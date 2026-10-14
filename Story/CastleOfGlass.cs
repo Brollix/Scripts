@@ -62,17 +62,26 @@ public class CastleOfGlass
         Story.MapItemQuest(5346, "castleofglass", 4703);
 
         //Find More Pieces 5347
-        Story.KillQuest(5347, "castleofglass", new[] { "Glass Golem", "Glass Panther" });
+        if (!Story.QuestProgression(5347))
+        {
+            Core.EnsureAccept(5347);
+            Core.HuntMonster("castleofglass", "Glass Golem", "Green Mosaic Piece", 4);
+            Core.HuntMonster("castleofglass", "Glass Panther", "Blue Mosaic Piece", 2);
+            Core.EnsureComplete(5347);
+        }
 
         //Finish the Second Mosaic 5348
         Story.MapItemQuest(5348, "castleofglass", 4704);
 
         //Even  More Pieces 5349
-        Story.KillQuest(
-            5349,
-            "castleofglass",
-            new[] { "Glass Golem", "Glass Panther", "Glass Wyvern" }
-        );
+        if (!Story.QuestProgression(5349))
+        {
+            Core.EnsureAccept(5349);
+            Core.HuntMonster("castleofglass", "Glass Panther", "Blue Mosaic Piece", 4);
+            Core.HuntMonster("castleofglass", "Glass Golem", "Green Mosaic Piece", 2);
+            Core.HuntMonster("castleofglass", "Glass Wyvern", "Red Mosaic Piece", 6);
+            Core.EnsureComplete(5349);
+        }
 
         //Finish the Third Mosaic 5350
         Story.MapItemQuest(5350, "castleofglass", 4705);

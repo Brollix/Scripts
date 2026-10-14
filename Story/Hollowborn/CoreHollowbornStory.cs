@@ -63,13 +63,25 @@ public class CoreHollowbornStory
         Story.MapItemQuest(8294, "trygve", 9040, 8);
 
         //Mannaz (8295)
-        Story.KillQuest(8295, "trygve", new[] { "Blood Eagle", "Rune Boar" });
+        if (!Story.QuestProgression(8295))
+        {
+            Core.EnsureAccept(8295);
+            Core.HuntMonster("trygve", "Blood Eagle", "Eagle Talon", 9);
+            Core.HuntMonster("trygve", "Rune Boar", "Boar Bone", 9);
+            Core.EnsureComplete(8295);
+        }
 
         //Thurisaz (8296)
         Story.KillQuest(8296, "trygve", "Vindicator Recruit");
 
         //Othala (8297)
-        Story.KillQuest(8297, "trygve", new[] { "Blood Eagle", "Vindicator Recruit" });
+        if (!Story.QuestProgression(8297))
+        {
+            Core.EnsureAccept(8297);
+            Core.HuntMonster("trygve", "Blood Eagle", "Creature Bones", 7);
+            Core.HuntMonster("trygve", "Vindicator Recruit", "Vindicator Defeated", 7);
+            Core.EnsureComplete(8297);
+        }
 
         //Isa, Reversed (8298)
         Story.KillQuest(8298, "trygve", "Gramiel");

@@ -684,11 +684,14 @@ public class CoreFrostvale
         Story.MapItemQuest(4706, "cryostorm", 4067, 8);
 
         // More Gifts
-        Story.KillQuest(
-            4707,
-            "cryostorm",
-            new[] { "Glacial Wolf", "Cryo Mammoth", "Glacial Elemental" }
-        );
+        if (!Story.QuestProgression(4707))
+        {
+            Core.EnsureAccept(4707);
+            Core.HuntMonster("cryostorm", "Glacial Wolf", "Cloth Found", 7);
+            Core.HuntMonster("cryostorm", "Cryo Mammoth", "Fur Found", 3);
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Glacial Frostvale Bells", 5);
+            Core.EnsureComplete(4707);
+        }
 
         // Warmth for the Small
         Story.KillQuest(4708, "cryostorm", "Glacial Wolf");
@@ -759,10 +762,22 @@ public class CoreFrostvale
         Story.KillQuest(5594, "icewindpass", "Frostspawn Horror");
 
         // Keep the Frostspawn Away!
-        Story.KillQuest(5595, "icewindpass", new[] { "Frostspawn Troll", "Frost Invader" });
+        if (!Story.QuestProgression(5595))
+        {
+            Core.EnsureAccept(5595);
+            Core.HuntMonster("icewindpass", "Frost Invader", "Frost Invader Slain", 5);
+            Core.HuntMonster("icewindpass", "Frostspawn Troll", "Frostspawn Troll Slain", 5);
+            Core.EnsureComplete(5595);
+        }
 
         // Take a Break from Fighting
-        Story.KillQuest(5596, "icewindpass", new[] { "Polar Golem", "Glacial Elemental" });
+        if (!Story.QuestProgression(5596))
+        {
+            Core.EnsureAccept(5596);
+            Core.HuntMonster("icewindpass", "Polar Golem", "Living Snow", 3);
+            Core.HuntMonster("icewindpass", "Glacial Elemental", "Elemental Icicles", 3);
+            Core.EnsureComplete(5596);
+        }
     }
 
     public void Icepike()
@@ -1001,7 +1016,14 @@ public class CoreFrostvale
         Story.MapItemQuest(8429, "deerhunt", 9376, 6);
 
         // 8430  Final Blessing
-        Story.KillQuest(8430, "deerhunt", new[] { "Scared Wolf", "Frightened Owl", "Deer?" });
+        if (!Story.QuestProgression(8430))
+        {
+            Core.EnsureAccept(8430);
+            Core.HuntMonster("deerhunt", "Scared Wolf", "Wolf Pelt Offering", 5);
+            Core.HuntMonster("deerhunt", "Frightened Owl", "Owl Feather Offering", 5);
+            Core.HuntMonster("deerhunt", "Deer?", "Deer Hide Offering", 5);
+            Core.EnsureComplete(8430);
+        }
 
         // 8431 The Zweinichthirsch
         Story.KillQuest(8431, "deerhunt", "Zweinichthirsch");
@@ -1047,7 +1069,14 @@ public class CoreFrostvale
         }
 
         //Both Sides are Guilty (7825)
-        Story.KillQuest(7825, "judgement", new[] { "Minos", "Rhadamanthys", "Aeacus" });
+        if (!Story.QuestProgression(7825))
+        {
+            Core.EnsureAccept(7825);
+            Core.HuntMonster("judgement", "Minos", "Minos Defeated", 1);
+            Core.HuntMonster("judgement", "Rhadamanthys", "Rhadamanthys Beaten", 1);
+            Core.HuntMonster("judgement", "Aeacus", "Aeacus Slain", 1);
+            Core.EnsureComplete(7825);
+        }
 
         //Bait and Switch (7826)
         Story.KillQuest(7826, "doomvault", "Princess Angler");

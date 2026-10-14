@@ -38,11 +38,16 @@ public class Batista
         Story.KillQuest(2692, "carnaval", "Mapinguari");
 
         //Battle and the Beasts (2693)
-        Story.KillQuest(
-            2693,
-            "carnaval",
-            new[] { "Mula Sem Cabeça", "Mapinguari", "Cuco", "Boiuna", "Mulher de Branco" }
-        );
+        if (!Story.QuestProgression(2693))
+        {
+            Core.EnsureAccept(2693);
+            Core.HuntMonster("carnaval", "Mula Sem Cabeça", "Mula Sem Cabeça Defeated", 2);
+            Core.HuntMonster("carnaval", "Mapinguari", "Mapinguari Defeated", 2);
+            Core.HuntMonster("carnaval", "Cuco", "Cocu Defeated", 2);
+            Core.HuntMonster("carnaval", "Boiuna", "Boiúna Defeated", 2);
+            Core.HuntMonster("carnaval", "Mulher de Branco", "Mulher de Branco Defeated", 2);
+            Core.EnsureComplete(2693);
+        }
 
         //Festooned in Feathers (2694)
         Story.KillQuest(2694, "carnaval", "Boiuna");

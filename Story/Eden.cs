@@ -56,7 +56,13 @@ public class Eden
         }
 
         // Eden City KotaMart 8797
-        Story.KillQuest(8797, "eden", new[] { "SalaryMan", "SalaryMan" });
+        if (!Story.QuestProgression(8797))
+        {
+            Core.EnsureAccept(8797);
+            Core.HuntMonster("eden", "SalaryMan", "KotaMart Samples", 3);
+            Core.HuntMonster("eden", "SalaryMan", "Salarymen Politely Mugged", 6);
+            Core.EnsureComplete(8797);
+        }
 
         // Save the Citizens! 8798
         if (!Story.QuestProgression(8798))

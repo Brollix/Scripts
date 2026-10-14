@@ -77,11 +77,13 @@ public class FortressDelve
         Story.KillQuest(9167, "fortressdelve", "Legion Dreadmarch");
 
         //The Condemner 9168
-        Story.KillQuest(
-            9168,
-            "fortressdelve",
-            new[] { "Enlightened Shadow", "Delirious Elemental" }
-        );
+        if (!Story.QuestProgression(9168))
+        {
+            Core.EnsureAccept(9168);
+            Core.HuntMonster("fortressdelve", "Enlightened Shadow", "Light Vein", 6);
+            Core.HuntMonster("fortressdelve", "Delirious Elemental", "Elemental Shard", 6);
+            Core.EnsureComplete(9168);
+        }
 
         //Lost Light, Astero 9169
         Story.KillQuest(9169, "fortressdelve", "Astero");

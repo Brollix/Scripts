@@ -98,7 +98,12 @@ public class XansLair
         Story.KillQuest(1258, "volcano", "Flamethrower Dwakel");
 
         // Level 18 1259
-        Story.KillQuest(1259, "volcano", new[] { "Fire Imp", "Flame Elemental" });
+        if (!Story.QuestProgression(1259))
+        {
+            Core.EnsureAccept(1259);
+            Core.HuntMonster("volcano", "Fire Imp", "Singed Clue", 15);
+            Core.EnsureComplete(1259);
+        }
 
         // Level 19 1260
         Story.MapItemQuest(1260, "volcano", 533, 6);

@@ -318,7 +318,13 @@ public class CoreAstravia
         Story.MapItemQuest(8521, "eridanipast", 9681);
 
         //Hypophrygian
-        Story.KillQuest(8522, "eridanipast", new[] { "Bandit", "Dog" });
+        if (!Story.QuestProgression(8522))
+        {
+            Core.EnsureAccept(8522);
+            Core.HuntMonster("eridanipast", "Bandit", "Bandit Defeated", 7);
+            Core.HuntMonster("eridanipast", "Dog", "Dog Defeated", 7);
+            Core.EnsureComplete(8522);
+        }
 
         //Ionian
         Story.MapItemQuest(8523, "eridanipast", 9676, 8);
@@ -335,7 +341,13 @@ public class CoreAstravia
         Story.MapItemQuest(8526, "eridanipast", 9679);
 
         //Locrian
-        Story.KillQuest(8527, "eridanipast", new[] { "Bat", "Dog" });
+        if (!Story.QuestProgression(8527))
+        {
+            Core.EnsureAccept(8527);
+            Core.HuntMonster("eridanipast", "Bat", "Bat Wings", 8);
+            Core.HuntMonster("eridanipast", "Dog", "Dog Released", 8);
+            Core.EnsureComplete(8527);
+        }
 
         //Aeolian
         Story.KillQuest(8528, "eridanipast", "Bandit");
@@ -440,7 +452,13 @@ public class CoreAstravia
         Story.MapItemQuest(8636, "FirstObservatory", new[] { 10086, 10087 });
 
         //Auriga
-        Story.KillQuest(8637, "FirstObservatory", new[] { "Ancient Turret", "Ancient Creature" });
+        if (!Story.QuestProgression(8637))
+        {
+            Core.EnsureAccept(8637);
+            Core.HuntMonster("firstobservatory", "Ancient Turret", "Turret Parts", 5);
+            Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Limbs", 5);
+            Core.EnsureComplete(8637);
+        }
 
         //Pisces Alrescha
         Story.MapItemQuest(8638, "FirstObservatory", new[] { 10088, 10089 });
@@ -452,11 +470,14 @@ public class CoreAstravia
         Story.KillQuest(8640, "FirstObservatory", "Empress’ Finger");
 
         //Taurus Gugalanna
-        Story.KillQuest(
-            8641,
-            "FirstObservatory",
-            new[] { "Ancient Creature", "Ancient Turret", "Empress’ Finger" }
-        );
+        if (!Story.QuestProgression(8641))
+        {
+            Core.EnsureAccept(8641);
+            Core.HuntMonster("firstobservatory", "Ancient Turret", "Turret Pieces", 12);
+            Core.HuntMonster("firstobservatory", "Empress’ Finger", "Alprecha Observed", 1);
+            Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Samples", 6);
+            Core.EnsureComplete(8641);
+        }
     }
 
     public void GenesisGarden()
@@ -490,7 +511,13 @@ public class CoreAstravia
         Story.MapItemQuest(8683, "genesisgarden", 10202, 5);
 
         //The Lovers, Reversed 8684
-        Story.KillQuest(8684, "genesisgarden", new[] { "Ancient Creature", "Plant Beast" });
+        if (!Story.QuestProgression(8684))
+        {
+            Core.EnsureAccept(8684);
+            Core.HuntMonster("genesisgarden", "Ancient Creature", "Creature Sample", 8);
+            Core.HuntMonster("genesisgarden", "Plant Beast", "Beast Sample", 8);
+            Core.EnsureComplete(8684);
+        }
 
         //The Chariot 8685
         Story.MapItemQuest(8685, "genesisgarden", 10203);

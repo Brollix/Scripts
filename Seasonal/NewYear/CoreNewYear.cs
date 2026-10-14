@@ -116,7 +116,13 @@ public class CoreNewYear
         Story.MapItemQuest(2593, "darksun", 1597);
 
         //Escape to Freedom 2594
-        Story.KillQuest(2594, "darkoviaforest", new[] { "Blood Maggot", "Dire Wolf" });
+        if (!Story.QuestProgression(2594))
+        {
+            Core.EnsureAccept(2594);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Blood Maggot Slain", 4);
+            Core.HuntMonster("darkoviaforest", "Dire Wolf", "Dire Wolf Slain", 4);
+            Core.EnsureComplete(2594);
+        }
 
         //Shine a Light on Truth 2595
         Story.MapItemQuest(2595, "darksun", 1598);
@@ -300,21 +306,33 @@ public class CoreNewYear
 
         Core.EquipClass(ClassType.Farm);
         // Raw Gems (9533)
-        Story.KillQuest(
-            9533,
-            "earthstorm",
-            new[] { "Ruby Golem", "Sapphire Golem", "Diamond Golem", "Emerald Golem" }
-        );
+        if (!Story.QuestProgression(9533))
+        {
+            Core.EnsureAccept(9533);
+            Core.HuntMonster("earthstorm", "Ruby Golem", "Uncut Ruby", 4);
+            Core.HuntMonster("earthstorm", "Sapphire Golem", "Uncut Sapphire", 4);
+            Core.HuntMonster("earthstorm", "Diamond Golem", "Uncut Diamond", 4);
+            Core.HuntMonster("earthstorm", "Emerald Golem", "Uncut Emerald", 4);
+            Core.EnsureComplete(9533);
+        }
 
         // Rest in Riches (9534)
-        Story.KillQuest(
-            9534,
-            "battleunderc",
-            new[] { "Crystalized Jellyfish", "Green Crystalized Undead" }
-        );
+        if (!Story.QuestProgression(9534))
+        {
+            Core.EnsureAccept(9534);
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish's Alexandrite", 6);
+            Core.HuntMonster("battleunderc", "Green Crystalized Undead", "Undead's Peridot", 6);
+            Core.EnsureComplete(9534);
+        }
 
         // Overclocked and Timed (9535)
-        Story.KillQuest(9535, "templesiege", new[] { "Overdriven Paladin", "Light Elemental" });
+        if (!Story.QuestProgression(9535))
+        {
+            Core.EnsureAccept(9535);
+            Core.HuntMonster("templesiege", "Overdriven Paladin", "Paladin Runes", 6);
+            Core.HuntMonster("templesiege", "Light Elemental", "Light Gem", 6);
+            Core.EnsureComplete(9535);
+        }
 
         // Jewel Bug (9536)
         if (!Core.isCompletedBefore(9536))

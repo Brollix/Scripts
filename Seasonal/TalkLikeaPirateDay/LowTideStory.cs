@@ -66,7 +66,13 @@ public class LowTideStory
         Story.MapItemQuest(8841, "lowtide", 10522, 3);
 
         //Local Delicacies 8842
-        Story.KillQuest(8842, "lowtide", new[] { "Ghostly Eel", "Spectral Jellyfish" });
+        if (!Story.QuestProgression(8842))
+        {
+            Core.EnsureAccept(8842);
+            Core.HuntMonster("lowtide", "Ghostly Eel", "Eel Guts", 6);
+            Core.HuntMonster("lowtide", "Spectral Jellyfish", "Translucent Tentacle", 6);
+            Core.EnsureComplete(8842);
+        }
 
         //Myriad Andromeda 8843
         Story.MapItemQuest(8843, "lowtide", 10523);

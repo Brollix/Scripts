@@ -251,7 +251,7 @@ public class CoreStory
         Core.Join(MapName);
 
         // Map each remaining requirement to its corresponding monster.
-        Dictionary<string, string> itemToMonster = new();
+        Dictionary<string, string> itemToMonster = [];
         string lastMonster = MonsterNames.Last(m => !string.IsNullOrEmpty(m));
 
         for (int i = 0; i < validRequirements.Count; i++)
@@ -980,7 +980,7 @@ public class CoreStory
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {
         List<Quest>? questData = Core.InitializeWithRetries(() => Core.EnsureLoad(questIDs));
-        List<LegacyQuestObject> whereToGet = new();
+        List<LegacyQuestObject> whereToGet = [];
         if (questData == null || questData.Count == 0)
         {
             Core.Logger("No quests found, cannot run LegacyQuestManager", messageBox: true);
@@ -1171,7 +1171,7 @@ public class CoreStory
     /// </summary>
     public void PreLoad(object _this, [CallerMemberName] string caller = "")
     {
-        List<int> QuestIDs = new();
+        List<int> QuestIDs = [];
         string[] ScriptSlice = Core.CompiledScript();
 
         if (ScriptSlice.Length == 0)
@@ -1410,7 +1410,7 @@ public class CoreStory
         }
     }
 
-    private readonly List<ItemBase> CurrentRequirements = new();
+    private readonly List<ItemBase> CurrentRequirements = [];
 
     private void _MonsterHunt(
         string map,
@@ -1537,7 +1537,7 @@ public class CoreStory
             lastQuestID = questID;
             Quest? quest = Core.InitializeWithRetries(() => Core.EnsureLoad(questID));
 
-            List<string> reqItems = new();
+            List<string> reqItems = [];
             quest?.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest?.Requirements.ForEach(item =>
             {

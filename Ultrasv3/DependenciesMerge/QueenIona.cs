@@ -97,10 +97,16 @@ public class QueenIona
 
         int questId = !C.IsMember && HasQuestItem ? 9854 : 9853;
         if (item == "Lothian's Lightning")
+        {
+            int itemQuantity = Bot.Inventory.GetQuantity(item) + Bot.TempInv.GetQuantity(item);
+            if (Bot.House.TryGetItem(item, out InventoryItem? houseItem) && houseItem != null)
+                itemQuantity += houseItem.Quantity;
+
             C.Logger(
                 $"Queen Iona farming check: Core member={C.IsMember}, player member={Bot.Player!.IsMember}, " +
-                $"quest={questId}, {item} ({Bot.Inventory.GetQuantity(item)}/{quant})."
+                $"quest={questId}, {item} ({itemQuantity}/{quant})."
             );
+        }
 
         C.RegisterQuests(questId);
 

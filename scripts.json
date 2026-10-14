@@ -18752,8 +18752,8 @@
       "roblox"
     ],
     "path": "Other/FreeAcGifts[Yearly]/202xFreeAcs.cs",
-    "size": 1534,
-    "sha256": "58090a36a5181f74ef61a2b15efe9db78aefa3947a86766be764d2a6c1caae74",
+    "size": 1458,
+    "sha256": "4385d78c671a65e505abe313ae3374a37b87719ff2ffc1f3459fb9bdada1e3ed",
     "fileName": "202xFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/FreeAcGifts[Yearly]/202xFreeAcs.cs"
   },
@@ -29701,8 +29701,8 @@
       "v3"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFilesv4.cs",
-    "size": 19753,
-    "sha256": "5ac5394eee426661b06b2b6b88191096e51aaaf93a4d2146a14f5208bad53d27",
+    "size": 19745,
+    "sha256": "f313d148fea0f9d5f60362d23ccf78ddc7e4e4ca1a02ec4baebdee40b71678d4",
     "fileName": "GenerateQuestFilesv4.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFilesv4.cs"
   },

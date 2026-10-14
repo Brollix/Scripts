@@ -29739,6 +29739,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/ScriptMainCleaner.cs"
   },
   {
+    "name": "Weekly Release Generator v3",
+    "description": "Reads every quest chain from a location SWF and matches requirements to live monsterDrops packets. Uses explicit hunts for quests requiring multiple monsters.",
+    "tags": [
+      "developer",
+      "generator",
+      "story",
+      "quests",
+      "drops",
+      "packets",
+      "v3"
+    ],
+    "path": "Tools/ForDevelopers/WeeklyReleaseGeneratorV3.cs",
+    "size": 37966,
+    "sha256": "a4dea98bd7623dc67708731942215b8a291c731f1401e710c6427f62a9f9b2b3",
+    "fileName": "WeeklyReleaseGeneratorV3.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/WeeklyReleaseGeneratorV3.cs"
+  },
+  {
     "name": "Weekly Release Generator v2",
     "description": "Reads every quest chain from a location SWF and matches requirements to live monsterDrops packets.",
     "tags": [

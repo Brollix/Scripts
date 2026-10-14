@@ -250,24 +250,18 @@ public class CoreStory
         Core.EnsureAccept(QuestID);
         Core.Join(MapName);
 
-        // Map each requirement to a monster name (use last non-empty if not enough provided)
-        List<ItemBase> allRequirements = QuestData
-            .Requirements.Where(r => r != null && !string.IsNullOrEmpty(r.Name))
-            .ToList();
+        // Map each remaining requirement to its corresponding monster.
         Dictionary<string, string> itemToMonster = new();
         string lastMonster = MonsterNames.Last(m => !string.IsNullOrEmpty(m));
+
         for (int i = 0; i < validRequirements.Count; i++)
         {
-            int index = allRequirements.FindIndex(r => r.ID == validRequirements[i].ID);
-            string monster =
-                index >= 0 && index < MonsterNames.Length && !string.IsNullOrEmpty(MonsterNames[index])
-                    ? MonsterNames[index]
-                    : lastMonster;
+            string monster = i < MonsterNames.Length && !string.IsNullOrEmpty(MonsterNames[i])
+                ? MonsterNames[i]
+                : lastMonster;
 
             itemToMonster[validRequirements[i].Name] = monster;
-            Core.Logger(
-                $"[{QuestID}] Requirement {validRequirements[i].Name} mapped to monster {monster}"
-            );
+            Core.Logger($"[{QuestID}] Requirement {validRequirements[i].Name} mapped to monster {monster} (index={i})");
         }
 
         // Snapshot CurrentRequirements to avoid nulls

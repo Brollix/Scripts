@@ -67,8 +67,13 @@ public class DracoCon
         }
 
         // Zorbak's Legion: Tiny Terrors (5361)
-        Story.MapItemQuest(5361, "dracocon", 4723, 5);
-        Story.KillQuest(5361, "dracocon", "Villager");
+        if (!Story.QuestProgression(5361))
+        {
+            Core.EnsureAccept(5361);
+            Core.GetMapItem(4723, 5, "dracocon");
+            Core.HuntMonster("dracocon", "Villager", "Villager Convinced", 10);
+            Core.EnsureComplete(5361);
+        }
 
         // Eggcelent Hunt (5362)
         Story.MapItemQuest(5362, "dracocon", 4724, 13);
@@ -77,8 +82,13 @@ public class DracoCon
         Story.KillQuest(5363, "dracocon", "Zombie Warrior");
 
         // Bling, Baby, Bling (5364)
-        Story.MapItemQuest(5364, "dracocon", 4725, 5);
-        Story.KillQuest(5364, "dracocon", "Battle Gem");
+        if (!Story.QuestProgression(5364))
+        {
+            Core.EnsureAccept(5364);
+            Core.GetMapItem(4725, 5, "dracocon");
+            Core.HuntMonster("dracocon", "Battle Gem", "Battle Gems", 10);
+            Core.EnsureComplete(5364);
+        }
 
         // Class 101: Slaying for Dummies (5365)
         Story.KillQuest(5365, "dracocon", "Dragon Training Dummy");

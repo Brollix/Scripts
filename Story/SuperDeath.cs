@@ -38,12 +38,16 @@ public class SuperDeath
         Story.KillQuest(8015, "SuperDeath", "Shadow Cave Yeti");
 
         //Cold Open the Portal 8016
-        Story.MapItemQuest(8016, "SuperDeath", 8330);
-        Story.KillQuest(
-            8016,
-            "SuperDeath",
-            new[] { "Shadow Cave Yeti", "Shadow Lava Crab", "Shadow Collector", "Shadow Cave Yeti" }
-        );
+        if (!Story.QuestProgression(8016))
+        {
+            Core.EnsureAccept(8016);
+            Core.GetMapItem(8330, 1, "SuperDeath");
+            Core.HuntMonster("superdeath", "Shadow Cave Yeti", "HeroSmash Essences", 4);
+            Core.HuntMonster("superdeath", "Shadow Lava Crab", "Volcano Essences", 2);
+            Core.HuntMonster("superdeath", "Shadow Collector", "Mall Essence", 1);
+            Core.HuntMonster("superdeath", "Shadow Cave Yeti", "Ingiru Essence", 1);
+            Core.EnsureComplete(8016);
+        }
 
         //VolcaNO Thank You 8017
         Story.KillQuest(8017, "SuperDeath", "Igneous Lava Crab");

@@ -89,16 +89,32 @@ public class GlaceraStory
         Story.MapItemQuest(3918, "frozentower", 3013);
 
         // Polar Penetration and Progress
-        Story.MapItemQuest(3919, "frozentower", 3008, 6);
-        Story.KillQuest(3919, "frozentower", "Polar Elemental");
+        if (!Story.QuestProgression(3919))
+        {
+            Core.EnsureAccept(3919);
+            Core.GetMapItem(3008, 6, "frozentower");
+            Core.HuntMonster("frozentower", "Polar Elemental", "Ice Sample", 6);
+            Core.EnsureComplete(3919);
+        }
 
         // Save the Astronomer Apprentice
-        Story.MapItemQuest(3920, "frozentower", 3020);
-        Story.KillQuest(3920, "frozentower", new[] { "Polar Elemental", "Ice Wolf" });
+        if (!Story.QuestProgression(3920))
+        {
+            Core.EnsureAccept(3920);
+            Core.GetMapItem(3020, 1, "frozentower");
+            Core.HuntMonster("frozentower", "Polar Elemental", "Polar Elemental Guard Defeated", 4);
+            Core.HuntMonster("frozentower", "Ice Wolf", "Ice Wolf Guard Defeated", 5);
+            Core.EnsureComplete(3920);
+        }
 
         // Glacial Elixir
-        Story.MapItemQuest(3921, "frozentower", 3017, 6);
-        Story.KillQuest(3921, "frozentower", "FrostDeep Dweller");
+        if (!Story.QuestProgression(3921))
+        {
+            Core.EnsureAccept(3921);
+            Core.GetMapItem(3017, 6, "frozentower");
+            Core.HuntMonster("frozentower", "FrostDeep Dweller", "FrostDeep Venom", 1);
+            Core.EnsureComplete(3921);
+        }
 
         // Retrieve the Energy Starstone
         Story.KillQuest(3922, "frozentower", "Polar Elemental");
@@ -148,8 +164,13 @@ public class GlaceraStory
         Story.KillQuest(3934, "frozentower", "Rotten Ice");
 
         // Create the Gate
-        Story.MapItemQuest(3935, "frozentower", 3018, 13);
-        Story.KillQuest(3935, "frozentower", "Ice Wolf");
+        if (!Story.QuestProgression(3935))
+        {
+            Core.EnsureAccept(3935);
+            Core.GetMapItem(3018, 13, "frozentower");
+            Core.HuntMonster("frozentower", "Ice Wolf", "Blood of the Ice Wolf", 1);
+            Core.EnsureComplete(3935);
+        }
 
         // Drive Back the Invaders
         if (!Story.QuestProgression(3936))
@@ -194,8 +215,13 @@ public class GlaceraStory
         Story.KillQuest(3944, "frozenruins", "Frost Reaper");
 
         // Form the Lock
-        Story.MapItemQuest(3945, "frozenruins", 3050, 10);
-        Story.KillQuest(3945, "frozenruins", "Frozen Moglinster");
+        if (!Story.QuestProgression(3945))
+        {
+            Core.EnsureAccept(3945);
+            Core.GetMapItem(3050, 10, "frozenruins");
+            Core.HuntMonster("frozenruins", "Frozen Moglinster", "Frostbreath Weed", 5);
+            Core.EnsureComplete(3945);
+        }
 
         // Glacera
         if (!Story.QuestProgression(3946))
@@ -302,11 +328,13 @@ public class GlaceraStory
         Story.KillQuest(3960, "northstar", "Frost Reaper");
 
         // Saving Syrrus' Spirit
-        Story.MapItemQuest(
-            3961,
-            new[] { (3060, 5, "northstar"), (3061, 7, "northstar"), (3073, 5, "northstar") }
-        );
-        Story.KillQuest(3961, "northstar", "Frost Reaper");
+        if (!Story.QuestProgression(3961))
+        {
+            Core.EnsureAccept(3961);
+            Core.GetMapItems(new[] { (3060, 5), (3061, 7), (3073, 5) }, "northstar");
+            Core.HuntMonster("northstar", "Frost Reaper", "Lodestone Piece", 10);
+            Core.EnsureComplete(3961);
+        }
 
         // It's a Trap!
         Story.MapItemQuest(3972, "northstar", 3063, 10);
@@ -367,8 +395,13 @@ public class GlaceraStory
         Story.KillQuest(5588, "IceWindPass", "Glacial Elemental");
 
         // Splattered Mana
-        Story.MapItemQuest(5589, "IceWindPass", 5075, 5);
-        Story.KillQuest(5589, "IceWindPass", "Glacial Elemental");
+        if (!Story.QuestProgression(5589))
+        {
+            Core.EnsureAccept(5589);
+            Core.GetMapItem(5075, 5, "IceWindPass");
+            Core.HuntMonster("icewindpass", "Glacial Elemental", "Iced Mana", 9);
+            Core.EnsureComplete(5589);
+        }
 
         // Dispell the Spell
         Story.KillQuest(5590, "IceWindPass", "Polar Golem");

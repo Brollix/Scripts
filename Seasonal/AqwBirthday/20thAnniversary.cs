@@ -83,20 +83,40 @@ public class AnniversaryofDoom
         Story.KillQuest(8878, "zombae", "Bachelorette");
 
         // 8879 You're Dead to Me,
-        Story.MapItemQuest(8879, "zombae", 10700);
-        Story.KillQuest(8879, "zombae", "Zombette");
+        if (!Story.QuestProgression(8879))
+        {
+            Core.EnsureAccept(8879);
+            Core.GetMapItem(10700, 1, "zombae");
+            Core.HuntMonster("zombae", "Zombette", "Girl With Brains", 1);
+            Core.EnsureComplete(8879);
+        }
 
         // 8880 Swipe 4 Rich lich
-        Story.MapItemQuest(8880, "zombae", 10701);
-        Story.KillQuest(8880, "zombae", "Zombro");
+        if (!Story.QuestProgression(8880))
+        {
+            Core.EnsureAccept(8880);
+            Core.GetMapItem(10701, 1, "zombae");
+            Core.HuntMonster("zombae", "Zombro", "Richest Zombie", 1);
+            Core.EnsureComplete(8880);
+        }
 
         // 8881 A Real Grave Digger
-        Story.MapItemQuest(8881, "zombae", 10702);
-        Story.KillQuest(8881, "zombae", "Zombroski");
+        if (!Story.QuestProgression(8881))
+        {
+            Core.EnsureAccept(8881);
+            Core.GetMapItem(10702, 1, "zombae");
+            Core.HuntMonster("zombae", "Zombroski", "GRAAAAAINS", 1);
+            Core.EnsureComplete(8881);
+        }
 
         // 8882 The Love of your Unlife
-        Story.MapItemQuest(8882, "zombae", 10703);
-        Story.KillQuest(8882, "zombae", "Zombetter");
+        if (!Story.QuestProgression(8882))
+        {
+            Core.EnsureAccept(8882);
+            Core.GetMapItem(10703, 1, "zombae");
+            Core.HuntMonster("zombae", "Zombetter", "Fiend With Benefits", 1);
+            Core.EnsureComplete(8882);
+        }
 
         Core.EquipClass(ClassType.Solo);
         // 8883 The Ultimate Ghoul Fiend

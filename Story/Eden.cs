@@ -79,8 +79,13 @@ public class Eden
         Story.KillQuest(8799, "eden", "CRC Power Armor");
 
         // Clear the Way! 8800
-        Story.MapItemQuest(8800, "eden", 10449, 3);
-        Story.KillQuest(8800, "eden", "Yokaified Experiment 1");
+        if (!Story.QuestProgression(8800))
+        {
+            Core.EnsureAccept(8800);
+            Core.GetMapItem(10449, 3, "eden");
+            Core.HuntMonster("eden", "Yokaified Experiment 1", "Anomaly Slain", 6);
+            Core.EnsureComplete(8800);
+        }
 
         // Protect the Reactor! 8801
         Story.KillQuest(8801, "eden", "Major Anomaly");

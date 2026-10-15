@@ -35,8 +35,13 @@ public class Extinction
         Story.PreLoad(this);
 
         //Chopped HAMM 3855
-        Story.MapItemQuest(3855, "extinction", 2956, 5);
-        Story.KillQuest(3855, "extinction", "Control Panel");
+        if (!Story.QuestProgression(3855))
+        {
+            Core.EnsureAccept(3855);
+            Core.GetMapItem(2956, 5, "extinction");
+            Core.HuntMonster("extinction", "Control Panel", "Control Panel Destroyed", 5);
+            Core.EnsureComplete(3855);
+        }
 
         //Bad Dog 3856
         Story.KillQuest(3856, "extinction", "Cyworg");

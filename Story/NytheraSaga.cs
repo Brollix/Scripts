@@ -47,8 +47,13 @@ public class NytheraSaga
         Story.PreLoad(this);
 
         //Element of Surprise 437
-        Story.MapItemQuest(437, "NorthLands", 77);
-        Story.KillQuest(437, "NorthLands", "Snow Golem");
+        if (!Story.QuestProgression(437))
+        {
+            Core.EnsureAccept(437);
+            Core.GetMapItem(77, 1, "NorthLands");
+            Core.HuntMonster("northlands", "Snow Golem", "Code Notes", 1);
+            Core.EnsureComplete(437);
+        }
 
         //Interrogation 438
         Story.KillQuest(438, "NorthLands", "Snow Golem");

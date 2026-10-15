@@ -43,8 +43,13 @@ public class DanceGuru
         }
 
         //Gift Giving (7944)
-        Story.MapItemQuest(7944, "danceguru", 8177, 5);
-        Story.KillQuest(7944, "danceguru", "Crow");
+        if (!Story.QuestProgression(7944))
+        {
+            Core.EnsureAccept(7944);
+            Core.GetMapItem(8177, 5, "danceguru");
+            Core.HuntMonster("danceguru", "Crow", "Beads", 7);
+            Core.EnsureComplete(7944);
+        }
 
         //Clear the Forest (7945)
         Story.KillQuest(7945, "danceguru", "Crow");

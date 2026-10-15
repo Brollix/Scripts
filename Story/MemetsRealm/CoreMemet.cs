@@ -49,12 +49,22 @@ public class MemetsRealm
         Story.KillQuest(7001, "beachparty", "Boiling Elemental");
 
         //7002 | Poor Trees.Pour Trees?
-        Story.MapItemQuest(7002, "beachparty", 6563, 7);
-        Story.KillQuest(7002, "beachparty", "Water Elemental");
+        if (!Story.QuestProgression(7002))
+        {
+            Core.EnsureAccept(7002);
+            Core.GetMapItem(6563, 7, "beachparty");
+            Core.HuntMonster("beachparty", "Water Elemental", "Refreshing Water", 7);
+            Core.EnsureComplete(7002);
+        }
 
         //7003 | Put out the Flames
-        Story.MapItemQuest(7003, "beachparty", 6564, 8);
-        Story.KillQuest(7003, "beachparty", "Sun Flare");
+        if (!Story.QuestProgression(7003))
+        {
+            Core.EnsureAccept(7003);
+            Core.GetMapItem(6564, 8, "beachparty");
+            Core.HuntMonster("beachparty", "Sun Flare", "Sun Flare Slain", 8);
+            Core.EnsureComplete(7003);
+        }
 
         //7004 | Sunscream
         Story.KillQuest(7004, "beachparty", "Solar Elemental");
@@ -69,8 +79,13 @@ public class MemetsRealm
         Story.MapItemQuest(7007, "beachparty", 6565, 8);
 
         //7008 | Ice, Ice Maybe?
-        Story.MapItemQuest(7008, "beachparty", 6566, 8);
-        Story.KillQuest(7008, "beachparty", "Frozen Water");
+        if (!Story.QuestProgression(7008))
+        {
+            Core.EnsureAccept(7008);
+            Core.GetMapItem(6566, 8, "beachparty");
+            Core.HuntMonster("beachparty", "Frozen Water", "Elemental Ice Chunks", 8);
+            Core.EnsureComplete(7008);
+        }
 
         //7009 | Chill Out!
         Story.KillQuest(7009, "beachparty", "Steaming Dragon");
@@ -102,8 +117,14 @@ public class MemetsRealm
         Story.MapItemQuest(5560, "freakitiki", 5038);
 
         //5561 | Drink #2: the El Captain Rhubarb
-        Story.MapItemQuest(5561, "freakitiki", 5035, 5);
-        Story.KillQuest(5561, "freakitiki", new[] { "Spineapple", "Palm Treeant" });
+        if (!Story.QuestProgression(5561))
+        {
+            Core.EnsureAccept(5561);
+            Core.GetMapItem(5035, 5, "freakitiki");
+            Core.HuntMonster("freakitiki", "Spineapple", "Crushed Spineapple", 6);
+            Core.HuntMonster("freakitiki", "Palm Treeant", "Coconut Milk", 3);
+            Core.EnsureComplete(5561);
+        }
 
         //5562 | Needs a Little Kick
         if (!Story.QuestProgression(5562))
@@ -125,8 +146,14 @@ public class MemetsRealm
         Story.MapItemQuest(5563, "freakitiki", 5039);
 
         //5564 | Drink #3: the Blazing Beard
-        Story.MapItemQuest(5564, "freakitiki", 5036, 5);
-        Story.KillQuest(5564, "freakitiki", new[] { "Tiki Sneak", "Palm Treeant" });
+        if (!Story.QuestProgression(5564))
+        {
+            Core.EnsureAccept(5564);
+            Core.GetMapItem(5036, 5, "freakitiki");
+            Core.HuntMonster("freakitiki", "Tiki Sneak", "Tiki Sneak Venom", 3);
+            Core.HuntMonster("freakitiki", "Palm Treeant", "Bananas", 6);
+            Core.EnsureComplete(5564);
+        }
 
         //5565 | Let’s Give It Some HEAT
         Story.KillQuest(5565, "fotia", "Fotia Spirit");
@@ -192,17 +219,32 @@ public class MemetsRealm
         Story.KillQuest(6093, "moonlab", "Infected Rodent");
 
         //Gather the Reagents (6094)
-        Story.MapItemQuest(6094, "moonlab", 5527, 5);
-        Story.KillQuest(6094, "moonlab", "Chlorine Trifluoride");
+        if (!Story.QuestProgression(6094))
+        {
+            Core.EnsureAccept(6094);
+            Core.GetMapItem(5527, 5, "moonlab");
+            Core.HuntMonster("moonlab", "Chlorine Trifluoride", "Chlorine Trifluoride", 1);
+            Core.EnsureComplete(6094);
+        }
 
         //Flame On! (6095)
-        Story.MapItemQuest(6095, "moonlab", 5525, 8);
-        Story.MapItemQuest(6095, "moonlab", 5526);
-        Story.KillQuest(6095, "moonlab", "Slime Mold");
+        if (!Story.QuestProgression(6095))
+        {
+            Core.EnsureAccept(6095);
+            Core.GetMapItem(5525, 8, "moonlab");
+            Core.GetMapItem(5526, 1, "moonlab");
+            Core.HuntMonster("moonlab", "Slime Mold", "Burn the Wandering Slime Molds", 8);
+            Core.EnsureComplete(6095);
+        }
 
         //Open the Cages! (6096)
-        Story.MapItemQuest(6096, "moonlab", 5528, 8);
-        Story.KillQuest(6096, "moonlab", "Engorged Slime Mold");
+        if (!Story.QuestProgression(6096))
+        {
+            Core.EnsureAccept(6096);
+            Core.GetMapItem(5528, 8, "moonlab");
+            Core.HuntMonster("moonlab", "Engorged Slime Mold", "Cage Key", 8);
+            Core.EnsureComplete(6096);
+        }
 
         //Get Rid of the Blockage! (6097)
         Story.KillQuest(6097, "moonlab", "Infected Cat");
@@ -211,8 +253,13 @@ public class MemetsRealm
         Story.MapItemQuest(6098, "moonlab", new[] { 5529, 5530 });
 
         //Find the Source (6099)
-        Story.MapItemQuest(6099, "moonlab", 5531, 3);
-        Story.KillQuest(6099, "moonlab", "Mutated Slime Mold");
+        if (!Story.QuestProgression(6099))
+        {
+            Core.EnsureAccept(6099);
+            Core.GetMapItem(5531, 3, "moonlab");
+            Core.HuntMonster("moonlab", "Mutated Slime Mold", "Mutated Slime Mold Destroyed", 6);
+            Core.EnsureComplete(6099);
+        }
 
         //Find the Key (6100)
         if (!Story.QuestProgression(6100))
@@ -277,8 +324,13 @@ public class MemetsRealm
         Story.KillQuest(6662, "dreammaster", "Prison Wall");
 
         //Freedom! (6663)
-        Story.MapItemQuest(6663, "dreammaster", 6176);
-        Story.KillQuest(6663, "dreammaster", "Guard Llama");
+        if (!Story.QuestProgression(6663))
+        {
+            Core.EnsureAccept(6663);
+            Core.GetMapItem(6176, 1, "dreammaster");
+            Core.HuntMonster("dreammaster", "Guard Llama", "Guards Defeated", 3);
+            Core.EnsureComplete(6663);
+        }
 
         //Make the Glitter Fade (6664)
         Story.KillQuest(6664, "dreammaster", "Sparkle Guard");
@@ -437,8 +489,13 @@ public class MemetsRealm
         Story.KillQuest(7530, "byrodax", "Security Droid");
 
         //Test the Goop (7531)
-        Story.MapItemQuest(7531, "byrodax", 7398);
-        Story.KillQuest(7531, "byrodax", "Space Goop");
+        if (!Story.QuestProgression(7531))
+        {
+            Core.EnsureAccept(7531);
+            Core.GetMapItem(7398, 1, "byrodax");
+            Core.HuntMonster("byrodax", "Space Goop", "Space Goop", 10);
+            Core.EnsureComplete(7531);
+        }
 
         //Goop-Be-Gone (7532)
         Story.MapItemQuest(7532, "byrodax", 7399, 10);

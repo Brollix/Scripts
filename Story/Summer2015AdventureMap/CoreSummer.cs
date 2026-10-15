@@ -251,12 +251,22 @@ public class CoreSummer
         Story.KillQuest(4313, "Drearia", "Dark Makai");
 
         //A Key Discovery - 4314
-        Story.MapItemQuest(4314, "Drearia", 3466);
-        Story.KillQuest(4314, "Drearia", "Dark Makai");
+        if (!Story.QuestProgression(4314))
+        {
+            Core.EnsureAccept(4314);
+            Core.GetMapItem(3466, 1, "Drearia");
+            Core.HuntMonster("drearia", "Dark Makai", "Front Door Key", 1);
+            Core.EnsureComplete(4314);
+        }
 
         //Creepy House... Yay! - 4315
-        Story.MapItemQuest(4315, "Drearia", 3467);
-        Story.KillQuest(4315, "Drearia", "Green Rat");
+        if (!Story.QuestProgression(4315))
+        {
+            Core.EnsureAccept(4315);
+            Core.GetMapItem(3467, 1, "Drearia");
+            Core.HuntMonster("drearia", "Green Rat", "Defeated Varmint", 3);
+            Core.EnsureComplete(4315);
+        }
 
         //Sparkling Books - 4316
         Story.MapItemQuest(4316, "Drearia", 3468);
@@ -265,8 +275,13 @@ public class CoreSummer
         Story.MapItemQuest(4317, "SwordHavenPink", 3469);
 
         //Pink Stinks! - 4318
-        Story.MapItemQuest(4318, "SwordHavenPink", 3486, 5);
-        Story.KillQuest(4318, "SwordHavenPink", "Pink Slime");
+        if (!Story.QuestProgression(4318))
+        {
+            Core.EnsureAccept(4318);
+            Core.GetMapItem(3486, 5, "SwordHavenPink");
+            Core.HuntMonster("swordhavenpink", "Pink Slime", "Squished Pink Slime", 8);
+            Core.EnsureComplete(4318);
+        }
 
         //Rats, RATS! - 4319
         Story.KillQuest(4319, "SewerPink", "Pink Rat");
@@ -275,12 +290,22 @@ public class CoreSummer
         Story.KillQuest(4320, "SewerPink", "Cutie Grumbley");
 
         //UnBEARable Sight - 4321
-        Story.MapItemQuest(4321, "PineWoodPink", 3470);
-        Story.KillQuest(4321, "PineWoodPink", "Pink Grizzly");
+        if (!Story.QuestProgression(4321))
+        {
+            Core.EnsureAccept(4321);
+            Core.GetMapItem(3470, 1, "PineWoodPink");
+            Core.HuntMonster("pinewoodpink", "Pink Grizzly", "Pink Teddy Bear", 5);
+            Core.EnsureComplete(4321);
+        }
 
         //Too Much Pink in Pinewood! - 4322
-        Story.MapItemQuest(4322, "PineWoodPink", 3471, 5);
-        Story.KillQuest(4322, "PineWoodPink", "Pink Shell Turtle");
+        if (!Story.QuestProgression(4322))
+        {
+            Core.EnsureAccept(4322);
+            Core.GetMapItem(3471, 5, "PineWoodPink");
+            Core.HuntMonster("pinewoodpink", "Pink Shell Turtle", "Bows", 5);
+            Core.EnsureComplete(4322);
+        }
 
         //Kill Sparkletooth - 4323
         Story.KillQuest(4323, "PineWoodPink", "Sparkletooth");

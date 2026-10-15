@@ -52,8 +52,13 @@ public class CoreAstravia
         Core.Sleep(2000);
 
         //Lost Breadcrumbs
-        Story.MapItemQuest(7769, "eridani", 7783);
-        Story.KillQuest(7769, "eridani", "Maggot-Like Creature");
+        if (!Story.QuestProgression(7769))
+        {
+            Core.EnsureAccept(7769);
+            Core.GetMapItem(7783, 1, "eridani");
+            Core.HuntMonster("eridani", "Maggot-Like Creature", "Creature Slain", 2);
+            Core.EnsureComplete(7769);
+        }
 
         //Dirty Laundry
         if (!Story.QuestProgression(7770))
@@ -93,8 +98,13 @@ public class CoreAstravia
         }
 
         //No Good Dead
-        Story.MapItemQuest(7775, "eridani", 7785);
-        Story.KillQuest(7775, "eridani", "Wolf-Like Creature");
+        if (!Story.QuestProgression(7775))
+        {
+            Core.EnsureAccept(7775);
+            Core.GetMapItem(7785, 1, "eridani");
+            Core.HuntMonster("eridani", "Wolf-Like Creature", "Wolf-Like Creature Slain", 2);
+            Core.EnsureComplete(7775);
+        }
 
         //The Black Goat in The Dark
         if (!Story.QuestProgression(7776))
@@ -120,8 +130,13 @@ public class CoreAstravia
         }
 
         //The Gentlest Truth
-        Story.MapItemQuest(7778, "eridani", 7786);
-        Story.KillQuest(7778, "eridani", "Door");
+        if (!Story.QuestProgression(7778))
+        {
+            Core.EnsureAccept(7778);
+            Core.GetMapItem(7786, 1, "eridani");
+            Core.HuntMonster("eridani", "Door", "Door", 1);
+            Core.EnsureComplete(7778);
+        }
 
         //Time Moves the Moon
         Core.EquipClass(ClassType.Solo);
@@ -149,8 +164,13 @@ public class CoreAstravia
         Story.KillQuest(7994, "astravia", "Drago's Spy");
 
         //A Castled King
-        Story.MapItemQuest(7995, "astravia", new[] { 8264, 8265, 8266 });
-        Story.KillQuest(7995, "astravia", "Astravian Mercenary");
+        if (!Story.QuestProgression(7995))
+        {
+            Core.EnsureAccept(7995);
+            Core.GetMapItems(new[] { (8264, 1), (8265, 1), (8266, 1) }, "astravia");
+            Core.HuntMonster("astravia", "Astravian Mercenary", "Greedy Mercenaries", 6);
+            Core.EnsureComplete(7995);
+        }
 
         //Principle of Weakness
         if (!Story.QuestProgression(7996))
@@ -206,8 +226,13 @@ public class CoreAstravia
         }
 
         //Euterpe, the Spiteful
-        Story.MapItemQuest(8249, "astraviacastle", 8892, 6);
-        Story.KillQuest(8249, "astraviacastle", "Creature 20");
+        if (!Story.QuestProgression(8249))
+        {
+            Core.EnsureAccept(8249);
+            Core.GetMapItem(8892, 6, "astraviacastle");
+            Core.HuntMonster("astraviacastle", "Creature 20", "Transformed Guard Exterminated", 4);
+            Core.EnsureComplete(8249);
+        }
 
         //Urania, the Origin
         if (!Core.isCompletedBefore(8250))
@@ -232,8 +257,13 @@ public class CoreAstravia
         Story.KillQuest(8253, "astraviacastle", "Astravian Royal Guard");
 
         //Erato, the Inconsolable
-        Story.MapItemQuest(8254, "astraviacastle", 8895, 3);
-        Story.KillQuest(8254, "astraviacastle", "Storage Spider");
+        if (!Story.QuestProgression(8254))
+        {
+            Core.EnsureAccept(8254);
+            Core.GetMapItem(8895, 3, "astraviacastle");
+            Core.HuntMonster("astraviacastle", "Storage Spider", "Spiders Exterminated", 8);
+            Core.EnsureComplete(8254);
+        }
 
         //Thalia, the Truth
         Story.MapItemQuest(8255, "astraviacastle", 8896);
@@ -273,12 +303,22 @@ public class CoreAstravia
         }
 
         //Kalasutra
-        Story.MapItemQuest(8390, "astraviajudge", 9276);
-        Story.KillQuest(8390, "astraviajudge", "Trumpeter");
+        if (!Story.QuestProgression(8390))
+        {
+            Core.EnsureAccept(8390);
+            Core.GetMapItem(9276, 1, "astraviajudge");
+            Core.HuntMonster("astraviajudge", "Trumpeter", "Horns Crushed", 9);
+            Core.EnsureComplete(8390);
+        }
 
         //Padma
-        Story.MapItemQuest(8391, "astraviajudge", 9277, 8);
-        Story.KillQuest(8391, "astraviajudge", "Hand");
+        if (!Story.QuestProgression(8391))
+        {
+            Core.EnsureAccept(8391);
+            Core.GetMapItem(9277, 8, "astraviajudge");
+            Core.HuntMonster("astraviajudge", "Hand", "Hands Impaled", 8);
+            Core.EnsureComplete(8391);
+        }
 
         //Maharaurava
         Story.KillQuest(8392, "astraviajudge", "Trumpeter");
@@ -292,8 +332,13 @@ public class CoreAstravia
         }
 
         //Avici
-        Story.MapItemQuest(8394, "astraviajudge", 9278);
-        Story.KillQuest(8394, "astraviajudge", "Shades");
+        if (!Story.QuestProgression(8394))
+        {
+            Core.EnsureAccept(8394);
+            Core.GetMapItem(9278, 1, "astraviajudge");
+            Core.HuntMonster("astraviajudge", "Shades", "Shades Dispelled", 1);
+            Core.EnsureComplete(8394);
+        }
 
         //Mahapadma
         Core.EquipClass(ClassType.Solo);
@@ -333,8 +378,13 @@ public class CoreAstravia
         Story.KillQuest(8524, "eridanipast", "Bandit");
 
         //Mixolydian
-        Story.MapItemQuest(8525, "eridanipast", 9677);
-        Story.KillQuest(8525, "eridanipast", "Bat");
+        if (!Story.QuestProgression(8525))
+        {
+            Core.EnsureAccept(8525);
+            Core.GetMapItem(9677, 1, "eridanipast");
+            Core.HuntMonster("eridanipast", "Bat", "Bat Swatted", 8);
+            Core.EnsureComplete(8525);
+        }
 
         //Hypomixolydian
         Story.MapItemQuest(8526, "eridanipast", 9678);
@@ -397,8 +447,13 @@ public class CoreAstravia
         Story.KillQuest(8595, "astraviapast", "Panicked Citizen");
 
         //Tzigane
-        Story.MapItemQuest(8596, "astraviapast", 10020);
-        Story.KillQuest(8596, "astraviapast", "Astravian Soldier");
+        if (!Story.QuestProgression(8596))
+        {
+            Core.EnsureAccept(8596);
+            Core.GetMapItem(10020, 1, "astraviapast");
+            Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Disciplined", 8);
+            Core.EnsureComplete(8596);
+        }
 
         //Ride of the Valkyrie
         Core.EquipClass(ClassType.Solo);
@@ -439,8 +494,13 @@ public class CoreAstravia
         Story.KillQuest(8632, "FirstObservatory", "Astra Leo");
 
         //Lugal-irra Meslamta-ea
-        Story.MapItemQuest(8633, "FirstObservatory", 10084);
-        Story.KillQuest(8633, "FirstObservatory", "Ancient Turret");
+        if (!Story.QuestProgression(8633))
+        {
+            Core.EnsureAccept(8633);
+            Core.GetMapItem(10084, 1, "FirstObservatory");
+            Core.HuntMonster("firstobservatory", "Ancient Turret", "Turrets Destroyed", 8);
+            Core.EnsureComplete(8633);
+        }
 
         //Virgo Shala
         Story.MapItemQuest(8634, "FirstObservatory", 10085);
@@ -520,8 +580,13 @@ public class CoreAstravia
         }
 
         //The Chariot 8685
-        Story.MapItemQuest(8685, "genesisgarden", 10203);
-        Story.KillQuest(8685, "genesisgarden", "Ancient Turret");
+        if (!Story.QuestProgression(8685))
+        {
+            Core.EnsureAccept(8685);
+            Core.GetMapItem(10203, 1, "genesisgarden");
+            Core.HuntMonster("genesisgarden", "Ancient Turret", "Machine Parts", 8);
+            Core.EnsureComplete(8685);
+        }
 
         //Strength 8686
         Story.KillQuest(8686, "genesisgarden", "Undead Humanoid");

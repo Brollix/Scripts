@@ -186,12 +186,22 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4188, "LegionCrypt", "Legion Doomknight");
 
         //Eyes on the Prize 4189
-        Story.MapItemQuest(4189, "LegionCrypt", 3295, 5);
-        Story.KillQuest(4189, "LegionCrypt", "Gravedigger");
+        if (!Story.QuestProgression(4189))
+        {
+            Core.EnsureAccept(4189);
+            Core.GetMapItem(3295, 5, "LegionCrypt");
+            Core.HuntMonster("legioncrypt", "Gravedigger", "Gravedigger Gun", 5);
+            Core.EnsureComplete(4189);
+        }
 
         //Filler Quest 4190
-        Story.MapItemQuest(4190, "LegionCrypt", 3296, 5);
-        Story.KillQuest(4190, "LegionCrypt", "Legion Doomknight");
+        if (!Story.QuestProgression(4190))
+        {
+            Core.EnsureAccept(4190);
+            Core.GetMapItem(3296, 5, "LegionCrypt");
+            Core.HuntMonster("legioncrypt", "Legion DoomKnight", "Dead Doomknight", 6);
+            Core.EnsureComplete(4190);
+        }
 
         //Insider Information 4191
         Story.MapItemQuest(4191, "LegionCrypt", 3297);
@@ -346,12 +356,22 @@ public class CoreDageTheEvilIsland
         }
 
         //Find Ada 5653
-        Story.MapItemQuest(5653, "Laken", 5124);
-        Story.KillQuest(5653, "Laken", "Dustbunny");
+        if (!Story.QuestProgression(5653))
+        {
+            Core.EnsureAccept(5653);
+            Core.GetMapItem(5124, 1, "Laken");
+            Core.HuntMonster("laken", "Dustbunny", "Dustbunny Slain", 5);
+            Core.EnsureComplete(5653);
+        }
 
         //Keep Looking 5654
-        Story.MapItemQuest(5654, "Laken", 5125);
-        Story.KillQuest(5654, "Laken", "Closet Moth");
+        if (!Story.QuestProgression(5654))
+        {
+            Core.EnsureAccept(5654);
+            Core.GetMapItem(5125, 1, "Laken");
+            Core.HuntMonster("laken", "Closet Moth", "Closet Moth Slain", 5);
+            Core.EnsureComplete(5654);
+        }
 
         //Gotcha! 5655
         if (!Story.QuestProgression(5655))

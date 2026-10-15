@@ -1244,8 +1244,13 @@ public class Core13LoC
         Story.KillQuest(1282, "ravinetemple", "Temple Guardian");
 
         //Defend the UnderMountain
-        Story.MapItemQuest(1283, "ravinetemple", 557, 10);
-        Story.KillQuest(1283, "ravinetemple", "Temple Guardian");
+        if (!Story.QuestProgression(1283))
+        {
+            Core.EnsureAccept(1283);
+            Core.GetMapItem(557, 10, "ravinetemple");
+            Core.HuntMonster("ravinetemple", "Temple Guardian", "Sharpened Bone Stake", 5);
+            Core.EnsureComplete(1283);
+        }
 
         //Alliance Defiance
         Story.KillQuest(1284, "ravinetemple", "Temple Guardian");
@@ -1285,8 +1290,13 @@ public class Core13LoC
         Story.KillQuest(1424, "ancienttemple", "Chaotic Vulture");
 
         //Chaorruption Cure?
-        Story.MapItemQuest(1425, "ancienttemple", 706, 7);
-        Story.KillQuest(1425, "ancienttemple", "Chaotic Vulture");
+        if (!Story.QuestProgression(1425))
+        {
+            Core.EnsureAccept(1425);
+            Core.GetMapItem(706, 7, "ancienttemple");
+            Core.HuntMonster("ancienttemple", "Chaotic Vulture", "Stolen Urn", 7);
+            Core.EnsureComplete(1425);
+        }
 
         //Guardian Salvation
         Story.KillQuest(1426, "ancienttemple", "Chaos Troll Spirit");
@@ -1301,8 +1311,13 @@ public class Core13LoC
         Story.MapItemQuest(1456, "orecavern", 717);
 
         //Light in Underhome
-        Story.MapItemQuest(1457, "orecavern", 719, 5);
-        Story.KillQuest(1457, "orecavern", "Crashroom");
+        if (!Story.QuestProgression(1457))
+        {
+            Core.EnsureAccept(1457);
+            Core.GetMapItem(719, 5, "orecavern");
+            Core.HuntMonster("orecavern", "Crashroom", "Light Orb Recovered", 10);
+            Core.EnsureComplete(1457);
+        }
 
         //Truth is its Own Light
         Story.MapItemQuest(1458, "orecavern", 718, 5);
@@ -1497,8 +1512,13 @@ public class Core13LoC
         Story.KillQuest(1276, "ravinetemple", "Temple Guardian");
 
         //Too Little, Too Late. Still Needed
-        Story.MapItemQuest(1277, "ravinetemple", 557, 10);
-        Story.KillQuest(1277, "ravinetemple", "Temple Guardian");
+        if (!Story.QuestProgression(1277))
+        {
+            Core.EnsureAccept(1277);
+            Core.GetMapItem(557, 10, "ravinetemple");
+            Core.HuntMonster("ravinetemple", "Temple Guardian", "Sharpened Bone Stake", 5);
+            Core.EnsureComplete(1277);
+        }
 
         //Alliance Defiance
         Story.KillQuest(1278, "ravinetemple", "Temple Guardian");
@@ -1537,8 +1557,13 @@ public class Core13LoC
         Story.KillQuest(1419, "ancienttemple", "Chaotic Vulture");
 
         //Ancient Ointment
-        Story.MapItemQuest(1420, "ancienttemple", 706, 7);
-        Story.KillQuest(1420, "ancienttemple", "Chaotic Vulture");
+        if (!Story.QuestProgression(1420))
+        {
+            Core.EnsureAccept(1420);
+            Core.GetMapItem(706, 7, "ancienttemple");
+            Core.HuntMonster("ancienttemple", "Chaotic Vulture", "Stolen Urn", 7);
+            Core.EnsureComplete(1420);
+        }
 
         //Anoint the Ancients
         Story.KillQuest(1421, "ancienttemple", "Chaos Troll Spirit");
@@ -1553,8 +1578,13 @@ public class Core13LoC
         Story.MapItemQuest(1451, "orecavern", 717);
 
         //Out of the Darkness
-        Story.MapItemQuest(1452, "orecavern", 719, 5);
-        Story.KillQuest(1452, "orecavern", "Crashroom");
+        if (!Story.QuestProgression(1452))
+        {
+            Core.EnsureAccept(1452);
+            Core.GetMapItem(719, 5, "orecavern");
+            Core.HuntMonster("orecavern", "Crashroom", "Light Orb Recovered", 10);
+            Core.EnsureComplete(1452);
+        }
 
         //Shine a Light on Deception
         Story.MapItemQuest(1453, "orecavern", 718, 5);
@@ -1666,8 +1696,14 @@ public class Core13LoC
         }
 
         //Time to Prove Yourself
-        Story.MapItemQuest(2255, "timevoid", 1439, 12);
-        Story.KillQuest(2255, "timevoid", new[] { "Ephemerite", "Time-Travel Fairy" });
+        if (!Story.QuestProgression(2255))
+        {
+            Core.EnsureAccept(2255);
+            Core.GetMapItem(1439, 12, "timevoid");
+            Core.HuntMonster("timevoid", "Ephemerite", "Ephemeral Dust", 4);
+            Core.HuntMonster("timevoid", "Time-Travel Fairy", "Fairy Plasma", 4);
+            Core.EnsureComplete(2255);
+        }
 
         //Fill the Empty Hours
         if (!Story.QuestProgression(2256))
@@ -1695,12 +1731,24 @@ public class Core13LoC
         Story.MapItemQuest(2378, "aqlesson", 1469);
 
         //Bolster the Elements
-        Story.MapItemQuest(2379, "aqlesson", new[] { 1470, 1471 }, 3);
-        Story.KillQuest(2379, "aqlesson", new[] { "Eternite Ore", "Water Elemental" });
+        if (!Story.QuestProgression(2379))
+        {
+            Core.EnsureAccept(2379);
+            Core.GetMapItems(new[] { (1470, 3), (1471, 3) }, "aqlesson");
+            Core.HuntMonster("aqlesson", "Eternite Ore", "TimeSpark Acquired", 3);
+            Core.HuntMonster("aqlesson", "Water Elemental", "Tears of Joy Acquired", 3);
+            Core.EnsureComplete(2379);
+        }
 
         //Maintain Elemental Strength
-        Story.MapItemQuest(2380, "aqlesson", new[] { 1473, 1472 }, 3);
-        Story.KillQuest(2380, "aqlesson", new[] { "Ice Elemental", "Fire Elemental" });
+        if (!Story.QuestProgression(2380))
+        {
+            Core.EnsureAccept(2380);
+            Core.GetMapItems(new[] { (1473, 3), (1472, 3) }, "aqlesson");
+            Core.HuntMonster("aqlesson", "Ice Elemental", "Frigid Liquid Acquired", 3);
+            Core.HuntMonster("aqlesson", "Fire Elemental", "Heart of Lava Acquired", 3);
+            Core.EnsureComplete(2380);
+        }
 
         //Rescue the Innocent
         Story.KillQuest(2381, "aqlesson", "Void Dragon");
@@ -1883,8 +1931,14 @@ public class Core13LoC
         Story.KillQuest(2614, "blackhorn", "Tomb Spider");
 
         //Fire Is The Thing
-        Story.MapItemQuest(2615, "blackhorn", 1616);
-        Story.KillQuest(2615, "blackhorn", new[] { "Tomb Spider", "Restless Undead" });
+        if (!Story.QuestProgression(2615))
+        {
+            Core.EnsureAccept(2615);
+            Core.GetMapItem(1616, 1, "blackhorn");
+            Core.HuntMonster("blackhorn", "Restless Undead", "Scrap Of Cloth", 3);
+            Core.HuntMonster("blackhorn", "Tomb Spider", "Gas Bladder", 3);
+            Core.EnsureComplete(2615);
+        }
 
         //The Wall Comes Down
         Story.MapItemQuest(2616, "blackhorn", 1617);
@@ -2014,8 +2068,13 @@ public class Core13LoC
         Story.MapItemQuest(2732, "deathpits", 1694, 12);
 
         //Destroy Wrathful Vestis and Secure The Tears
-        Story.MapItemQuest(2740, "deathpits", 1695, 1);
-        Story.KillQuest(2740, "deathpits", "Wrathful Vestis");
+        if (!Story.QuestProgression(2740))
+        {
+            Core.EnsureAccept(2740);
+            Core.GetMapItem(1695, 1, "deathpits");
+            Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis Defeated", 1);
+            Core.EnsureComplete(2740);
+        }
 
         //Surveillance for Sir Valence
         Story.MapItemQuest(2792, "venomvaults", 1724);
@@ -2183,8 +2242,13 @@ public class Core13LoC
         Story.KillQuest(3166, "reddeath", "Fire Leech");
 
         //Nope, Still a Ghost
-        Story.MapItemQuest(3167, "reddeath", new[] { 2178, 2179 });
-        Story.KillQuest(3167, "reddeath", "Reddeath Moglin");
+        if (!Story.QuestProgression(3167))
+        {
+            Core.EnsureAccept(3167);
+            Core.GetMapItems(new[] { (2178, 1), (2179, 1) }, "reddeath");
+            Core.HuntMonster("reddeath", "RedDeath Moglin", "Boneweed", 5);
+            Core.EnsureComplete(3167);
+        }
 
         //First We Need a Beacon...
         Story.MapItemQuest(3168, "reddeath", 2180);
@@ -2302,8 +2366,13 @@ public class Core13LoC
         }
 
         //Locate the Source
-        Story.MapItemQuest(3080, "archives", 1937);
-        Story.KillQuest(3080, "archives", "Chaos Bandit");
+        if (!Story.QuestProgression(3080))
+        {
+            Core.EnsureAccept(3080);
+            Core.GetMapItem(1937, 1, "archives");
+            Core.HuntMonster("archives", "Chaos Bandit", "Reeking Clue", 6);
+            Core.EnsureComplete(3080);
+        }
 
         //Plagued Rats
         Story.KillQuest(3081, "archives", "Chaos Rat");
@@ -2327,8 +2396,13 @@ public class Core13LoC
         Story.KillQuest(3094, "armory", "Chaorrupted Prisoner");
 
         //We May Need A Militia
-        Story.MapItemQuest(3095, "armory", 1956, 4);
-        Story.KillQuest(3095, "armory", "Chaorrupted Prisoner");
+        if (!Story.QuestProgression(3095))
+        {
+            Core.EnsureAccept(3095);
+            Core.GetMapItem(1956, 4, "armory");
+            Core.HuntMonster("armory", "Chaorrupted Prisoner", "Weapon Recovered", 4);
+            Core.EnsureComplete(3095);
+        }
 
         //An Ounce Of Prevention
         Story.KillQuest(3096, "armory", "Chaos Drifter");
@@ -2379,8 +2453,13 @@ public class Core13LoC
         Story.MapItemQuest(3125, "ceremony", 2118, 6);
 
         //Seal the Chapel
-        Story.MapItemQuest(3126, "ceremony", 2119);
-        Story.KillQuest(3126, "ceremony", "Chaos Invader");
+        if (!Story.QuestProgression(3126))
+        {
+            Core.EnsureAccept(3126);
+            Core.GetMapItem(2119, 1, "ceremony");
+            Core.HuntMonster("ceremony", "Chaos Invader", "Invaders Defeated", 8);
+            Core.EnsureComplete(3126);
+        }
 
         //Chaos Kills!
         Story.KillQuest(3127, "ceremony", "Chaos Justicar");

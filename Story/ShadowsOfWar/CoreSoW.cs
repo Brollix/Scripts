@@ -144,8 +144,13 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Defeat the Minions (6856)
-        Story.MapItemQuest(6856, "shadowlordkeep", 6390);
-        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner");
+        if (!Story.QuestProgression(6856))
+        {
+            Core.EnsureAccept(6856);
+            Core.GetMapItem(6390, 1, "shadowlordkeep");
+            Core.HuntMonster("shadowlordkeep", "Shadow Gunner", "Shadow Minion Defeated", 10);
+            Core.EnsureComplete(6856);
+        }
 
         //Gather the Gunpowder (6857)
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
@@ -171,8 +176,13 @@ public class CoreSoW
         Story.KillQuest(6861, "shadowlordkeep", "Shadow Mage");
 
         //Overload the Energy Field (6862)
-        Story.MapItemQuest(6862, "shadowlordkeep", 6392);
-        Story.KillQuest(6862, "shadowlordkeep", "Stray Energy");
+        if (!Story.QuestProgression(6862))
+        {
+            Core.EnsureAccept(6862);
+            Core.GetMapItem(6392, 1, "shadowlordkeep");
+            Core.HuntMonster("shadowlordkeep", "Stray Energy", "Stray Energy", 8);
+            Core.EnsureComplete(6862);
+        }
 
         //Defeat the Portal Guards (6863)
         Story.KillQuest(6863, "shadowlordkeep", "Portal Guard");
@@ -252,8 +262,13 @@ public class CoreSoW
         Story.KillQuest(6886, "blackseakeep", "Blacksea Scallywag");
 
         //Open the Chests (6887)
-        Story.MapItemQuest(6887, "blackseakeep", 6446, 6);
-        Story.KillQuest(6887, "blackseakeep", "Pure Darkness");
+        if (!Story.QuestProgression(6887))
+        {
+            Core.EnsureAccept(6887);
+            Core.GetMapItem(6446, 6, "blackseakeep");
+            Core.HuntMonster("blackseakeep", "Pure Darkness", "Shadow Slain", 6);
+            Core.EnsureComplete(6887);
+        }
 
         //Interrogation Time (6888)
         Story.KillQuest(6888, "blackseakeep", "Blacksea Privateer");
@@ -349,15 +364,25 @@ public class CoreSoW
         Story.KillQuest(6962, "junkheap", "Magpie");
 
         //Charge the Portals (6963)
-        Story.MapItemQuest(6963, "junkheap", 6501);
-        Story.KillQuest(6963, "junkheap", "Tiny Manifestation");
+        if (!Story.QuestProgression(6963))
+        {
+            Core.EnsureAccept(6963);
+            Core.GetMapItem(6501, 1, "junkheap");
+            Core.HuntMonster("junkheap", "Tiny Manifestation ", "Tiny Energy", 8);
+            Core.EnsureComplete(6963);
+        }
 
         //Through the Rift (6964)
         Story.MapItemQuest(6964, "junkheap", 6502);
 
         //Free Niknak (6965)
-        Story.MapItemQuest(6965, "junkheap", 6503);
-        Story.KillQuest(6965, "junkheap", "Shadowflame Scout");
+        if (!Story.QuestProgression(6965))
+        {
+            Core.EnsureAccept(6965);
+            Core.GetMapItem(6503, 1, "junkheap");
+            Core.HuntMonster("junkheap", "Shadowflame Scout", "Niknak's Key", 1);
+            Core.EnsureComplete(6965);
+        }
 
         //Afraid of Shadows (6966)
         Story.KillQuest(6966, "junkheap", "Shadow Imp");
@@ -441,9 +466,14 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Gather Offerings (7050)
-        Story.MapItemQuest(7050, "aozorahills", 6643, 5);
-        Story.MapItemQuest(7050, "aozorahills", 6644, 5);
-        Story.KillQuest(7050, "aozorahills", "Reishi");
+        if (!Story.QuestProgression(7050))
+        {
+            Core.EnsureAccept(7050);
+            Core.GetMapItem(6643, 5, "aozorahills");
+            Core.GetMapItem(6644, 5, "aozorahills");
+            Core.HuntMonster("aozorahills", "Reishi", "Fresh Truffles", 5);
+            Core.EnsureComplete(7050);
+        }
 
         //Deliver the Gift (7051)
         Story.MapItemQuest(7051, "aozorahills", 6645);
@@ -458,22 +488,37 @@ public class CoreSoW
         Story.KillQuest(7054, "aozorahills", "Kosenjobi");
 
         //Attune to Fuyurei (7055)
-        Story.MapItemQuest(7055, "aozorahills", 6646);
-        Story.KillQuest(7055, "aozorahills", "Fuyurei");
+        if (!Story.QuestProgression(7055))
+        {
+            Core.EnsureAccept(7055);
+            Core.GetMapItem(6646, 1, "aozorahills");
+            Core.HuntMonster("aozorahills", "Fuyurei", "Fuyurei Ki", 8);
+            Core.EnsureComplete(7055);
+        }
 
         //Follow the Path (7056)
         Story.MapItemQuest(7056, "aozorahills", 6647, 3);
 
         //Attune to Kijimuna (7057)
-        Story.MapItemQuest(7057, "aozorahills", 6648);
-        Story.KillQuest(7057, "aozorahills", "Aozora Kijimuna");
+        if (!Story.QuestProgression(7057))
+        {
+            Core.EnsureAccept(7057);
+            Core.GetMapItem(6648, 1, "aozorahills");
+            Core.HuntMonster("aozorahills", "Aozora Kijimuna", "Kijimuna Ki", 8);
+            Core.EnsureComplete(7057);
+        }
 
         //Path of the Kijimuna (7058)
         Story.MapItemQuest(7058, "aozorahills", 6649, 3);
 
         //Attune to Reishi (7059)
-        Story.MapItemQuest(7059, "aozorahills", 6650);
-        Story.KillQuest(7059, "aozorahills", "Reishi");
+        if (!Story.QuestProgression(7059))
+        {
+            Core.EnsureAccept(7059);
+            Core.GetMapItem(6650, 1, "aozorahills");
+            Core.HuntMonster("aozorahills", "Reishi", "Reishi Ki", 8);
+            Core.EnsureComplete(7059);
+        }
 
         //Path to Reishi (7060)
         Story.MapItemQuest(7060, "aozorahills", 6651, 3);
@@ -657,11 +702,21 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Clear the Shadows --DAGE--
-        Story.MapItemQuest(7446, "darkalliance", 7224, 8);
-        Story.KillQuest(7446, "darkalliance", "Shadow");
+        if (!Story.QuestProgression(7446))
+        {
+            Core.EnsureAccept(7446);
+            Core.GetMapItem(7224, 8, "darkalliance");
+            Core.HuntMonster("darkalliance", "Shadow", "Shadow Slain", 8);
+            Core.EnsureComplete(7446);
+        }
         //Destroy the Swords
-        Story.MapItemQuest(7447, "darkalliance", 7225, 1);
-        Story.KillQuest(7447, "darkalliance", "Shadowblade");
+        if (!Story.QuestProgression(7447))
+        {
+            Core.EnsureAccept(7447);
+            Core.GetMapItem(7225, 1, "darkalliance");
+            Core.HuntMonster("darkalliance", "Shadowblade", "Shadow Sword Slain", 7);
+            Core.EnsureComplete(7447);
+        }
         //Fuel for the Forge
         Story.KillQuest(7448, "darkalliance", "Shadow Void");
         //Sever the Connection
@@ -702,8 +757,13 @@ public class CoreSoW
         Story.KillQuest(7461, "innershadows", "Infected Minion");
 
         //Dusty Boost (7462)
-        Story.MapItemQuest(7462, "innershadows", 7271);
-        Story.KillQuest(7462, "innershadows", "Infected Minion");
+        if (!Story.QuestProgression(7462))
+        {
+            Core.EnsureAccept(7462);
+            Core.GetMapItem(7271, 1, "innershadows");
+            Core.HuntMonster("innershadows", "Infected Minion", "Dry Bones", 8);
+            Core.EnsureComplete(7462);
+        }
 
         //Defeat my Minions (7463)
         Story.KillQuest(7463, "innershadows", "Infected Minion");
@@ -762,8 +822,13 @@ public class CoreSoW
         Story.KillQuest(8128, "fireplanewar", "Shadowflame Soldier");
 
         // Fanning the Flames
-        Story.MapItemQuest(8129, "fireplanewar", 8523, 5);
-        Story.KillQuest(8129, "fireplanewar", "Shadowflame Soldier");
+        if (!Story.QuestProgression(8129))
+        {
+            Core.EnsureAccept(8129);
+            Core.GetMapItem(8523, 5, "fireplanewar");
+            Core.HuntMonster("fireplanewar", "Shadowflame Soldier", "Battles Turned", 5);
+            Core.EnsureComplete(8129);
+        }
 
         // Trailblazer
         Story.KillQuest(8130, "fireplanewar", "Shadefire Onslaught");
@@ -775,8 +840,13 @@ public class CoreSoW
         Story.KillQuest(8132, "fireplanewar", "Shadefire Elemental");
 
         // Cure the Fire
-        Story.MapItemQuest(8133, "fireplanewar", 8524, 5);
-        Story.KillQuest(8133, "fireplanewar", "Living Shadowflame");
+        if (!Story.QuestProgression(8133))
+        {
+            Core.EnsureAccept(8133);
+            Core.GetMapItem(8524, 5, "fireplanewar");
+            Core.HuntMonster("fireplanewar", "Living Shadowflame", "Shadowflame Removed", 5);
+            Core.EnsureComplete(8133);
+        }
 
         // Human Torch
         Story.KillQuest(8134, "fireplanewar", "Living Shadowflame");
@@ -830,8 +900,13 @@ public class CoreSoW
         Story.KillQuest(8179, "fireinvasion", "Onslaught Knight");
 
         // Tiger Burning Bright
-        Story.MapItemQuest(8180, "fireinvasion", 8728, 3);
-        Story.KillQuest(8180, "fireinvasion", "Shadowfire Tiger");
+        if (!Story.QuestProgression(8180))
+        {
+            Core.EnsureAccept(8180);
+            Core.GetMapItem(8728, 3, "fireinvasion");
+            Core.HuntMonster("fireinvasion", "Shadowfire Tiger", "Tiger Slain", 10);
+            Core.EnsureComplete(8180);
+        }
 
         // Crush the Cavalry
         Story.KillQuest(8181, "fireinvasion", "Shadefire Cavalry");
@@ -840,8 +915,13 @@ public class CoreSoW
         Story.KillQuest(8182, "fireinvasion", "Shadowfire Corporal");
 
         // Light up the Night
-        Story.MapItemQuest(8183, "fireinvasion", 8729, 6);
-        Story.KillQuest(8183, "fireinvasion", "Shadefire Elemental");
+        if (!Story.QuestProgression(8183))
+        {
+            Core.EnsureAccept(8183);
+            Core.GetMapItem(8729, 6, "fireinvasion");
+            Core.HuntMonster("fireinvasion", "Shadefire Elemental", "Shadefire Elemental Slain", 7);
+            Core.EnsureComplete(8183);
+        }
 
         // Major Malfunction
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
@@ -1012,8 +1092,13 @@ public class CoreSoW
         Story.KillQuest(8785, "ruinedcrown", "Mana-Burdened Mage");
 
         // 8786 Clouded Vision
-        Story.MapItemQuest(8786, "ruinedcrown", 10386);
-        Story.KillQuest(8786, "ruinedcrown", "Frenzied Mana");
+        if (!Story.QuestProgression(8786))
+        {
+            Core.EnsureAccept(8786);
+            Core.GetMapItem(10386, 1, "ruinedcrown");
+            Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Frienzied Mana Cleared", 6);
+            Core.EnsureComplete(8786);
+        }
 
         // 8787 Guilt Complex
         Story.KillQuest(8787, "ruinedcrown", "Calamitous Warlic");
@@ -1131,36 +1216,76 @@ public class CoreSoW
         Story.MapItemQuest(8859, "DeadLines", 10601, 6);
 
         //Baby Steps 8860
-        Story.MapItemQuest(8860, "DeadLines", 10602);
-        Story.KillQuest(8860, "DeadLines", "Frenzied Mana");
+        if (!Story.QuestProgression(8860))
+        {
+            Core.EnsureAccept(8860);
+            Core.GetMapItem(10602, 1, "DeadLines");
+            Core.HuntMonster("deadlines", "Frenzied Mana", "Mana Dispelled", 6);
+            Core.EnsureComplete(8860);
+        }
 
         //Eternal Flame 8861
-        Story.MapItemQuest(8861, "DeadLines", new[] { 10603, 10604 });
-        Story.KillQuest(8861, "DeadLines", "Shadowfall Warrior");
+        if (!Story.QuestProgression(8861))
+        {
+            Core.EnsureAccept(8861);
+            Core.GetMapItems(new[] { (10603, 1), (10604, 1) }, "DeadLines");
+            Core.HuntMonster("deadlines", "Shadowfall Warrior", "Shadowfall Helm", 7);
+            Core.EnsureComplete(8861);
+        }
 
         //The Wolf Cries 8862
-        Story.MapItemQuest(8862, "DeadLines", new[] { 10605, 10606 });
-        Story.KillQuest(8862, "DeadLines", "Swordhaven Knight");
+        if (!Story.QuestProgression(8862))
+        {
+            Core.EnsureAccept(8862);
+            Core.GetMapItems(new[] { (10605, 1), (10606, 1) }, "DeadLines");
+            Core.HuntMonster("deadlines", "Swordhaven Knight", "Knight's Crest", 7);
+            Core.EnsureComplete(8862);
+        }
 
         //Breaking Down 8863
-        Story.MapItemQuest(8863, "DeadLines", new[] { 10607, 10608 });
-        Story.KillQuest(8863, "DeadLines", "Shadowfall Warrior");
+        if (!Story.QuestProgression(8863))
+        {
+            Core.EnsureAccept(8863);
+            Core.GetMapItems(new[] { (10607, 1), (10608, 1) }, "DeadLines");
+            Core.HuntMonster("deadlines", "Shadowfall Warrior", "Shadowfall Bones", 7);
+            Core.EnsureComplete(8863);
+        }
 
         //Growth Through Hardship 8864
-        Story.MapItemQuest(8864, "DeadLines", new[] { 10609, 10610 });
-        Story.KillQuest(8864, "DeadLines", "Swordhaven Knight");
+        if (!Story.QuestProgression(8864))
+        {
+            Core.EnsureAccept(8864);
+            Core.GetMapItems(new[] { (10609, 1), (10610, 1) }, "DeadLines");
+            Core.HuntMonster("deadlines", "Swordhaven Knight", "Knight's Armaments", 7);
+            Core.EnsureComplete(8864);
+        }
 
         //Arteries 8865
-        Story.MapItemQuest(8865, "DeadLines", new[] { 10611, 10612 });
-        Story.KillQuest(8865, "DeadLines", "Frenzied Mana");
+        if (!Story.QuestProgression(8865))
+        {
+            Core.EnsureAccept(8865);
+            Core.GetMapItems(new[] { (10611, 1), (10612, 1) }, "DeadLines");
+            Core.HuntMonster("deadlines", "Frenzied Mana", "Mana Dissipated", 6);
+            Core.EnsureComplete(8865);
+        }
 
         //Paranoiac 8866
-        Story.MapItemQuest(8866, "DeadLines", 10613);
-        Story.KillQuest(8866, "DeadLines", "Chaos Mage");
+        if (!Story.QuestProgression(8866))
+        {
+            Core.EnsureAccept(8866);
+            Core.GetMapItem(10613, 1, "DeadLines");
+            Core.HuntMonster("deadlines", "Chaos Mage", "Mage Hoods", 6);
+            Core.EnsureComplete(8866);
+        }
 
         //A Hard Swerve 8867
-        Story.MapItemQuest(8867, "DeadLines", 10614);
-        Story.KillQuest(8867, "DeadLines", "Frenzied Mana");
+        if (!Story.QuestProgression(8867))
+        {
+            Core.EnsureAccept(8867);
+            Core.GetMapItem(10614, 1, "DeadLines");
+            Core.HuntMonster("deadlines", "Frenzied Mana", "Mana Cleared", 6);
+            Core.EnsureComplete(8867);
+        }
 
         //Nigh Invincible 8868
         Core.EquipClass(ClassType.Solo);
@@ -1182,20 +1307,40 @@ public class CoreSoW
         Story.KillQuest(8956, "worldscore", "False Wyvern");
 
         // There Was an Attempt 8957
-        Story.MapItemQuest(8957, "worldscore", 10878, 5);
-        Story.KillQuest(8957, "worldscore", "Elemental Attempt");
+        if (!Story.QuestProgression(8957))
+        {
+            Core.EnsureAccept(8957);
+            Core.GetMapItem(10878, 5, "worldscore");
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Pulsating Mana Residue", 12);
+            Core.EnsureComplete(8957);
+        }
 
         // Scared Straight 8958
-        Story.MapItemQuest(8958, "worldscore", 10879);
-        Story.KillQuest(8958, "worldscore", "Infernal Mockery");
+        if (!Story.QuestProgression(8958))
+        {
+            Core.EnsureAccept(8958);
+            Core.GetMapItem(10879, 1, "worldscore");
+            Core.HuntMonster("worldscore", "Infernal Mockery", "Waxen Horns", 12);
+            Core.EnsureComplete(8958);
+        }
 
         // Making Waves 8959
-        Story.MapItemQuest(8959, "worldscore", 10880, 4);
-        Story.KillQuest(8959, "worldscore", "Infernal Mockery");
+        if (!Story.QuestProgression(8959))
+        {
+            Core.EnsureAccept(8959);
+            Core.GetMapItem(10880, 4, "worldscore");
+            Core.HuntMonster("worldscore", "Infernal Mockery", "Infernal Shoved", 10);
+            Core.EnsureComplete(8959);
+        }
 
         // In Circles 8960
-        Story.MapItemQuest(8960, "worldscore", 10881);
-        Story.KillQuest(8960, "worldscore", "Elemental Attempt");
+        if (!Story.QuestProgression(8960))
+        {
+            Core.EnsureAccept(8960);
+            Core.GetMapItem(10881, 1, "worldscore");
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Vanquished Elemental", 14);
+            Core.EnsureComplete(8960);
+        }
 
         // Nameless Remnants 8961
         Story.MapItemQuest(8961, "worldscore", 10882, 4);
@@ -1204,12 +1349,22 @@ public class CoreSoW
         Story.KillQuest(8962, "worldscore", "Crystalized Mana");
 
         // Innocent Crafts 8963
-        Story.MapItemQuest(8963, "worldscore", 10883);
-        Story.KillQuest(8963, "worldscore", "Infernal Mockery");
+        if (!Story.QuestProgression(8963))
+        {
+            Core.EnsureAccept(8963);
+            Core.GetMapItem(10883, 1, "worldscore");
+            Core.HuntMonster("worldscore", "Infernal Mockery", "Rubbery Wings", 14);
+            Core.EnsureComplete(8963);
+        }
 
         // Cold Bedrock 8964
-        Story.MapItemQuest(8964, "worldscore", 10884);
-        Story.KillQuest(8964, "worldscore", "Elemental Attempt");
+        if (!Story.QuestProgression(8964))
+        {
+            Core.EnsureAccept(8964);
+            Core.GetMapItem(10884, 1, "worldscore");
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Sterile Mana", 16);
+            Core.EnsureComplete(8964);
+        }
 
         // Rippling Heartbeat 8965
         Story.KillQuest(8965, "worldscore", "Mask of Tranquility");
@@ -1255,8 +1410,14 @@ public class CoreSoW
         Story.MapItemQuest(9122, "manacradle", 11270, 5);
 
         // In The Eye 9123
-        Story.MapItemQuest(9123, "manacradle", 11271);
-        Story.KillQuest(9123, "manacradle", new[] { "Darkness Elemental", "Dark Tainted Mana" });
+        if (!Story.QuestProgression(9123))
+        {
+            Core.EnsureAccept(9123);
+            Core.GetMapItem(11271, 1, "manacradle");
+            Core.HuntMonster("manacradle", "Darkness Elemental", "Dark Shard", 10);
+            Core.HuntMonster("manacradle", "Dark Tainted Mana", "Dark Residue", 10);
+            Core.EnsureComplete(9123);
+        }
 
 
         // If Dodge Class was found, kill Malgor & The Mainyu with it, else use what you have on.

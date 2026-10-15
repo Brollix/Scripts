@@ -109,8 +109,13 @@ public class CoreNewYear
         Story.KillQuest(2591, "darksun", "Aku");
 
         //Fight the Darkness 2592
-        Story.MapItemQuest(2592, "darkoviaforest", 1604);
-        Story.KillQuest(2592, "darkoviagrave", "Albino Bat");
+        if (!Story.QuestProgression(2592))
+        {
+            Core.EnsureAccept(2592);
+            Core.GetMapItem(1604, 1, "darkoviaforest");
+            Core.HuntMonster("darkoviagrave", "Albino Bat ", "Spy Slain", 7);
+            Core.EnsureComplete(2592);
+        }
 
         //Cloaked in Darkness 2593
         Story.MapItemQuest(2593, "darksun", 1597);
@@ -128,8 +133,13 @@ public class CoreNewYear
         Story.MapItemQuest(2595, "darksun", 1598);
 
         //Weave Light into Dark 2596
-        Story.MapItemQuest(2596, "darksun", 1599, 6);
-        Story.KillQuest(2596, "darkoviagrave", "Skeletal Fire Mage");
+        if (!Story.QuestProgression(2596))
+        {
+            Core.EnsureAccept(2596);
+            Core.GetMapItem(1599, 6, "darksun");
+            Core.HuntMonster("darkoviagrave", "Skeletal Fire Mage", "Solar Flare", 5);
+            Core.EnsureComplete(2596);
+        }
 
         //Battle for a New Start 2597
         Story.KillQuest(2597, "darksun", "Raskar");

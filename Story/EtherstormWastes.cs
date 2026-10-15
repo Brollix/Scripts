@@ -286,8 +286,13 @@ public class EtherStormWastes
         }
 
         //Dragon's Fire Blossom to be Found 1575
-        Story.MapItemQuest(1575, "firestorm", 824, 12);
-        Story.KillQuest(1575, "firestorm", "Sulfur Imp");
+        if (!Story.QuestProgression(1575))
+        {
+            Core.EnsureAccept(1575);
+            Core.GetMapItem(824, 12, "firestorm");
+            Core.HuntMonster("firestorm", "Sulfur Imp", "Caustic Pollen", 8);
+            Core.EnsureComplete(1575);
+        }
 
         //The Space Between 1576
         Story.KillQuest(1576, "airstorm", "Energy Tornado");
@@ -315,8 +320,14 @@ public class EtherStormWastes
         Story.MapItemQuest(1618, "waterstorm", 842, 13);
 
         //A Little Bit of Bubbly Never Hurt 1619
-        Story.MapItemQuest(1619, "waterstorm", 843, 10);
-        Story.KillQuest(1619, "waterstorm", new[] { "Living Water", "Living Water" });
+        if (!Story.QuestProgression(1619))
+        {
+            Core.EnsureAccept(1619);
+            Core.GetMapItem(843, 10, "waterstorm");
+            Core.HuntMonster("waterstorm", "Living Water", "Aqua Vitae", 15);
+            Core.HuntMonster("waterstorm", "Living Water", "Water Bubble Burst", 10);
+            Core.EnsureComplete(1619);
+        }
 
         //Flight of the Fishwings 1620
         if (!Story.QuestProgression(1620))
@@ -328,12 +339,15 @@ public class EtherStormWastes
         }
 
         //Hunt for the Greater Good 1621
-        Story.MapItemQuest(1621, "waterstorm", 844, 3);
-        Story.KillQuest(
-            1621,
-            "waterstorm",
-            new[] { "Fishman Soldier", "Marsh Lurker", "Frogdrake" }
-        );
+        if (!Story.QuestProgression(1621))
+        {
+            Core.EnsureAccept(1621);
+            Core.GetMapItem(844, 3, "waterstorm");
+            Core.HuntMonster("waterstorm", "Fishman Soldier", "Shining Fishman Trident", 1);
+            Core.HuntMonster("waterstorm", "Marsh Lurker", "Marsh Tribal Totem", 1);
+            Core.HuntMonster("waterstorm", "Frogdrake", "Powdered Drake's Horn", 1);
+            Core.EnsureComplete(1621);
+        }
 
         //Kill the Deep Dweller 1622
         Story.KillQuest(1622, "waterstorm", "Deep Dweller");
@@ -359,12 +373,24 @@ public class EtherStormWastes
         }
 
         //Chrysalis of Flames 1634
-        Story.MapItemQuest(1634, "earthstorm", 860, 3);
-        Story.KillQuest(1634, "earthstorm", new[] { "Sapphire Golem", "Crystallized Living Fire" });
+        if (!Story.QuestProgression(1634))
+        {
+            Core.EnsureAccept(1634);
+            Core.GetMapItem(860, 3, "earthstorm");
+            Core.HuntMonster("earthstorm", "Crystallized Living Fire", "Shattered Heat", 10);
+            Core.HuntMonster("earthstorm", "Sapphire Golem", "Aqua Libertas", 5);
+            Core.EnsureComplete(1634);
+        }
 
         //Glittering Secrets of Old 1635
-        Story.MapItemQuest(1635, "earthstorm", 862, 8);
-        Story.KillQuest(1635, "earthstorm", new[] { "Crystalized Jellyfish", "Diamond Golem" });
+        if (!Story.QuestProgression(1635))
+        {
+            Core.EnsureAccept(1635);
+            Core.GetMapItem(862, 8, "earthstorm");
+            Core.HuntMonster("earthstorm", "Crystalized Jellyfish", "Water Shell Matrix Decoder", 8);
+            Core.HuntMonster("earthstorm", "Diamond Golem", "Diamond CrystalCutter", 8);
+            Core.EnsureComplete(1635);
+        }
 
         //Aria of Great Significance
         if (!Story.QuestProgression(1636))
@@ -526,29 +552,49 @@ public class EtherStormWastes
         Story.KillQuest(3526, "dragonheart", "Zombie Dragon");
 
         //Water Realm Purification 3527
-        Story.MapItemQuest(3527, "dragonheart", 2662);
-        Story.KillQuest(3527, "dragonheart", "Proto-Water Dracolich");
+        if (!Story.QuestProgression(3527))
+        {
+            Core.EnsureAccept(3527);
+            Core.GetMapItem(2662, 1, "dragonheart");
+            Core.HuntMonster("dragonheart", "Proto-Water Dracolich", "Water Link Weakened", 5);
+            Core.EnsureComplete(3527);
+        }
 
         //Water Cleanses Fire 3528
         Story.MapItemQuest(3528, "dragonheart", 2663, 7);
 
         //Fire Realm Purification 3529
-        Story.MapItemQuest(3529, "dragonheart", 2664);
-        Story.KillQuest(3529, "dragonheart", "Proto-Fire Dracolich");
+        if (!Story.QuestProgression(3529))
+        {
+            Core.EnsureAccept(3529);
+            Core.GetMapItem(2664, 1, "dragonheart");
+            Core.HuntMonster("dragonheart", "Proto-Fire Dracolich", "Fire Link Weakened", 6);
+            Core.EnsureComplete(3529);
+        }
 
         //Fire Cleanses Earth 3530
         Story.MapItemQuest(3530, "dragonheart", 2665, 7);
 
         //Earth Realm Purification 3531
-        Story.MapItemQuest(3531, "dragonheart", 2666);
-        Story.KillQuest(3531, "dragonheart", "Proto-Earth Dracolich");
+        if (!Story.QuestProgression(3531))
+        {
+            Core.EnsureAccept(3531);
+            Core.GetMapItem(2666, 1, "dragonheart");
+            Core.HuntMonster("dragonheart", "Proto-Earth Dracolich", "Earth Link Weakened", 7);
+            Core.EnsureComplete(3531);
+        }
 
         //Earth Cleanses Air 3532
         Story.MapItemQuest(3532, "dragonheart", 2667, 7);
 
         //Air Realm Purification 3533
-        Story.MapItemQuest(3533, "dragonheart", 2668);
-        Story.KillQuest(3533, "dragonheart", "Proto-Air Dracolich");
+        if (!Story.QuestProgression(3533))
+        {
+            Core.EnsureAccept(3533);
+            Core.GetMapItem(2668, 1, "dragonheart");
+            Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Air Link Weakened", 8);
+            Core.EnsureComplete(3533);
+        }
 
         //Dracolich Disconnection 3534
         if (!Story.QuestProgression(3534))

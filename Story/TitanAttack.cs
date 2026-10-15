@@ -95,8 +95,14 @@ public class TitanAttackStory
         Story.KillQuest(8765, "titanattack", "AntiTitan Corps");
 
         // A Fighting Chance 8766
-        Story.MapItemQuest(8766, "titanattack", 10351, 8);
-        Story.KillQuest(8766, "titanattack", new[] { "Corrosive Crawler", "Supply Caravan" });
+        if (!Story.QuestProgression(8766))
+        {
+            Core.EnsureAccept(8766);
+            Core.GetMapItem(10351, 8, "titanattack");
+            Core.HuntMonster("titanattack", "Corrosive Crawler", "Sharp Stinger", 8);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Battle Wire", 8);
+            Core.EnsureComplete(8766);
+        }
 
         // Flash of the Titans 8767
         if (!Story.QuestProgression(8767))

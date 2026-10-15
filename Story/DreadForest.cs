@@ -45,8 +45,13 @@ public class DreadForest
         Story.KillQuest(8711, "dreadforest", "Treacherous Bandit");
 
         // Bitter Sweet-Talker 8712
-        Story.MapItemQuest(8712, "dreadforest", 10267);
-        Story.KillQuest(8712, "dreadforest", $"Noble’s Servant");
+        if (!Story.QuestProgression(8712))
+        {
+            Core.EnsureAccept(8712);
+            Core.GetMapItem(10267, 1, "dreadforest");
+            Core.HuntMonster("dreadforest", "Noble\u2019s Servant", "Stolen Amenities", 7);
+            Core.EnsureComplete(8712);
+        }
 
         // Fake It Till You Make It 8713
         Story.KillQuest(8713, "dreadforest", "Noble's Knight");
@@ -55,8 +60,13 @@ public class DreadForest
         Story.KillQuest(8714, "dreadforest", "Treacherous Bandit");
 
         // Warning Beacon 8715
-        Story.MapItemQuest(8715, "dreadforest", 10268);
-        Story.KillQuest(8715, "dreadforest", "Noble's Knight");
+        if (!Story.QuestProgression(8715))
+        {
+            Core.EnsureAccept(8715);
+            Core.GetMapItem(10268, 1, "dreadforest");
+            Core.HuntMonster("dreadforest", "Noble's Knight", "Knight's Emblem", 7);
+            Core.EnsureComplete(8715);
+        }
 
         // Strategy and Utility 8716
         Story.KillQuest(8716, "dreadforest", "Reignolds' Knight");

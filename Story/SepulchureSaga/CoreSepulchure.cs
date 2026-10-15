@@ -50,15 +50,25 @@ public class CoreSepulchure
         Story.MapItemQuest(6332, "scarsgarde", 5860);
 
         // The Taint Spreads 6333
-        Story.MapItemQuest(6333, "scarsgarde", 5864, 6);
-        Story.KillQuest(6333, "scarsgarde", "VenomWing");
+        if (!Story.QuestProgression(6333))
+        {
+            Core.EnsureAccept(6333);
+            Core.GetMapItem(5864, 6, "scarsgarde");
+            Core.HuntMonster("scarsgarde", "VenomWing", "VenomWing Slain", 6);
+            Core.EnsureComplete(6333);
+        }
 
         // Beauty Twisted 6334
         Story.KillQuest(6334, "scarsgarde", "Garde Grif");
 
         // Element of Surprise 6335
-        Story.MapItemQuest(6335, "scarsgarde", 5865, 5);
-        Story.KillQuest(6335, "scarsgarde", "Tree");
+        if (!Story.QuestProgression(6335))
+        {
+            Core.EnsureAccept(6335);
+            Core.GetMapItem(5865, 5, "scarsgarde");
+            Core.HuntMonster("scarsgarde", "Tree", "Tree Branch Obtained", 10);
+            Core.EnsureComplete(6335);
+        }
 
         // (Take the) Watch Out 6336
         if (!Story.QuestProgression(6336))
@@ -141,15 +151,25 @@ public class CoreSepulchure
         Story.MapItemQuest(6343, "scarsgarde", 5861);
 
         // The Taint Spreads 6344
-        Story.MapItemQuest(6344, "scarsgarde", 5864, 6);
-        Story.KillQuest(6344, "scarsgarde", "VenomWing");
+        if (!Story.QuestProgression(6344))
+        {
+            Core.EnsureAccept(6344);
+            Core.GetMapItem(5864, 6, "scarsgarde");
+            Core.HuntMonster("scarsgarde", "VenomWing", "VenomWing Slain", 6);
+            Core.EnsureComplete(6344);
+        }
 
         // Beauty Twisted 6345
         Story.KillQuest(6345, "scarsgarde", "Garde Grif");
 
         // Element of Surprise 6346
-        Story.MapItemQuest(6346, "scarsgarde", 5865, 5);
-        Story.KillQuest(6346, "scarsgarde", "Tree");
+        if (!Story.QuestProgression(6346))
+        {
+            Core.EnsureAccept(6346);
+            Core.GetMapItem(5865, 5, "scarsgarde");
+            Core.HuntMonster("scarsgarde", "Tree", "Tree Branch Obtained", 10);
+            Core.EnsureComplete(6346);
+        }
 
         // (Take the) Watch Out 6347
         if (!Story.QuestProgression(6347))
@@ -367,8 +387,13 @@ public class CoreSepulchure
         }
 
         // Get Rid of Bolton 6388
-        Story.MapItemQuest(6388, "guardiantowerb", 5901);
-        Story.KillQuest(6388, "guardiantowerb", "Guardian Bolton");
+        if (!Story.QuestProgression(6388))
+        {
+            Core.EnsureAccept(6388);
+            Core.GetMapItem(5901, 1, "guardiantowerb");
+            Core.HuntMonster("guardiantowerb", "Guardian Bolton", "Guardian Bolton Slain", 1);
+            Core.EnsureComplete(6388);
+        }
 
         // Get Rid of the Imps 6389
         Story.KillQuest(6389, "ebondungeon", "Ebonslate Imp");
@@ -451,8 +476,13 @@ public class CoreSepulchure
         Story.KillQuest(6543, "noxustower", "Lightguard Caster");
 
         // Spellbound 6544
-        Story.MapItemQuest(6544, "noxustower", 6018, 4);
-        Story.KillQuest(6544, "noxustower", "Lightguard Caster");
+        if (!Story.QuestProgression(6544))
+        {
+            Core.EnsureAccept(6544);
+            Core.GetMapItem(6018, 4, "noxustower");
+            Core.HuntMonster("noxustower", "Lightguard Caster", "Lightguard Scroll", 4);
+            Core.EnsureComplete(6544);
+        }
 
         // Lupine Resurrection 6545
         Story.KillQuest(6545, "noxustower", "Lightguard Wolf");
@@ -504,12 +534,22 @@ public class CoreSepulchure
         Story.KillQuest(6567, "lightguardwar", "Sigrid Sunshield");
 
         // Such a Mess 6581
-        Story.MapItemQuest(6581, "lumafortress", 6098, 8);
-        Story.KillQuest(6581, "lumafortress", "Invasive Shadow");
+        if (!Story.QuestProgression(6581))
+        {
+            Core.EnsureAccept(6581);
+            Core.GetMapItem(6098, 8, "lumafortress");
+            Core.HuntMonster("lumafortress", "Invasive Shadow", "Shadows Defeated", 8);
+            Core.EnsureComplete(6581);
+        }
 
         // Herbs Needed 6582
-        Story.MapItemQuest(6582, "lumafortress", 6099, 7);
-        Story.KillQuest(6582, "lumafortress", "Light Treeant");
+        if (!Story.QuestProgression(6582))
+        {
+            Core.EnsureAccept(6582);
+            Core.GetMapItem(6099, 7, "lumafortress");
+            Core.HuntMonster("lumafortress", "Light Treeant", "Glowmoss", 6);
+            Core.EnsureComplete(6582);
+        }
 
         // Shine a Light 6583
         Story.KillQuest(6583, "lumafortress", "Light Elemental");
@@ -521,8 +561,13 @@ public class CoreSepulchure
         Story.KillQuest(6585, "lumafortress", "Light Treeant");
 
         // Make an Offering 6586
-        Story.MapItemQuest(6586, "lumafortress", 6100);
-        Story.KillQuest(6586, "lumafortress", "Lightwing");
+        if (!Story.QuestProgression(6586))
+        {
+            Core.EnsureAccept(6586);
+            Core.GetMapItem(6100, 1, "lumafortress");
+            Core.HuntMonster("lumafortress", "Lightwing", "Brilliant Feather", 1);
+            Core.EnsureComplete(6586);
+        }
 
         // Test the Spell Again! 6587
         Story.MapItemQuest(6587, "lumafortress", 6101);

@@ -390,8 +390,13 @@ public class CoreFrostvale
         Story.KillQuest(6123, "coldwindvalley", "Hail Elemental");
 
         // Arm the Mob
-        Story.MapItemQuest(6124, "coldwindvalley", 5551, 5);
-        Story.KillQuest(6124, "farm", "Scarecrow");
+        if (!Story.QuestProgression(6124))
+        {
+            Core.EnsureAccept(6124);
+            Core.GetMapItem(5551, 5, "coldwindvalley");
+            Core.HuntMonster("farm", "Scarecrow", "Pitchforks", 5);
+            Core.EnsureComplete(6124);
+        }
 
         // Gather Bait
         Story.KillQuest(6125, "coldwindvalley", "Arctic Wolf");
@@ -676,9 +681,14 @@ public class CoreFrostvale
         Story.PreLoad(this);
 
         // Plans for Frostval
-        Story.MapItemQuest(4705, "cryostorm", 4069);
-        Story.MapItemQuest(4705, "cryostorm", 4070);
-        Story.KillQuest(4705, "cryostorm", "Glacial Elemental");
+        if (!Story.QuestProgression(4705))
+        {
+            Core.EnsureAccept(4705);
+            Core.GetMapItem(4069, 1, "cryostorm");
+            Core.GetMapItem(4070, 1, "cryostorm");
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Snowglobe Shard", 10);
+            Core.EnsureComplete(4705);
+        }
 
         // Find the Missing Presents
         Story.MapItemQuest(4706, "cryostorm", 4067, 8);
@@ -697,8 +707,13 @@ public class CoreFrostvale
         Story.KillQuest(4708, "cryostorm", "Glacial Wolf");
 
         // Cut Down the Tree
-        Story.MapItemQuest(4709, "cryostorm", 4068);
-        Story.KillQuest(4709, "cryostorm", "Glacial Wolf");
+        if (!Story.QuestProgression(4709))
+        {
+            Core.EnsureAccept(4709);
+            Core.GetMapItem(4068, 1, "cryostorm");
+            Core.HuntMonster("cryostorm", "Glacial Wolf", "Glacial Wolf Defeated", 6);
+            Core.EnsureComplete(4709);
+        }
 
         // Decorate the Tree
         if (!Story.QuestProgression(4710))
@@ -743,8 +758,13 @@ public class CoreFrostvale
         Story.KillQuest(5588, "icewindpass", "Glacial Elemental");
 
         // Splattered Mana
-        Story.MapItemQuest(5589, "icewindpass", 5075, 5);
-        Story.KillQuest(5589, "icewindpass", "Glacial Elemental");
+        if (!Story.QuestProgression(5589))
+        {
+            Core.EnsureAccept(5589);
+            Core.GetMapItem(5075, 5, "icewindpass");
+            Core.HuntMonster("icewindpass", "Glacial Elemental", "Iced Mana", 9);
+            Core.EnsureComplete(5589);
+        }
 
         // Dispell the Spell
         Story.KillQuest(5590, "icewindpass", "Living Snow");
@@ -801,15 +821,25 @@ public class CoreFrostvale
         Story.KillQuest(5601, "icewindwar", "Soricomorpha");
 
         // Take a Look Around
-        Story.MapItemQuest(5606, "icepike", 5085, 2);
-        Story.KillQuest(5606, "icepike", "Living Ice");
+        if (!Story.QuestProgression(5606))
+        {
+            Core.EnsureAccept(5606);
+            Core.GetMapItem(5085, 2, "icepike");
+            Core.HuntMonster("icepike", "Living Ice", "Ice Monsters Slain", 8);
+            Core.EnsureComplete(5606);
+        }
 
         // The Stars Have Foretold
         Story.MapItemQuest(5607, "icepike", new[] { 5086, 5087 });
 
         // Continue this Path
-        Story.MapItemQuest(5608, "icepike", 5088, 5);
-        Story.KillQuest(5608, "icepike", "Ice Lord");
+        if (!Story.QuestProgression(5608))
+        {
+            Core.EnsureAccept(5608);
+            Core.GetMapItem(5088, 5, "icepike");
+            Core.HuntMonster("icepike", "Ice Lord", "Frozen Crystals", 5);
+            Core.EnsureComplete(5608);
+        }
 
         // Cross the Ice Bridge
         Story.MapItemQuest(5609, "icepike", 5089);
@@ -993,15 +1023,26 @@ public class CoreFrostvale
         Story.PreLoad(this);
 
         // 8423 Scout the Area,
-        Story.MapItemQuest(8423, "deerhunt", 9372);
-        Story.KillQuest(8423, "deerhunt", "Deer?");
+        if (!Story.QuestProgression(8423))
+        {
+            Core.EnsureAccept(8423);
+            Core.GetMapItem(9372, 1, "deerhunt");
+            Core.HuntMonster("deerhunt", "Deer?", "Animals Defeated", 8);
+            Core.EnsureComplete(8423);
+        }
 
         // 8424 Deer?
         Story.KillQuest(8424, "deerhunt", "Deer?");
 
         // 8425 Comparing Claws
-        Story.MapItemQuest(8425, "deerhunt", 9373, 4);
-        Story.KillQuest(8425, "deerhunt", new[] { "Frightened Owl", "Scared Wolf" });
+        if (!Story.QuestProgression(8425))
+        {
+            Core.EnsureAccept(8425);
+            Core.GetMapItem(9373, 4, "deerhunt");
+            Core.HuntMonster("deerhunt", "Frightened Owl", "Owl Talon Sample", 8);
+            Core.HuntMonster("deerhunt", "Scared Wolf", "Wolf Claw Sample", 8);
+            Core.EnsureComplete(8425);
+        }
 
         // 8426 Lair Investigated
         Story.MapItemQuest(8426, "deerhunt", new[] { 9374, 9375 });

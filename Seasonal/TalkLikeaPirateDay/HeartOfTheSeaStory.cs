@@ -43,8 +43,13 @@ public class HeartOfTheSeaStory
         Story.KillQuest(6512, "HeartOfTheSea", "Merdraconian");
 
         // Reveal the Ship 6513
-        Story.MapItemQuest(6513, "HeartOfTheSea", 5999, 5);
-        Story.KillQuest(6513, "HeartOfTheSea", "Jellyfish");
+        if (!Story.QuestProgression(6513))
+        {
+            Core.EnsureAccept(6513);
+            Core.GetMapItem(5999, 5, "HeartOfTheSea");
+            Core.HuntMonster("heartofthesea", "Jellyfish", "Jellyfish Stingers", 8);
+            Core.EnsureComplete(6513);
+        }
 
         // Find the Way In 6514
         Story.MapItemQuest(6514, "HeartOfTheSea", 6000);
@@ -66,8 +71,13 @@ public class HeartOfTheSeaStory
         }
 
         // Find the Hold 6518
-        Story.MapItemQuest(6518, "HeartOfTheSea", 6002, 5);
-        Story.KillQuest(6518, "HeartOfTheSea", "Jellyfish");
+        if (!Story.QuestProgression(6518))
+        {
+            Core.EnsureAccept(6518);
+            Core.GetMapItem(6002, 5, "HeartOfTheSea");
+            Core.HuntMonster("heartofthesea", "Jellyfish", "BIG Stingers", 5);
+            Core.EnsureComplete(6518);
+        }
 
         // Get that Treasure!  6519
         Story.MapItemQuest(6519, "HeartOfTheSea", 6003);

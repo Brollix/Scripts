@@ -37,8 +37,13 @@ public class IceStorm
         Story.MapItemQuest(6423, "icestorm", new[] { 5925, 5926, 5927 });
 
         // 6424|A Test of Alliance
-        Story.MapItemQuest(6424, "lair", 5928);
-        Story.KillQuest(6424, "lair", "Wyvern");
+        if (!Story.QuestProgression(6424))
+        {
+            Core.EnsureAccept(6424);
+            Core.GetMapItem(5928, 1, "lair");
+            Core.HuntMonster("lair", "Wyvern", "Wyvern Defeated", 6);
+            Core.EnsureComplete(6424);
+        }
 
         // 6425|Inspiring the Young
         if (!Story.QuestProgression(6425))

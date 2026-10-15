@@ -37,8 +37,13 @@ public class TempleSiege
         Story.PreLoad(this);
 
         //Fairweather Elementals || 9058
-        Story.MapItemQuest(9058, "templesiege", 11129, 8);
-        Story.KillQuest(9058, "templesiege", "Light Elemental");
+        if (!Story.QuestProgression(9058))
+        {
+            Core.EnsureAccept(9058);
+            Core.GetMapItem(11129, 8, "templesiege");
+            Core.HuntMonster("templesiege", "Light Elemental", "Solidified Light", 8);
+            Core.EnsureComplete(9058);
+        }
 
         //In Case of Emergency || 9059
         Story.KillQuest(9059, "templesiege", "Overdriven Paladin");

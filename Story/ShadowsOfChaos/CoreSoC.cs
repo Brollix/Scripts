@@ -175,8 +175,13 @@ public class CoreSoC
         Story.KillQuest(7692, "lagunabeach", "ShadowChaos Brigand");
 
         //Ground Kelp? 7693
-        Story.MapItemQuest(7693, "lagunabeach", 7637, 5);
-        Story.KillQuest(7693, "lagunabeach", "Chaos Kelp");
+        if (!Story.QuestProgression(7693))
+        {
+            Core.EnsureAccept(7693);
+            Core.GetMapItem(7637, 5, "lagunabeach");
+            Core.HuntMonster("lagunabeach", "Chaos Kelp", "Kelp Sample", 8);
+            Core.EnsureComplete(7693);
+        }
 
         //Slug 'em! 7694
         Story.KillQuest(7694, "lagunabeach", "ShadowChaos Brigand");
@@ -192,8 +197,13 @@ public class CoreSoC
         Story.KillQuest(7697, "lagunabeach", "ShadowChaos Brigand");
 
         //Blow it up! 7698
-        Story.MapItemQuest(7698, "lagunabeach", 7640);
-        Story.KillQuest(7698, "lagunabeach", "ShadowChaos Gunner");
+        if (!Story.QuestProgression(7698))
+        {
+            Core.EnsureAccept(7698);
+            Core.GetMapItem(7640, 1, "lagunabeach");
+            Core.HuntMonster("lagunabeach", "ShadowChaos Gunner", "Grenade", 5);
+            Core.EnsureComplete(7698);
+        }
 
         //The Heart of the Matter 7699
         Story.KillQuest(7699, "lagunabeach", "Heart of Chaos");
@@ -224,8 +234,13 @@ public class CoreSoC
         Story.KillQuest(7704, "laguna", "ShadowChaos Gunner");
 
         //Blow 'er Up! 7705
-        Story.MapItemQuest(7705, "laguna", 7676);
-        Story.KillQuest(7705, "laguna", "ShadowChaos Gunner");
+        if (!Story.QuestProgression(7705))
+        {
+            Core.EnsureAccept(7705);
+            Core.GetMapItem(7676, 1, "laguna");
+            Core.HuntMonster("laguna", "ShadowChaos Gunner", "Matchstick", 4);
+            Core.EnsureComplete(7705);
+        }
 
         //Defeat the Captain 7706
         Story.KillQuest(7706, "laguna", "Captain Laguna");
@@ -240,8 +255,13 @@ public class CoreSoC
         Story.KillQuest(7709, "laguna", "Chaos Burrower");
 
         //Find the Amulet 7710
-        Story.MapItemQuest(7710, "laguna", 7678);
-        Story.KillQuest(7710, "laguna", "ShadowChaos Brigand");
+        if (!Story.QuestProgression(7710))
+        {
+            Core.EnsureAccept(7710);
+            Core.GetMapItem(7678, 1, "laguna");
+            Core.HuntMonster("laguna", "ShadowChaos Brigand", "Monster Slain", 9);
+            Core.EnsureComplete(7710);
+        }
 
         //Retrieve the Amulet 7711
         Story.KillQuest(7711, "laguna", "Writhing Chaos");
@@ -271,8 +291,13 @@ public class CoreSoC
         }
 
         //Rescue Needed
-        Story.MapItemQuest(7729, "Shadowoff", 7699, 6);
-        Story.KillQuest(7729, "Shadowoff", "Shadowflame Sorcerer");
+        if (!Story.QuestProgression(7729))
+        {
+            Core.EnsureAccept(7729);
+            Core.GetMapItem(7699, 6, "Shadowoff");
+            Core.HuntMonster("shadowoff", "Shadowflame Sorcerer", "Sorcerer Slain", 6);
+            Core.EnsureComplete(7729);
+        }
 
         //Get their Intel
         Story.KillQuest(7730, "Shadowoff", "Shadowflame Militia");
@@ -358,12 +383,22 @@ public class CoreSoC
         }
 
         //Pants On Fire 7743
-        Story.MapItemQuest(7743, "BrightChaos", 7731, 6);
-        Story.KillQuest(7743, "BrightChaos", "Shadow Flame");
+        if (!Story.QuestProgression(7743))
+        {
+            Core.EnsureAccept(7743);
+            Core.GetMapItem(7731, 6, "BrightChaos");
+            Core.HuntMonster("brightchaos", "Shadow Flame", "Shadow Flame Slain", 10);
+            Core.EnsureComplete(7743);
+        }
 
         //Scared of the Dark 7744
-        Story.MapItemQuest(7744, "BrightChaos", 7732, 5);
-        Story.KillQuest(7744, "BrightChaos", "Hidden Monster");
+        if (!Story.QuestProgression(7744))
+        {
+            Core.EnsureAccept(7744);
+            Core.GetMapItem(7732, 5, "BrightChaos");
+            Core.HuntMonster("brightchaos", "Hidden Monster", "Hidden Monster Slain", 10);
+            Core.EnsureComplete(7744);
+        }
 
         //Go Bye-Bye 7745
         Story.KillQuest(7745, "BrightChaos", "Shadow Trap");
@@ -429,8 +464,13 @@ public class CoreSoC
         Story.KillQuest(7759, "BrightForestPast", "Time Wraith");
 
         //Spacetime 7760
-        Story.MapItemQuest(7760, "BrightForestPast", 7753);
-        Story.KillQuest(7760, "BrightForestPast", "Spacetime Energy");
+        if (!Story.QuestProgression(7760))
+        {
+            Core.EnsureAccept(7760);
+            Core.GetMapItem(7753, 1, "BrightForestPast");
+            Core.HuntMonster("brightforestpast", "Spacetime Energy", "Spacetime Gathered", 6);
+            Core.EnsureComplete(7760);
+        }
 
         //Find Khasaanda 7761
         Story.MapItemQuest(7761, "BrightForestPast", 7756);

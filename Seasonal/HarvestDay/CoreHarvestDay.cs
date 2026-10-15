@@ -366,8 +366,13 @@ public class CoreHarvestDay
         Story.KillQuest(7219, "furblefeast", "Angry Furble");
 
         // Pollinate 7220
-        Story.MapItemQuest(7220, "furblefeast", 6843, 10);
-        Story.KillQuest(7220, "poisonforest", "Treeant");
+        if (!Story.QuestProgression(7220))
+        {
+            Core.EnsureAccept(7220);
+            Core.GetMapItem(6843, 10, "furblefeast");
+            Core.HuntMonster("poisonforest", "Treeant", "Treeant Pollen", 10);
+            Core.EnsureComplete(7220);
+        }
 
         // Mecha-Furbles 7221
         Story.KillQuest(7221, "furblefeast", "Mecha Furble");

@@ -42,8 +42,13 @@ public class Shinkansen
         Story.PreLoad(this);
 
         // Snack Run 8116
-        Story.MapItemQuest(8116, "Shinkansen", 8496, 3);
-        Story.KillQuest(8116, "Shinkansen", "Temptation 1");
+        if (!Story.QuestProgression(8116))
+        {
+            Core.EnsureAccept(8116);
+            Core.GetMapItem(8496, 3, "Shinkansen");
+            Core.HuntMonster("shinkansen", "Temptation 1", "Temptations Kicked", 3);
+            Core.EnsureComplete(8116);
+        }
 
         // Clean Up Crew 8117
         Story.KillQuest(8117, "Shinkansen", "Trash Pile");

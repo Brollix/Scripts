@@ -59,8 +59,13 @@ public class CoreFireIsland
         }
 
         //Light the Flame 4055
-        Story.MapItemQuest(4055, "Embersea", 3153, 22);
-        Story.KillQuest(4055, "Embersea", "Living Lava");
+        if (!Story.QuestProgression(4055))
+        {
+            Core.EnsureAccept(4055);
+            Core.GetMapItem(3153, 22, "Embersea");
+            Core.HuntMonster("embersea", "Living Lava", "Living Lava slain", 4);
+            Core.EnsureComplete(4055);
+        }
 
         //Kill It With Fire [Member] 4056
         if (Core.IsMember)
@@ -122,8 +127,13 @@ public class CoreFireIsland
         }
 
         //A Salve to Soothe
-        Story.MapItemQuest(4075, "pyrewatch", 3160, 5);
-        Story.KillQuest(4075, "pyrewatch", "Lavazard");
+        if (!Story.QuestProgression(4075))
+        {
+            Core.EnsureAccept(4075);
+            Core.GetMapItem(3160, 5, "pyrewatch");
+            Core.HuntMonster("pyrewatch", "Lavazard", "Glowing Embers", 5);
+            Core.EnsureComplete(4075);
+        }
 
         //Protect the Plague Sufferers 4076
         if (!Story.QuestProgression(4076))
@@ -206,19 +216,28 @@ public class CoreFireIsland
         }
 
         //Rumors and Smoke
-        Story.MapItemQuest(4131, "feverfew", 3245);
-        Story.KillQuest(
-            4131,
-            "feverfew",
-            new[] { "Firestorm Knight", "Firestorm Major", "Firestorm Knight", "Firestorm Major" }
-        );
+        if (!Story.QuestProgression(4131))
+        {
+            Core.EnsureAccept(4131);
+            Core.GetMapItem(3245, 1, "feverfew");
+            Core.HuntMonster("feverfew", "Firestorm Knight", "Intent Rumor", 3);
+            Core.HuntMonster("feverfew", "Firestorm Major", "Location Rumor", 2);
+            Core.HuntMonster("feverfew", "Firestorm Knight", "Fate Rumor", 2);
+            Core.HuntMonster("feverfew", "Firestorm Major", "Identity Rumor", 1);
+            Core.EnsureComplete(4131);
+        }
 
         //Dam the Flood
         Story.MapItemQuest(4132, "feverfew", 3244, 5);
 
         //Salvage Mission
-        Story.MapItemQuest(4133, "feverfew", 3243, 5);
-        Story.KillQuest(4133, "feverfew", "Twisted Undine");
+        if (!Story.QuestProgression(4133))
+        {
+            Core.EnsureAccept(4133);
+            Core.GetMapItem(3243, 5, "feverfew");
+            Core.HuntMonster("feverfew", "Twisted Undine", "Locatrix Animus Found", 1);
+            Core.EnsureComplete(4133);
+        }
 
         //Fear the Fog
         if (!Story.QuestProgression(4134))
@@ -339,8 +358,13 @@ public class CoreFireIsland
         Story.KillQuest(4207, "phoenixrise", "Pyrric Ursus");
 
         //Rune Chances of a Backstab
-        Story.MapItemQuest(4208, "phoenixrise", 3284, 7);
-        Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
+        if (!Story.QuestProgression(4208))
+        {
+            Core.EnsureAccept(4208);
+            Core.GetMapItem(3284, 7, "phoenixrise");
+            Core.HuntMonster("phoenixrise", "Infernal Goblin ", "Infernal Goblin Slain", 6);
+            Core.EnsureComplete(4208);
+        }
 
         //Clear out the Caverns
         if (!Story.QuestProgression(4209))

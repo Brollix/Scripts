@@ -14215,8 +14215,8 @@
       "null"
     ],
     "path": "Other/MergeShops/ShadowSlayerKMerge.cs",
-    "size": 12764,
-    "sha256": "a068716e54a8cd7a387a5cde489a27744bcf8b965a5abd8689a9fbbf0ac893dc",
+    "size": 12772,
+    "sha256": "dc12363ad79cd4e657bf64b6a5ef45d18adb94189dcbd56d24a3110b69b2595a",
     "fileName": "ShadowSlayerKMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/ShadowSlayerKMerge.cs"
   },
@@ -29785,8 +29785,8 @@
       "developer"
     ],
     "path": "Tools/ForDevelopers/CaseStorage.cs",
-    "size": 1120155,
-    "sha256": "343148ee0379c57a1608023060cb5b58ca199f93d4003f0b383078617afe8e97",
+    "size": 1120179,
+    "sha256": "7207bea5a86f0dd13070ac068ba3f3bf718c34f7000e286a763ac2893217e754",
     "fileName": "CaseStorage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/CaseStorage.cs"
   },

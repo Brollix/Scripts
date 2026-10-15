@@ -18,8 +18,8 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 176265,
-    "sha256": "d1c7eb6d33eca97ec4502eba38d50074e05d78ba60dae9357f3e4b8ad5d2943f",
+    "size": 176930,
+    "sha256": "da608c212491d878a3d26957b93640ede911aa8cc19fe4d80b8d3df85464457f",
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -42,8 +42,8 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 56249,
-    "sha256": "61c13d80522f0627743a7e39346ac9a4af5db2684a57975c3a4a3298cfc7163f",
+    "size": 55901,
+    "sha256": "bc19d3c578eaac34cba1999723be89bfad3da48091503a5c2907ce051abc169a",
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/CoreStory.cs"
   },
@@ -54,8 +54,8 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 468607,
-    "sha256": "55e89aabda2babc9beebbf8e6784742a381a43a4f4612f27e528bb38dab0fb08",
+    "size": 469072,
+    "sha256": "b651fa79a4a2724ac371f9c3951170ca9a166ccbe2b12b80b04b99d3a5bd09a7",
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/CoreBots.cs"
   },
@@ -266,8 +266,8 @@
       "queen iona"
     ],
     "path": "Ultras/QueenIona.cs",
-    "size": 7602,
-    "sha256": "99f30489ce487eb9bbfe20158a1100a44229e16f99b538ca0386734ec351ae40",
+    "size": 7632,
+    "sha256": "aba2c8113eec8b025715bd158fd473c6f3737de95dd21a42b5d4918732077f64",
     "fileName": "QueenIona.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultras/QueenIona.cs"
   },
@@ -18752,8 +18752,8 @@
       "roblox"
     ],
     "path": "Other/FreeAcGifts[Yearly]/202xFreeAcs.cs",
-    "size": 1534,
-    "sha256": "58090a36a5181f74ef61a2b15efe9db78aefa3947a86766be764d2a6c1caae74",
+    "size": 1458,
+    "sha256": "4385d78c671a65e505abe313ae3374a37b87719ff2ffc1f3459fb9bdada1e3ed",
     "fileName": "202xFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/FreeAcGifts[Yearly]/202xFreeAcs.cs"
   },
@@ -25669,7 +25669,7 @@
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
     "size": 84975,
-    "sha256": "917db7f052264791372c2077e8826f0337409bd38db18647e0ee104667d9a46d",
+    "sha256": "5bf13560a5dd4ebb343e567009956d84a60045d722556068b0c4064214bc3035",
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -28425,8 +28425,8 @@
       "queen iona"
     ],
     "path": "Ultrasv3/DependenciesMerge/QueenIona.cs",
-    "size": 7614,
-    "sha256": "436eb2a00843368fe31f53201444b62f3e12676c11b522720414737ca01b0095",
+    "size": 8187,
+    "sha256": "4d265e377cfc856fd34303189c5e4a4225e833f5fb3eda0d84448871a2debd3d",
     "fileName": "QueenIona.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultrasv3/DependenciesMerge/QueenIona.cs"
   },
@@ -29701,8 +29701,8 @@
       "v3"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFilesv4.cs",
-    "size": 19753,
-    "sha256": "5ac5394eee426661b06b2b6b88191096e51aaaf93a4d2146a14f5208bad53d27",
+    "size": 19745,
+    "sha256": "f313d148fea0f9d5f60362d23ccf78ddc7e4e4ca1a02ec4baebdee40b71678d4",
     "fileName": "GenerateQuestFilesv4.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFilesv4.cs"
   },
@@ -29737,6 +29737,24 @@
     "sha256": "50f7b6eca1e03d6ed0a87cd48e5c26854c4f3a775018e8a9525e93f28f46a8f7",
     "fileName": "ScriptMainCleaner.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/ScriptMainCleaner.cs"
+  },
+  {
+    "name": "Weekly Release Generator v3",
+    "description": "Reads every quest chain from a location SWF and matches requirements to live monsterDrops packets. Uses explicit hunts for quests requiring multiple monsters.",
+    "tags": [
+      "developer",
+      "generator",
+      "story",
+      "quests",
+      "drops",
+      "packets",
+      "v3"
+    ],
+    "path": "Tools/ForDevelopers/WeeklyReleaseGeneratorV3.cs",
+    "size": 37966,
+    "sha256": "a4dea98bd7623dc67708731942215b8a291c731f1401e710c6427f62a9f9b2b3",
+    "fileName": "WeeklyReleaseGeneratorV3.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Tools/ForDevelopers/WeeklyReleaseGeneratorV3.cs"
   },
   {
     "name": "Weekly Release Generator v2",

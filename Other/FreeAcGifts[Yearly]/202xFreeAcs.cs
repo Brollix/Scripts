@@ -6,14 +6,12 @@ tags: acs, free, roblox
 
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/Borgars.cs
 using Skua.Core.Interfaces;
 
 public class FreeAcs
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private Borgars borgars => new();
     private static CoreFarms Farm
     {
         get => _Farm ??= new CoreFarms();

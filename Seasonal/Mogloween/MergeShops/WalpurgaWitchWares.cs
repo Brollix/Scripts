@@ -51,13 +51,13 @@ public class WalpurgaWitchWares
             "Upsizer",
         ]);
         Core.SetOptions();
-		Mog.BirgittaMogloween();
         BuyAllMerge();
         Core.SetOptions(false);
     }
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+		Mog.BirgittaMogloween();
         Adv.StartBuyAllMerge("birgittamogloween", 2780, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         void findIngredients()

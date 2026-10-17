@@ -79,12 +79,35 @@ public class WalpurgaWitchWares
                     break;
                 case "Hollyhock Brew":
                     Core.FarmingLogger(req.Name, quant);
+					Core.EquipClass(ClassType.Solo);
+					Monster? ensis;
+                    Monster? grigor;
                     Core.RegisterQuests(Core.IsMember ? 10907 : 10906);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("birgittamogloween", "Alpha Grigor", "Grigor's Silver Tooth", 1);
-                        Core.HuntMonster("birgittamogloween", "Champion Ensis", "Cor Mortis Cosage", 1);
+						if (Bot.Map.Name != "birgittamogloween")
+                            Core.Join("birgittamogloween");
+
+                        if (Bot.Player.Cell != "r6")
+                            Core.Jump("r6", "Left");
+
+                        ensis = Bot.Monsters.CurrentAvailableMonsters?.FirstOrDefault(m => m?.Alive == true && m.MapID == 16);
+                        grigor = Bot.Monsters.CurrentAvailableMonsters?.FirstOrDefault(m => m?.Alive == true && m.MapID == 17);
+						
+						if (Bot.TempInv.Contains("Cor Mortis Cosage") && ensis != null)
+                            Bot.Combat.Attack(16);
+
+                        else if (Bot.TempInv.Contains("Grigor's Silver Tooth") && grigor != null)
+                            Bot.Combat.Attack(17);
+
+                        // If both drops owned OR priority mob dead → kill the other for respawn sync
+                        else if (ensis != null)
+                            Bot.Combat.Attack(16);
+
+                        else if (grigor != null)
+                            Bot.Combat.Attack(17);
+						Bot.Sleep(200);
+						Bot.Wait.ForQuestComplete(Core.IsMember ? 10907 : 10906);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -96,8 +119,6 @@ public class WalpurgaWitchWares
                 case "Strikini Witch Morph":
 					Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Monster? ensis;
-                    Monster? grigor;
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         if (Bot.Map.Name != "birgittamogloween")

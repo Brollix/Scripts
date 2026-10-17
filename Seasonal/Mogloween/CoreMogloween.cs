@@ -49,6 +49,7 @@ public class CoreMogloween
         Eldritchbattletown();
         EldritchWorld();
         ElodeaTemple();
+		BirgittaMogloween();
     }
 
     public void Mogloween()
@@ -1239,5 +1240,61 @@ public class CoreMogloween
         {
             Core.HuntMonsterQuest(10478, ("elodeatemple", UseableMonsters[6], ClassType.Solo));
         }
+    }
+	
+	public void BirgittaMogloween()
+    {
+        if (Core.isCompletedBefore(10905)|| !Core.isSeasonalMapActive("birgittamogloween"))
+            return;
+
+        Story.PreLoad(this);
+
+        string[] UseableMonsters =
+        [
+            "Alpha Grigor", // UseableMonsters[0]
+            "Champion Ensis", // UseableMonsters[1]
+            "Lycan Guest", // UseableMonsters[2]
+            "Nazarene Artist", // UseableMonsters[3]
+            "ShadowSlayer", // UseableMonsters[4]
+            "Vampiric Guest", // UseableMonsters[5]
+        ];
+
+        // 10896 | Silver of the Crossroads
+        Story.KillQuest(10896, "birgittamogloween", UseableMonsters[4]); // Silver Bullets x36
+
+        // 10897 | Lilies of the Valley
+        Story.MapItemQuest(10897, "birgittamogloween", [16281, 16282]);
+
+        // 10898 | Blue Blooms
+        Story.KillQuest(10898, "birgittamogloween", UseableMonsters[3]); // Teal Resin x15
+
+        // 10899 | Wise Beyond Years
+        Story.MapItemQuest(10899, "birgittamogloween", [16283, 16284]);
+		Story.MapItemQuest(10899, "birgittamogloween", 16285, 5);
+
+        // 10900 | Dog Breath
+        Story.KillQuest(10900, "birgittamogloween", UseableMonsters[2]); // Pickled Garlic x8
+
+        // 10901 | Love Knows No Bounds
+        Story.MapItemQuest(10901, "birgittamogloween", [16286, 16287]);
+
+        // 10902 | Poison Perfume
+        Story.KillQuest(10902, "birgittamogloween", UseableMonsters[5]); // Wolfsbane Perfume x2
+
+        // 10903 | Naiver Vogel
+        Story.MapItemQuest(10903, "birgittamogloween", 16288);
+        Story.KillQuest(10903, "birgittamogloween", UseableMonsters[3]); // Blue Cork Grease x5
+
+        // 10904 | Fighting Like Bats and Dogs
+        Core.EnsureAccept(10904);
+        Core.HuntMonster("birgittamogloween", UseableMonsters[2], "Darkovian Fur", 9);
+        Core.HuntMonster("birgittamogloween", UseableMonsters[5], "Darkovian Silk", 9);
+        Core.EnsureComplete(10904);
+
+        // 10905 | The Opening Act
+        Core.EnsureAccept(10905);
+        Core.HuntMonster("birgittamogloween", UseableMonsters[1], "Champion Ensis Defeated", 1);
+        Core.HuntMonster("birgittamogloween", UseableMonsters[0], "Alpha Grigor Defeated", 1);
+        Core.EnsureComplete(10905);
     }
 }

@@ -7892,8 +7892,8 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/CoreMogloween.cs",
-    "size": 38867,
-    "sha256": "3de3beed533d2da0cfe382fa571fb386325487843940bab1df5ecd313a3fe834",
+    "size": 41141,
+    "sha256": "175d75c49854a6bc87699948b1186127a225389ac4abfeb6c4bec5cd8413716a",
     "fileName": "CoreMogloween.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
   },
@@ -7950,6 +7950,21 @@
     "sha256": "063cdd747d9ce68aeea6477ea412c6d09f88cce97eea169964495ecae8d9df12",
     "fileName": "07MystcroftForestStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/Mogloween/07MystcroftForestStory.cs"
+  },
+  {
+    "name": "BirgittaMogloween",
+    "description": "Completes the quest chain in /birgittamogloween.",
+    "tags": [
+      "birgittamogloween",
+      "story",
+      "quests",
+      "birgittamogloween"
+    ],
+    "path": "Seasonal/Mogloween/18BirgittaMogloween.cs",
+    "size": 814,
+    "sha256": "0fb5b96b8fb710166616459387b7f0a81ac9e3845e1490677ac18fdbd50771ca",
+    "fileName": "18BirgittaMogloween.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/Mogloween/18BirgittaMogloween.cs"
   },
   {
     "name": "Asylum Story",
@@ -31034,6 +31049,23 @@
     "sha256": "d1c327e382046d39dd7d5cbc0b6065ef5a2b44b59dd27d6edd699037b3458339",
     "fileName": "MogloweenSeasonalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/Mogloween/MergeShops/MogloweenSeasonalMerge.cs"
+  },
+  {
+    "name": "Walpurga Witch Wares Merge",
+    "description": "Farms the Walpurga Witch Wares Merge [2780] in /birgittamogloween.",
+    "tags": [
+      "birgittamogloween",
+      "merge",
+      "walpurga",
+      "witch",
+      "wares",
+      "merge"
+    ],
+    "path": "Seasonal/Mogloween/MergeShops/WalpurgaWitchWares.cs",
+    "size": 9334,
+    "sha256": "5bef7fb00c8acb13bd04dcdc903212f4ddf9afafcd111206b60745a23c330630",
+    "fileName": "WalpurgaWitchWares.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Seasonal/Mogloween/MergeShops/WalpurgaWitchWares.cs"
   },
   {
     "name": "Feast of the Depths Merge",

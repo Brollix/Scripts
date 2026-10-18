@@ -60,10 +60,11 @@ public class KathoolAdeptPrerequisites
 	
 	public void FarmPreReqs(bool BuyItems = false)
     {
-        if (Core.CheckInventory("Adeptus Kathooli"))
+        if (Core.CheckInventory("Adeptus Kathooli")){
 			Core.Logger("Prerequisites already in inventory (Adeptus Kathooli)");
             return;
-		
+		}
+			
 		Core.Logger("Farming Prerequisites");
 		
         SSM.BuyAllMerge("Ashray Villager");

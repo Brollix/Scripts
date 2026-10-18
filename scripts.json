@@ -29989,6 +29989,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/FourHarbingers/Fame.cs"
   },
   {
+    "name": "Kathool Adept Class Prerequisites",
+    "description": "This script will farm for Kathool Adept Prerequisites.",
+    "tags": [
+      "ageofruin",
+      "kathool adept",
+      "fishing",
+      "somnia"
+    ],
+    "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
+    "size": 3533,
+    "sha256": "180bf627379667776c4c88bda5088232cb2a22869d843d7222a26caa768003ce",
+    "fileName": "KathoolAdeptPrerequisite.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
+  },
+  {
     "name": "New Year Story",
     "description": "This will complete the New Year story.",
     "tags": [

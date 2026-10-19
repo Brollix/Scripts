@@ -14462,7 +14462,7 @@
     ],
     "path": "Other/MergeShops/AbyssalZoneMerge.cs",
     "size": 7498,
-    "sha256": "3d6f26beec21b60bb5d06d51d37c98c5919611cf8c240df53ba56be19d5ae5ec",
+    "sha256": "81d143cdaa4288babcb56a5cb8571109c417fc53400641a81e7b349e8cf4548d",
     "fileName": "AbyssalZoneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/AbyssalZoneMerge.cs"
   },
@@ -16779,8 +16779,8 @@
       "trident"
     ],
     "path": "Other/MergeShops/SeaVoiceMerge.cs",
-    "size": 13544,
-    "sha256": "656d2c3680f5fc5beeea3a9a274337bd0d2a43ca193322d5afecd5f7bff3dad6",
+    "size": 13574,
+    "sha256": "b791934b5f7bb89ad3604f44d41a9c043c9633bc157885a703afa8d293c30686",
     "fileName": "SeaVoiceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
   },

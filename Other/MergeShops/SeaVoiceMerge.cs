@@ -198,8 +198,8 @@ public class SeaVoiceMerge
 
         Core.RegisterQuests(9349);
         Core.EquipClass(ClassType.Solo);
-        Core.AddDrop("Algal Bloom");
-        Core.Unbank("Algal Bloom");
+        Core.AddDrop("Algal Bloom", $"{itemName}");
+        Core.Unbank("Algal Bloom", $"{itemName}");
         Adv.GearStore(EnhAfter: true);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quant))

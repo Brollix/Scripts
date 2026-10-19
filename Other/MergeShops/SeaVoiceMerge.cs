@@ -174,8 +174,6 @@ public class SeaVoiceMerge
         // Define the possible solo classes
         string[] PossibleSoloClasses = new[]
         {
-            "Chrono ShadowHunter",
-            "Chrono ShadowSlayer",
             "Chaos Avenger",
             "Verus DoomKnight",
             "Hollowborn Vindicator",

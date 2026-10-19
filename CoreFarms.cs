@@ -1390,6 +1390,7 @@ public class CoreFarms
         YewMountainsREP();
         YokaiREP();
         CarcossaCourtRep();
+        SkyeREP();
         if (doDeathPit)
         {
             DeathPitBrawlREP();

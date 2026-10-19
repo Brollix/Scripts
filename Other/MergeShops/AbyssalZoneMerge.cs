@@ -98,7 +98,7 @@ public class AbyssalZoneMerge
 
                 case "Undine Base Scrip":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("abyssalzone", "Kitefin Shark Bait", req.Name, quant, false, false);
                     break;
 

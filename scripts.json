@@ -14461,8 +14461,8 @@
       "streams"
     ],
     "path": "Other/MergeShops/AbyssalZoneMerge.cs",
-    "size": 7555,
-    "sha256": "c6cd90e182ecb9d5362663bb78e5383fa370967bc8da12dfa2cff81aa3f98bf5",
+    "size": 7498,
+    "sha256": "3d6f26beec21b60bb5d06d51d37c98c5919611cf8c240df53ba56be19d5ae5ec",
     "fileName": "AbyssalZoneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/AbyssalZoneMerge.cs"
   },
@@ -15774,8 +15774,8 @@
       "hook"
     ],
     "path": "Other/MergeShops/SeaviewSouvenirsMerge.cs",
-    "size": 7222,
-    "sha256": "0665a09d1e0e0a8617de74daa5e88cfeaf3feb20818c2b3a9eea14bc69942eb0",
+    "size": 7315,
+    "sha256": "cc9a9b9385006f2e362225a186afaaf8387a6039b14b22cd695be20417a8dc1a",
     "fileName": "SeaviewSouvenirsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/SeaviewSouvenirsMerge.cs"
   },
@@ -16779,8 +16779,8 @@
       "trident"
     ],
     "path": "Other/MergeShops/SeaVoiceMerge.cs",
-    "size": 13785,
-    "sha256": "a1946e2703303fab050f38fd7059a248d66e68231d839acd85b21eef7a50d1de",
+    "size": 13544,
+    "sha256": "656d2c3680f5fc5beeea3a9a274337bd0d2a43ca193322d5afecd5f7bff3dad6",
     "fileName": "SeaVoiceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
   },
@@ -25684,7 +25684,7 @@
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
     "size": 92118,
-    "sha256": "5694b8fe96096c644801059eee1dae7f24290726448dcbd3f6a7b838b9a853a6",
+    "sha256": "e777ca2a4a863008d7e0518400b88b58691e5252ac4f3d6d73513787712eddb1",
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -28096,8 +28096,8 @@
       "null"
     ],
     "path": "Story/Doomwood/CoreDoomwood.cs",
-    "size": 37760,
-    "sha256": "0001c83274a7ccc575c0ed554b472ba7ae561c3e3994084e744dd4ccd45e635c",
+    "size": 37758,
+    "sha256": "49506481a9dbb761f201bc755eef1b928ee958e66d29267deb7855c882584989",
     "fileName": "CoreDoomwood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/Doomwood/CoreDoomwood.cs"
   },
@@ -29998,8 +29998,8 @@
       "somnia"
     ],
     "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
-    "size": 3540,
-    "sha256": "96266aa7c000c81482a4612d60ca27908af1648ef84d108b8b85f00f91c5a286",
+    "size": 4114,
+    "sha256": "b435807d1f910cf86dd8b484d1f17dea20ea5946fa89d55433e70f771348b61b",
     "fileName": "KathoolAdeptPrerequisite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
   },

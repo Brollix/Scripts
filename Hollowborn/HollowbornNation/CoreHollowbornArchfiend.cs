@@ -115,7 +115,7 @@ public class CoreHollowbornArchfiend
             : Bot.Config.Get<RolesUnreversed.Rewards>("Roles Unreversed");
 
         if (fiendsShadowReward != InTheFiendsShadow.Rewards.None)
-            ITFS.FiendsShadow(fiendsShadowReward);
+            GetFiendsShadowRewards(fiendsShadowReward);
         if (!Bot.ShouldExit)
         {
             if (fiendsPurgatoryReward != FiendsPurgatory.Rewards.None)
@@ -125,7 +125,46 @@ public class CoreHollowbornArchfiend
             MP.DoMuddledPast();
         if (!Bot.ShouldExit)
             TaP.DoTugandPull();
-        if (!Bot.ShouldExit)
-            RU.DoRolesUnreversed(rolesUnreversedReward);
+        if (!Bot.ShouldExit && rolesUnreversedReward != RolesUnreversed.Rewards.None)
+            GetRolesUnreversedRewards(rolesUnreversedReward);
+    }
+
+    private void GetFiendsShadowRewards(InTheFiendsShadow.Rewards reward)
+    {
+        if (reward == InTheFiendsShadow.Rewards.All)
+        {
+            foreach (InTheFiendsShadow.Rewards selectedReward in Enum.GetValues<InTheFiendsShadow.Rewards>())
+            {
+                if (Bot.ShouldExit)
+                    return;
+                if (selectedReward != InTheFiendsShadow.Rewards.All && selectedReward != InTheFiendsShadow.Rewards.None)
+                    ITFS.FiendsShadow(selectedReward);
+            }
+            return;
+        }
+
+        ITFS.FiendsShadow(reward);
+    }
+
+    private void GetRolesUnreversedRewards(RolesUnreversed.Rewards reward)
+    {
+        if (reward == RolesUnreversed.Rewards.All)
+        {
+            foreach (RolesUnreversed.Rewards selectedReward in Enum.GetValues<RolesUnreversed.Rewards>())
+            {
+                if (Bot.ShouldExit)
+                    return;
+                if (selectedReward != RolesUnreversed.Rewards.All && selectedReward != RolesUnreversed.Rewards.None)
+                    GetRolesUnreversedReward(selectedReward);
+            }
+            return;
+        }
+
+        GetRolesUnreversedReward(reward);
+    }
+
+    private void GetRolesUnreversedReward(RolesUnreversed.Rewards reward)
+    {
+        RU.DoRolesUnreversed(reward);
     }
 }

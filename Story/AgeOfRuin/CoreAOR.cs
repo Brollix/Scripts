@@ -2017,7 +2017,7 @@ public class CoreAOR
 
                 if (_voiceChargeDetected)
                 {
-                    while (!Bot.ShouldExit && Bot.Player.Alive && !Bot.Self.HasActiveAura("Vigil"))
+                    while (!Bot.ShouldExit && Bot.Player.Alive && Bot.Player.HasTarget && !Bot.Self.HasActiveAura("Vigil"))
                     {
                         if (Bot.Skills.CanUseSkill(5))
                             Bot.Skills.UseSkill(5);
@@ -2025,7 +2025,7 @@ public class CoreAOR
                     }
                     _voiceChargeDetected = false;
                     Bot.Skills.Resume();
-                    if (!Bot.ShouldExit && Bot.Player.Alive)
+                    if (!Bot.ShouldExit && Bot.Self.HasActiveAura("Vigil"))
                         Core.Logger("Vigil active. Class skills resumed.");
                     continue;
                 }

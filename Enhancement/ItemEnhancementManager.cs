@@ -23,7 +23,12 @@ public class ItemEnhancementManager
     // Retain the prototype storage key so existing item selections are preserved.
     public string OptionsStorage = "ItemEnhancementPrototype";
     public bool DontPreconfigure = true;
-    public string[] MultiOptions = { "Weapon", "Helm", "Cape" };
+    public string[] MultiOptions = { "Weapon", "Helm", "Cape", "Skip_Options" };
+
+    public List<IOption> Skip_Options = new()
+    {
+        CoreBots.Instance.SkipOptions,
+    };
 
     public List<IOption> Weapon = new()
     {
@@ -69,7 +74,8 @@ public class ItemEnhancementManager
 
     public void ScriptMain(IScriptInterface bot)
     {
-        bot.Config!.Configure();
+        if (!bot.Config!.Get<bool>(Core.SkipOptions))
+            bot.Config.Configure();
         if (Bot.ShouldExit)
             return;
 
@@ -98,6 +104,9 @@ public class ItemEnhancementManager
     {
         foreach (string category in MultiOptions)
         {
+            if (category == "Skip_Options")
+                continue;
+
             for (int index = 1; index <= 5; index++)
             {
                 if (Bot.ShouldExit)

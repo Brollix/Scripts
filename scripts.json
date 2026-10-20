@@ -54,8 +54,8 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 469072,
-    "sha256": "b651fa79a4a2724ac371f9c3951170ca9a166ccbe2b12b80b04b99d3a5bd09a7",
+    "size": 469161,
+    "sha256": "38f4d87d58ef5ae27f484aec020ea1f9b271bf24fa6f5b11a7c9bb747893819c",
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/CoreBots.cs"
   },
@@ -3774,6 +3774,23 @@
     "sha256": "1e4c85251dec3a32b96f2715ed2f750b8805a74c38b50d3be4d8eec8c0684ecf",
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
+  },
+  {
+    "name": "Item Enhancement Manager",
+    "description": "Unbanks and enhances selected weapons, helms, and capes, leaving them in inventory. Bypasses Disable AutoEnhance.",
+    "tags": [
+      "enhancement",
+      "unbank",
+      "weapon",
+      "helm",
+      "cape",
+      "inventory"
+    ],
+    "path": "Enhancement/ItemEnhancementManager.cs",
+    "size": 12123,
+    "sha256": "6a59cec525bdb2fbd5a6a274648c4cf3b9a9748b5f4b8ac15005d150cb28b727",
+    "fileName": "ItemEnhancementManager.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Enhancement/ItemEnhancementManager.cs"
   },
   {
     "name": "AllUltras",

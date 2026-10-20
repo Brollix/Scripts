@@ -4242,7 +4242,7 @@ public class CoreFarms
         if (!Bot.Quests.IsDailyComplete(10342))
         {
             Core.EnsureAccept(10342);
-            Core.KillMonster("thelimacity", "r6", "Left", "*", "Thelima Soldiers Trained", 100);
+            Core.KillMonster("thelimacity", "r6", "Left", "*", "Thelima Soldiers Trained", 100, isTemp: false);
             Core.EnsureComplete(10342);
         }
 

@@ -174,22 +174,11 @@ public class SeaVoiceMerge
     {
         string[] PossibleSoloClasses = new[]
         {
-            "Chaos Avenger",
-            "Verus DoomKnight",
-            "Hollowborn Vindicator",
-            "Lich",
             "ArchPaladin",
-            "Lord of Order",
-            "StoneCrusher",
-            "Dragon of Time",
-            "Unundead Goat",
         };
 
         if (!Core.CheckInventory(PossibleSoloClasses, any: true))
-            Core.Logger(
-                "No soloing classes found in inventory; stopping (go get AP at least and rerun)",
-                stopBot: true
-            );
+            Core.Logger("ArchPaladin not owned. Continuing with configured Solo class.");
 
         Core.RegisterQuests(9349);
         Core.EquipClass(ClassType.Solo);

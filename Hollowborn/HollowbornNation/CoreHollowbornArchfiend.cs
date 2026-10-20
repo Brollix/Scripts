@@ -114,21 +114,8 @@ public class CoreHollowbornArchfiend
             ? RolesUnreversed.Rewards.All
             : Bot.Config.Get<RolesUnreversed.Rewards>("Roles Unreversed");
 
-        if (getAllDrops)
-        {
-            foreach (InTheFiendsShadow.Rewards reward in Enum.GetValues<InTheFiendsShadow.Rewards>())
-            {
-                if (Bot.ShouldExit)
-                    break;
-                if (reward != InTheFiendsShadow.Rewards.All && reward != InTheFiendsShadow.Rewards.None)
-                    ITFS.FiendsShadow(reward);
-            }
-        }
-        else if (fiendsShadowReward != InTheFiendsShadow.Rewards.None)
-        {
+        if (fiendsShadowReward != InTheFiendsShadow.Rewards.None)
             ITFS.FiendsShadow(fiendsShadowReward);
-        }
-
         if (!Bot.ShouldExit)
         {
             if (fiendsPurgatoryReward != FiendsPurgatory.Rewards.None)
@@ -138,22 +125,7 @@ public class CoreHollowbornArchfiend
             MP.DoMuddledPast();
         if (!Bot.ShouldExit)
             TaP.DoTugandPull();
-        if (Bot.ShouldExit)
-            return;
-
-        if (getAllDrops)
-        {
-            foreach (RolesUnreversed.Rewards reward in Enum.GetValues<RolesUnreversed.Rewards>())
-            {
-                if (Bot.ShouldExit)
-                    break;
-                if (reward != RolesUnreversed.Rewards.All && reward != RolesUnreversed.Rewards.None)
-                    RU.DoRolesUnreversed(reward);
-            }
-        }
-        else if (rolesUnreversedReward != RolesUnreversed.Rewards.None)
-        {
+        if (!Bot.ShouldExit)
             RU.DoRolesUnreversed(rolesUnreversedReward);
-        }
     }
 }

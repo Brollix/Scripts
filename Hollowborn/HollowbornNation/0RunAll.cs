@@ -98,7 +98,11 @@ public class HBA0
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.RunCore();
+        Core.SetOptions();
+
+        GetAll();
+
+        Core.SetOptions(false);
     }
 
     public void GetAll()

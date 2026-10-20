@@ -11022,6 +11022,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Hollowborn/HollowbornNation/1InTheFiendsShadow.cs"
   },
   {
+    "name": "Hollowborn Archfiend - Run All",
+    "description": "does all of Hollowborn Archfiend",
+    "tags": [
+      "hollowborn",
+      "hollowborn archfiend",
+      "hollowbornarchfiend",
+      "hollowborn nation",
+      "do all",
+      "run all"
+    ],
+    "path": "Hollowborn/HollowbornNation/0RunAll.cs",
+    "size": 5995,
+    "sha256": "549497c1bd389e6ed642acefea734e735663fee594db006ba08a54ed08c90509",
+    "fileName": "0RunAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Hollowborn/HollowbornNation/0RunAll.cs"
+  },
+  {
     "name": "Roles Unreversed",
     "description": "Completes the 'Roles Unreversed' quest [10793], drops Void Soul.",
     "tags": [
@@ -11031,8 +11048,8 @@
       "void soul"
     ],
     "path": "Hollowborn/HollowbornNation/5RolesUnreversed.cs",
-    "size": 6590,
-    "sha256": "0c6dd4935cdd4c75be22a91227eacd6baf4f666f118c9ea3be5fac43060d8912",
+    "size": 6777,
+    "sha256": "30ed9dd4a5a9babbfc186818817fb28e8e779fcb03416107af780c3012f9b4db",
     "fileName": "5RolesUnreversed.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Hollowborn/HollowbornNation/5RolesUnreversed.cs"
   },

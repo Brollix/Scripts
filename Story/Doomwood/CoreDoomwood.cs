@@ -352,7 +352,7 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1131);
             Core.GetMapItem(459, 8, "temple");
-            Core.HuntMonster("temple", "Ghoul", "Ghouls Gone", 10);
+            Core.HuntMonster("temple", "Ghoul", "Ghouls Gone", 6);
             Core.EnsureComplete(1131);
         }
 

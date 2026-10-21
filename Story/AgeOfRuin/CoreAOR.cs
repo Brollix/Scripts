@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
 using Skua.Core.Models.Auras;
+using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Skills;
 
@@ -1987,6 +1988,21 @@ public class CoreAOR
             return;
         if (!isTemp)
             Core.AddDrop(item);
+
+        // Vainglory compounds the healing reduction from Voice in the Sea.
+        var cape = Bot.Inventory.Items.Find(i => i.Equipped
+            && i.Category == ItemCategory.Cape
+            && i.EnhancementPatternID == (int)CapeSpecial.Vainglory);
+        if (cape != null)
+            Adv.EnhanceItem(
+                cape.Name,
+                EnhancementType.Lucky,
+                CapeSpecial.None,
+                HelmSpecial.None,
+                WeaponSpecial.None,
+                logging: false,
+                bypassDisableAutoEnhance: true
+            );
 
         Core.Join("seavoice");
         Adv.BuyItem("seavoice", 2320, "Vigil", 1000, 12023);

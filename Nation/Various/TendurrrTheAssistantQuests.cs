@@ -52,6 +52,10 @@ public class TendurrrTheAssistantQuests
         Core.SetOptions(false);
     }
 
+    /// <summary>
+    /// Farms the selected Tendurrr The Assistant quest reward or all available rewards.
+    /// </summary>
+    /// <param name="reward">The reward to obtain, or All to obtain every reward.</param>
     public void TendurrItems(RewardsSelection reward = RewardsSelection.All)
     {
         Core.AddDrop(Nation.bagDrops);
@@ -62,31 +66,33 @@ public class TendurrrTheAssistantQuests
 
         Nation.FarmUni13(1);
 
-        var Count = 0;
+        List<ItemBase> rewards = Core.EnsureLoad(5814).Rewards;
+        ItemBase? item = reward == RewardsSelection.All
+            ? null
+            : rewards.Find(x => x.Name == Rewards[(int)reward]);
+
+        if (reward != RewardsSelection.All && item == null)
+        {
+            Core.Logger($"Could not find the quest reward for {reward}.");
+            return;
+        }
+
+        int count = Rewards.Length;
         int x = 1;
-
-        List<ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
-        List<string> RewardsList = new();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-        Count = RewardsList.Count;
-
-        var rewards = Core.EnsureLoad(5814).Rewards;
-        ItemBase? item = rewards.Find(x => x.ID == (int)reward);
 
         while (
             !Bot.ShouldExit
             && (
                 reward == RewardsSelection.All
-                    ? Core.CheckInventory(rewards.Select(x => x.Name).ToArray(), toInv: false)
-                    : (item != null && !Core.CheckInventory(item.ID, toInv: false))
+                    ? !Core.CheckInventory(Rewards, toInv: false)
+                    : !Core.CheckInventory(item!.ID, toInv: false)
             )
         )
         {
             if (reward == RewardsSelection.All)
-                Core.Logger($"Farming All {x++}/{Count}");
+                Core.Logger($"Farming All {x++}/{count}");
             else
-                Core.Logger($"... {reward} ...");
+                Core.Logger($"Farming {item!.Name}");
 
             Core.EnsureAccept(5814);
             Nation.ApprovalAndFavor(500, 500);
@@ -99,12 +105,14 @@ public class TendurrrTheAssistantQuests
             Nation.FarmBloodGem(10);
             Nation.FarmTotemofNulgath(3);
 
-            if (Bot.Config!.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
+            if (reward == RewardsSelection.All)
                 Core.EnsureCompleteChoose(5814);
             else
-                Core.EnsureComplete(5814, (int)reward);
+                Core.EnsureComplete(5814, item!.ID);
         }
     }
+
+
 
     public readonly string[] Rewards =
     {

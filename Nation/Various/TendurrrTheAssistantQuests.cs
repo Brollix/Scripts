@@ -52,6 +52,7 @@ public class TendurrrTheAssistantQuests
         Core.SetOptions(false);
     }
 
+
     /// <summary>
     /// Farms the selected Tendurrr The Assistant quest reward or all available rewards.
     /// </summary>
@@ -66,35 +67,42 @@ public class TendurrrTheAssistantQuests
 
         Nation.FarmUni13(1);
 
-        List<ItemBase> rewards = Core.EnsureLoad(5814).Rewards;
-        ItemBase? item = reward == RewardsSelection.All
-            ? null
-            : rewards.Find(x => x.Name == Rewards[(int)reward]);
+        if (reward != RewardsSelection.All && (int)reward >= Rewards.Length)
+        {
+            Core.Logger($"Invalid Tendurrr reward selection: {reward}");
+            return;
+        }
 
-        if (reward != RewardsSelection.All && item == null)
+        List<ItemBase> questRewards = Core.EnsureLoad(5814).Rewards;
+
+        ItemBase? selectedReward = reward == RewardsSelection.All
+            ? null
+            : questRewards.Find(x => x.Name == Rewards[(int)reward]);
+
+        if (reward != RewardsSelection.All && selectedReward == null)
         {
             Core.Logger($"Could not find the quest reward for {reward}.");
             return;
         }
 
-        int count = Rewards.Length;
-        int x = 1;
+        int iteration = 1;
 
         while (
             !Bot.ShouldExit
             && (
                 reward == RewardsSelection.All
                     ? !Core.CheckInventory(Rewards, toInv: false)
-                    : !Core.CheckInventory(item!.ID, toInv: false)
+                    : !Core.CheckInventory(selectedReward!.ID, toInv: false)
             )
         )
         {
             if (reward == RewardsSelection.All)
-                Core.Logger($"Farming All {x++}/{count}");
+                Core.Logger($"Farming Tendurrr rewards (attempt {iteration++})");
             else
-                Core.Logger($"Farming {item!.Name}");
+                Core.Logger($"Farming {selectedReward!.Name}");
 
             Core.EnsureAccept(5814);
+
             Nation.ApprovalAndFavor(500, 500);
             Nation.EssenceofNulgath(20);
             Nation.FarmGemofNulgath(30);
@@ -105,13 +113,26 @@ public class TendurrrTheAssistantQuests
             Nation.FarmBloodGem(10);
             Nation.FarmTotemofNulgath(3);
 
-            if (reward == RewardsSelection.All)
-                Core.EnsureCompleteChoose(5814);
-            else
-                Core.EnsureComplete(5814, item!.ID);
-        }
-    }
+            if (Bot.ShouldExit)
+                break;
 
+            if (reward == RewardsSelection.All)
+            {
+                if (!Core.EnsureCompleteChoose(5814, Rewards))
+                {
+                    Core.Logger("Failed to collect a Tendurrr reward. Stopping to prevent an endless farming loop.");
+                    return;
+                }
+            }
+            else
+            {
+                Core.EnsureComplete(5814, selectedReward!.ID);
+            }
+        }
+
+        if (!Bot.ShouldExit && Core.CheckInventory(Rewards, toInv: false))
+            Core.Logger("All Tendurrr rewards are owned.");
+    }
 
 
     public readonly string[] Rewards =

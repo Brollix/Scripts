@@ -154,6 +154,30 @@ public class CoreBots
 
     private IScriptInterface Bot => IScriptInterface.Instance;
 
+    /// <summary>
+    /// Checks for VibeSkua Avalonia, optionally requiring a minimum numeric client version.
+    /// Recognizes older Avalonia releases that do not publish a client identifier.
+    /// Returns false on other clients or if minimumVersion is not a valid numeric version.
+    /// Usage: Core.IsVibeSkuaAvalonia() or Core.IsVibeSkuaAvalonia("2.0.7").
+    /// </summary>
+    public bool IsVibeSkuaAvalonia(string? minimumVersion = null)
+    {
+        Assembly? client = Assembly.GetEntryAssembly();
+        if (client is null)
+            return false;
+
+        if (!client.GetCustomAttributes<AssemblyMetadataAttribute>().Any(attribute =>
+                attribute.Key == "Skua.ClientId" && attribute.Value == "VibeSkuaAvalonia") &&
+            client.GetType("Skua.App.Avalonia.App") is null)
+            return false;
+
+        if (minimumVersion is null)
+            return true;
+
+        return Version.TryParse(minimumVersion, out Version? minimum) &&
+            client.GetName().Version is Version current && current >= minimum;
+    }
+
     private const string DiscordLink = "https://discord.gg/mScWZYYSKS";
 
     private Stopwatch? _scriptStopwatch;
@@ -239,9 +263,12 @@ public class CoreBots
             {
                 if (loadAttempts >= 30)
                 {
-                    Logger("Player stuck in spirit state after 30s, logging out to trigger auto-relogin.");
+                    Logger("Player stuck in spirit state after 30s, reconnecting.");
                     Bot.Options.AutoRelogin = true;
-                    Bot.Servers.Logout();
+                    if (IsVibeSkuaAvalonia("2.0.7"))
+                        Bot.Servers.Relogin(server);
+                    else
+                        Bot.Servers.Logout();
                     loadAttempts = 0;
                     Bot.Sleep(1000);
                     continue;

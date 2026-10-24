@@ -81,10 +81,10 @@ public class CoreBots
     public bool ShouldRest { get; set; } = false;
 
     // [Can Change] Start resting when health drops below this percentage of max health
-    public int RestHealthPercent { get; set; } = 60;
+    public int RestHealthPercent { get; set; } = 35;
 
     // [Can Change] Resume fighting when health reaches this percentage of max health
-    public int RestTargetHealthPercent { get; set; } = 85;
+    public int RestTargetHealthPercent { get; set; } = 100;
 
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
     public bool BankMiscAC { get; set; } = false;
@@ -8169,42 +8169,122 @@ public class CoreBots
             if (Bot.Player.Health >= healthThreshold)
                 return;
 
-            // If we just killed something, give the client a moment to leave combat.
-            // If a live monster is still targeted, don't interrupt the fight to rest.
-            if (Bot.Player.InCombat)
+            // A live target means we're mid-fight: finish it unless HP is critically low
+            // (half the rest threshold), so long boss fights aren't abandoned for a rest.
+            bool midFight = Bot.Player.HasTarget && (Bot.Player.Target?.HP ?? 0) > 0;
+            if (midFight && Bot.Player.Health >= healthThreshold / 2)
+                return;
+
+            // Stop the player's own attacks: the client auto-attacks and re-targets whoever hits
+            // us, so this has to be repeated while waiting, not done once.
+            void Disengage()
             {
+                Bot.Combat.CancelAutoAttack();
                 if (Bot.Player.HasTarget)
-                    return;
-
-                Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 2);
-                if (Bot.Player.InCombat)
-                    return;
+                    Bot.Combat.CancelTarget();
             }
 
-            Bot.Options.RestPackets = true;
-            Bot.Player.Rest(false);
-            Logger(
-                $"Resting initiated: Health below threshold ({Bot.Player.Health}/{Bot.Player.MaxHealth})."
-            );
-
-            // Wait until we recover enough HP before starting the next fight.
-            // Keep waiting in 20-second chunks until the target is reached, the player
-            // dies, the bot is stopped, or a monster pulls us back into combat (on aggro
-            // maps we must hand control back to the farm loop so it can fight back).
-            while (Bot.Player.Alive && !Bot.ShouldExit && !Bot.Player.InCombat && Bot.Player.Health < targetHealth)
+            // Bot.Wait.ForTrue counts WAIT_SLEEP ticks, not seconds, so wait on real time here.
+            bool WaitSeconds(Func<bool> done, double seconds)
             {
-                Bot.Wait.ForTrue(
-                    () => !Bot.Player.Alive || Bot.ShouldExit || Bot.Player.InCombat || Bot.Player.Health >= targetHealth,
-                    20
-                );
+                DateTime until = DateTime.Now.AddSeconds(seconds);
+                while (!done() && !Bot.ShouldExit && DateTime.Now < until)
+                {
+                    Disengage();
+                    Sleep(250);
+                }
+                return done();
             }
 
-            if (Bot.Player.Alive && !Bot.ShouldExit && Bot.Player.Health < targetHealth)
+            // Re-jumping into our own cell drops the monsters' aggro without moving (the "glitch"
+            // seen when pausing on maps with no safe cell). Twice, like JumpWait does.
+            void ResetAggro()
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Disengage();
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    Sleep(500);
+                }
+                Disengage();
+            }
+
+            bool aggroAll = Bot.Options.AggroAllMonsters;
+            bool aggro = Bot.Options.AggroMonsters;
+            bool attackWithoutTarget = Bot.Options.AttackWithoutTarget;
+            bool stopAttacking = Bot.Combat.StopAttacking;
+            bool skillsPaused = false;
+            try
+            {
+                // Stop everything that attacks on its own (aggro options and the skill timer),
+                // otherwise the player keeps re-engaging monsters and never sits down.
+                Bot.Options.AggroAllMonsters = false;
+                Bot.Options.AggroMonsters = false;
+                Bot.Options.AttackWithoutTarget = false;
+                Bot.Combat.StopAttacking = true;
+                // Pause unconditionally, like the pause guard: TimerRunning isn't reliable for
+                // the advanced skill provider.
+                Bot.Skills.Pause();
+                skillsPaused = true;
+                Disengage();
+
+                // Still in combat (other monsters in the cell): reset their aggro right away by
+                // re-jumping into this same cell, then rest right here.
+                if (Bot.Player.InCombat)
+                {
+                    ResetAggro();
+                    if (!WaitSeconds(() => !Bot.Player.InCombat, 6))
+                    {
+                        ResetAggro();
+                        WaitSeconds(() => !Bot.Player.InCombat, 10);
+                    }
+                }
+                if (Bot.Player.InCombat)
+                {
+                    Logger($"Could not leave combat to rest in {Bot.Player.Cell} (state {Bot.Player.State}, target {Bot.Player.Target?.Name ?? "none"}): Health is {Bot.Player.Health}/{Bot.Player.MaxHealth}.");
+                    return;
+                }
+
+                Bot.Options.RestPackets = true;
+                Bot.Player.Rest(false);
                 Logger(
-                    Bot.Player.InCombat
-                        ? $"Rest interrupted by combat: Health is {Bot.Player.Health}/{Bot.Player.MaxHealth}."
-                        : $"Rest interrupted: Health is still {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                    $"Resting initiated: Health below threshold ({Bot.Player.Health}/{Bot.Player.MaxHealth})."
                 );
+
+                // Rest until the target HP, for at most 2 minutes. If a monster pulls us back into
+                // combat, reset its aggro again and keep resting; stop on death or bot stop.
+                DateTime giveUp = DateTime.Now.AddMinutes(2);
+                while (Bot.Player.Alive && !Bot.ShouldExit && Bot.Player.Health < targetHealth && DateTime.Now < giveUp)
+                {
+                    if (Bot.Player.InCombat)
+                    {
+                        ResetAggro();
+                        if (!WaitSeconds(() => !Bot.Player.InCombat, 10))
+                            break;
+                    }
+                    Bot.Player.Rest(false);
+                    WaitSeconds(() => !Bot.Player.Alive || Bot.Player.InCombat || Bot.Player.Health >= targetHealth, 5);
+                }
+
+                if (Bot.Player.Alive && !Bot.ShouldExit && Bot.Player.Health < targetHealth)
+                    Logger(
+                        Bot.Player.InCombat
+                            ? $"Rest interrupted by combat: Health is {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                            : $"Rest stopped early: Health is {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                    );
+                else if (Bot.Player.Alive && !Bot.ShouldExit)
+                    Logger($"Rest done: Health {Bot.Player.Health}/{Bot.Player.MaxHealth}.");
+            }
+            finally
+            {
+                // Give the farm loop back the options it had.
+                Bot.Options.AggroAllMonsters = aggroAll;
+                Bot.Options.AggroMonsters = aggro;
+                Bot.Options.AttackWithoutTarget = attackWithoutTarget;
+                Bot.Combat.StopAttacking = stopAttacking;
+                if (skillsPaused)
+                    Bot.Skills.Resume();
+            }
         }
         catch (Exception ex)
         {
@@ -9934,7 +10014,10 @@ public class CoreBots
 
     private void PerformJump((string Cell, string Pad) cellPad, int jumpCount)
     {
-        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad)
+        // Skipping a repeated jump is only safe if it already got us out of combat: when the
+        // fallback re-jumps into the current cell, the cached target never changes, so later
+        // pauses/stops would otherwise do nothing while monsters keep attacking.
+        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad || Bot.Player.InCombat || Bot.Player.Cell != cellPad.Cell)
         {
             for (int i = 0; i < jumpCount; i++)
             {
@@ -12132,8 +12215,8 @@ public class CoreBots
 
         // Reset to defaults first so a later ReadCBO() call without these keys does not
         // silently keep thresholds from a previous script.
-        RestHealthPercent = 60;
-        RestTargetHealthPercent = 85;
+        RestHealthPercent = 35;
+        RestTargetHealthPercent = 100;
         if (CBOInt("RestHealthPercent", out int _RestHealthPercent))
             RestHealthPercent = Math.Clamp(_RestHealthPercent, 1, 99);
         if (CBOInt("RestTargetHealthPercent", out int _RestTargetHealthPercent))

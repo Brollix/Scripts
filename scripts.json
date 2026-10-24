@@ -2747,8 +2747,8 @@
       "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 19699,
-    "sha256": "2cefb98565bf07b73a4103357938703841efe313962edb8d5c284460f95e6f5e",
+    "size": 19698,
+    "sha256": "57fa6cbddba7364c9ce5ea8e4c19559ee0a9839a68b42cdbf6712019218bca70",
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/EtherstormWastes.cs"
   },
@@ -13444,8 +13444,8 @@
       "katanas"
     ],
     "path": "Other/MergeShops/YulgarsDualWieldMerge.cs",
-    "size": 55825,
-    "sha256": "80c0cbb359fd2c8f77f8162c8098ecdbb4ec38fff50a650372dc1a9bb784f508",
+    "size": 55783,
+    "sha256": "75982aba2ccba948944dac092d08481968154087aa023fba55bb43d7e7c53ce8",
     "fileName": "YulgarsDualWieldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
@@ -30097,8 +30097,8 @@
       "somnia"
     ],
     "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
-    "size": 4114,
-    "sha256": "b435807d1f910cf86dd8b484d1f17dea20ea5946fa89d55433e70f771348b61b",
+    "size": 4101,
+    "sha256": "639df1f89eb07b418a30b132b36ec43e8c815104a6ea52e355a8deba711baa3f",
     "fileName": "KathoolAdeptPrerequisite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
   },

@@ -490,11 +490,11 @@ public class Core13LoC
         if (!Story.QuestProgression(470))
         {
             Core.EnsureAccept(470);
-            Core.HuntMonsterMapID("Junkyard", 1, "Wild Kara-Kasa", 5);
-            Core.HuntMonsterMapID("Junkyard", 4, "Wild Bura-Bura", 4);
-            Core.HuntMonsterMapID("Junkyard", 3, "Wild Biwa-Bokuboku", 3);
-            Core.HuntMonsterMapID("Junkyard", 6, "Wild Koto-Furunushi", 2);
-            Core.HuntMonsterMapID("Junkyard", 2, "Wild Bakezouri", 1);
+            Core.KillMonster("junkyard", "Enter", "Left", 1, "Wild Kara-Kasa", 5);
+            Core.KillMonster("junkyard", "r2", "Left", 4, "Wild Bura-Bura", 4);
+            Core.KillMonster("junkyard", "r2", "Left", 3, "Wild Biwa-Bokuboku", 3);
+            Core.KillMonster("junkyard", "r3", "Left", 6, "Wild Koto-Furunushi", 2);
+            Core.KillMonster("junkyard", "Enter", "Left", 2, "Wild Bakezouri", 1);
             Core.EnsureComplete(470);
         }
 

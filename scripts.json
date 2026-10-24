@@ -30,8 +30,8 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 164902,
-    "sha256": "625ed28c3592674705ba900b529b56c81251d9fcc2de713520502f60a1e84e21",
+    "size": 165316,
+    "sha256": "49a9e262e3b5391be42d108b5fdbed820622b744e19097a1d3dcb710113fb6cc",
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/CoreFarms.cs"
   },
@@ -2747,8 +2747,8 @@
       "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 19699,
-    "sha256": "2cefb98565bf07b73a4103357938703841efe313962edb8d5c284460f95e6f5e",
+    "size": 19698,
+    "sha256": "57fa6cbddba7364c9ce5ea8e4c19559ee0a9839a68b42cdbf6712019218bca70",
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/EtherstormWastes.cs"
   },
@@ -3770,8 +3770,8 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 54358,
-    "sha256": "d0bd2c022449c26a174d2864873b771c3675f14ebaf2dc54d7b9f7d49389014d",
+    "size": 53276,
+    "sha256": "862a073079f5f59d4cd02efaa46d3a16aea14a2102ca2cc0f9024e3053863a82",
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -11887,7 +11887,7 @@
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
     "size": 23559,
-    "sha256": "f8037b7e6411f7aaa6ec2d207303a82ea31a8e03d1928f52b9ae29fec32f5e2f",
+    "sha256": "e66cbca0407850e2883b7e33f3c0889ba0669cb85a482849c0305af99ce3ec65",
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -13444,8 +13444,8 @@
       "katanas"
     ],
     "path": "Other/MergeShops/YulgarsDualWieldMerge.cs",
-    "size": 55825,
-    "sha256": "80c0cbb359fd2c8f77f8162c8098ecdbb4ec38fff50a650372dc1a9bb784f508",
+    "size": 55783,
+    "sha256": "75982aba2ccba948944dac092d08481968154087aa023fba55bb43d7e7c53ce8",
     "fileName": "YulgarsDualWieldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
@@ -14010,8 +14010,8 @@
       "astrolabe"
     ],
     "path": "Other/MergeShops/WitchQueensAtelierMerge.cs",
-    "size": 9848,
-    "sha256": "f6a0c6a8bcfe71a703c1568ad0ff4cf3b356394b76fcf13ca36dd0f52062fae9",
+    "size": 5361,
+    "sha256": "5ce10017584a132aba5a1fdd5f4c15c99472b5acce3aa25d823b5a0cbfcf0c8a",
     "fileName": "WitchQueensAtelierMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/WitchQueensAtelierMerge.cs"
   },
@@ -16588,6 +16588,22 @@
     "sha256": "a7e3ab8ed27b63df6515dd45195929b41be6e75aca5656adb68a4c0ade83bb2e",
     "fileName": "LightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/LightMerge.cs"
+  },
+  {
+    "name": "Hunters Reward Merge",
+    "description": "Farms the Hunters Reward Merge [2781] in /shadowslayerwar.",
+    "tags": [
+      "shadowslayerwar",
+      "merge",
+      "hunters",
+      "reward",
+      "merge"
+    ],
+    "path": "Other/MergeShops/HuntersReward.cs",
+    "size": 6135,
+    "sha256": "d4a2aa65dfa3ea83e2e73cd07d8e0fc42af64aa33a149eadae4dd95649e10674",
+    "fileName": "HuntersReward.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/HuntersReward.cs"
   },
   {
     "name": "Crulons Merge",
@@ -19703,6 +19719,22 @@
     "sha256": "20f54f4a9017d85ac47e3d22ab3c2b14f9e94c2e6571eda38f9930c30b0595fb",
     "fileName": "ArmyLichWarGoldXp[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmyLichWarGoldXp[Mem].cs"
+  },
+  {
+    "name": "Army Seven Circles War",
+    "description": "Levels an army in /sevencircleswar while farming War Medals and Mega War Medals.",
+    "tags": [
+      "army",
+      "leveling",
+      "seven-circles",
+      "war-medals",
+      "mega-war-medals"
+    ],
+    "path": "Army/Farm/ArmySevenCirclesWar.cs",
+    "size": 4976,
+    "sha256": "a30568ae9e3f6e2f894dd6e8483308dd667a51910c5e856c70db81d3b4acb984",
+    "fileName": "ArmySevenCirclesWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmySevenCirclesWar.cs"
   },
   {
     "name": "All accs bank all",
@@ -25735,8 +25767,8 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 92169,
-    "sha256": "9f9b393ffb282032c2fee8e7dab45b9912cea27378103fecd798196690b6dc39",
+    "size": 92246,
+    "sha256": "5a15d5b37d59ebbc46299f89768e07bc26460931e538c2ad5f288f47e3d2ab74",
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -30081,8 +30113,8 @@
       "somnia"
     ],
     "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
-    "size": 4114,
-    "sha256": "b435807d1f910cf86dd8b484d1f17dea20ea5946fa89d55433e70f771348b61b",
+    "size": 4104,
+    "sha256": "32a03d3c8ebe9d14b30f59d32ef513b8be357602da0ef66371923aec4850d7cd",
     "fileName": "KathoolAdeptPrerequisite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
   },

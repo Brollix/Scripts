@@ -3770,8 +3770,8 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 54358,
-    "sha256": "d0bd2c022449c26a174d2864873b771c3675f14ebaf2dc54d7b9f7d49389014d",
+    "size": 53276,
+    "sha256": "862a073079f5f59d4cd02efaa46d3a16aea14a2102ca2cc0f9024e3053863a82",
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },

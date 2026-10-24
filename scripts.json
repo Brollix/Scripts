@@ -19721,6 +19721,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmyLichWarGoldXp[Mem].cs"
   },
   {
+    "name": "Army Seven Circles War",
+    "description": "Levels an army in /sevencircleswar while farming War Medals and Mega War Medals.",
+    "tags": [
+      "army",
+      "leveling",
+      "seven-circles",
+      "war-medals",
+      "mega-war-medals"
+    ],
+    "path": "Army/Farm/ArmySevenCirclesWar.cs",
+    "size": 4976,
+    "sha256": "a30568ae9e3f6e2f894dd6e8483308dd667a51910c5e856c70db81d3b4acb984",
+    "fileName": "ArmySevenCirclesWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmySevenCirclesWar.cs"
+  },
+  {
     "name": "All accs bank all",
     "description": "banks all items on all accs in the \"thefamily.txt\" file.",
     "tags": [

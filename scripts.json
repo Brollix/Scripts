@@ -28254,6 +28254,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultrasv3/ChallengeBosses/NightBanev3.cs"
   },
   {
+    "name": "Kolr Solo Lich",
+    "description": "Solo Kolr with post-potion-patch Elysium Lich and required Felicitous Philtre.",
+    "tags": [
+      "kolr",
+      "solo",
+      "lich",
+      "ultra"
+    ],
+    "path": "Ultrasv3/ChallengeBosses/KolrSoloLich.cs",
+    "size": 14251,
+    "sha256": "e59cef8ed1a9e3ae12c05fdf8778c28ba60006d8f8cb1a20a45b2611af1f2c29",
+    "fileName": "KolrSoloLich.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultrasv3/ChallengeBosses/KolrSoloLich.cs"
+  },
+  {
     "name": "QueenIonav3",
     "description": "Queen Iona v3 — farm using Engine/Ultra infrastructure.",
     "tags": [
@@ -28264,6 +28279,22 @@
     "sha256": "2cbf57dff514b1f4a58cda2fe5d8c453585e2fc335099d45498badc9a632a923",
     "fileName": "QueenIonav3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultrasv3/ChallengeBosses/QueenIonav3.cs"
+  },
+  {
+    "name": "Kolr Solo Lich Farm",
+    "description": "Repeatedly solo Kolr with post-potion-patch Elysium Lich and required Felicitous Philtre until stopped.",
+    "tags": [
+      "kolr",
+      "solo",
+      "lich",
+      "ultra",
+      "farm"
+    ],
+    "path": "Ultrasv3/ChallengeBosses/KolrSoloLichFarm.cs",
+    "size": 12258,
+    "sha256": "875686b063fe9eb8e1a4d21f6ba9fe4244f904a379279b3c86450194322748ec",
+    "fileName": "KolrSoloLichFarm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Ultrasv3/ChallengeBosses/KolrSoloLichFarm.cs"
   },
   {
     "name": "UltraGramielv3",

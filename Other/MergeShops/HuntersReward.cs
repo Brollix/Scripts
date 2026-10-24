@@ -75,8 +75,15 @@ public class HuntersReward
                     break;
                 case "Silver Stake":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("shadowslayerwar", "Druid Revenant", req.Name, quant, req.Temp);
+					Core.RegisterQuests(10908, 10909);
+					while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
+                    {
+						Core.KillMonster("shadowslayerwar", "r2", "Left", "*");
+						Bot.Wait.ForPickup(req.Name);
+					}
+                    Core.CancelRegisteredQuests();
                     break;
+					
                 default:
                     bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}.", messageBox: shouldStop, stopBot: shouldStop);

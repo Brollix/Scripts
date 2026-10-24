@@ -184,6 +184,11 @@ public class CoreBots
             client.GetName().Version is Version current && current >= minimum;
     }
 
+    // IsVibeSkuaAvalonia() reflects over the entry assembly and the farm loops check it on
+    // every kill, so cache it: the client can't change while a script runs.
+    private bool? _onVibeSkua;
+    private bool OnVibeSkua => _onVibeSkua ??= IsVibeSkuaAvalonia();
+
     private const string DiscordLink = "https://discord.gg/mScWZYYSKS";
 
     private Stopwatch? _scriptStopwatch;
@@ -5188,7 +5193,7 @@ public class CoreBots
         {
             while (!Bot.ShouldExit)
             {
-                Rest(); // 🛌 recover HP between fights
+                if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
                 if (!Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20); // 💀➡️💖
@@ -5386,7 +5391,7 @@ public class CoreBots
         // Main kill loop
         while (!Bot.ShouldExit && (item == null || !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             // Respawn check
             while (!Bot.ShouldExit && !Bot.Player.Alive)
@@ -5486,7 +5491,7 @@ public class CoreBots
         // Kill until item obtained (or once if no item)
         while (!Bot.ShouldExit && (ItemID == 0 || !(isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant))))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -5660,7 +5665,7 @@ public class CoreBots
         {
             while (!Bot.ShouldExit)
             {
-                Rest(); // 🛌 recover HP between fights
+                if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
                 if (Bot.Player != null && !Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -5704,7 +5709,7 @@ public class CoreBots
                 && !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             )
             {
-                Rest(); // 🛌 recover HP between fights
+                if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
                 if (!Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -5818,7 +5823,7 @@ public class CoreBots
                 ? Bot.TempInv.Contains(x.item, x.quant)
                 : CheckInventory(x.item, x.quant)))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -5899,7 +5904,7 @@ public class CoreBots
         // Main attack loop
         while (!Bot.ShouldExit && (item == null || !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -7262,7 +7267,7 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (Bot.Player.Cell != target.Cell)
             {
@@ -7305,7 +7310,7 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(itemID, quantity) : CheckInventory(itemID, quantity)))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -7365,7 +7370,7 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
         {
-            Rest(); // 🛌 recover HP between fights
+            if (OnVibeSkua) Rest(); // 🛌 recover HP between fights
 
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
@@ -8137,7 +8142,8 @@ public class CoreBots
 
     /// <summary>
     /// Rests when health falls below <see cref="RestHealthPercent"/> and waits until health
-    /// reaches <see cref="RestTargetHealthPercent"/> before returning.
+    /// reaches <see cref="RestTargetHealthPercent"/> before returning. On other clients than
+    /// VibeSkua it keeps the original behavior (a single rest below 2% of max health).
     /// </summary>
     public void Rest()
     {
@@ -8146,6 +8152,17 @@ public class CoreBots
             if (Bot.Player == null)
             {
                 Logger("Bot.Player is null.");
+                return;
+            }
+
+            // Other clients keep the original behavior: rest once below 2% of max health.
+            if (!OnVibeSkua)
+            {
+                if (ShouldRest && Bot.Player.Alive && Bot.Player.Health < (int)Math.Ceiling((double)Bot.Player.MaxHealth / 50))
+                {
+                    Bot.Player.Rest(false);
+                    Logger($"Resting initiated: Health below threshold ({Bot.Player.Health}/{Bot.Player.MaxHealth}).");
+                }
                 return;
             }
 
@@ -10017,7 +10034,8 @@ public class CoreBots
         // Skipping a repeated jump is only safe if it already got us out of combat: when the
         // fallback re-jumps into the current cell, the cached target never changes, so later
         // pauses/stops would otherwise do nothing while monsters keep attacking.
-        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad || Bot.Player.InCombat || Bot.Player.Cell != cellPad.Cell)
+        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad
+            || (OnVibeSkua && (Bot.Player.InCombat || Bot.Player.Cell != cellPad.Cell)))
         {
             for (int i = 0; i < jumpCount; i++)
             {

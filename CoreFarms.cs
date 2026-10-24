@@ -2072,6 +2072,8 @@ public class CoreFarms
             Core.Logger("Using Gold Method");
 
             Core.SavedState(true, "alchemyacademy");
+            // Count vouchers already in the bank before deciding how many to buy or whether to farm gold.
+            Core.Unbank("Gold Voucher 500k");
             while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank)
             {
                 Core.EnsureAccept(8737);
@@ -2081,13 +2083,12 @@ public class CoreFarms
                 // to farm 100M gold just to reach rank 4-5.
                 int targetRep = RepThresholds.First(x => x.Rank == Math.Clamp(rank, 1, 10)).RepRequired;
                 int remainingRepXP = Math.Max(0, targetRep - TotalFactionRep("Blacksmithing"));
-                int itemsNeeded = (remainingRepXP + 999) / 1000; // 1 voucher = 1000 rep, round up
+                // At least one voucher: the loop only runs while below the requested rank, and a faction
+                // that isn't in the list yet (rank 0) reports 0 rep even when rank 1 is requested.
+                int itemsNeeded = Math.Max(1, (remainingRepXP + 999) / 1000); // 1 voucher = 1000 rep, round up
                 int currentQuantity = Bot.Inventory.GetQuantity("Gold Voucher 500k");
 
                 Core.Logger($"Blacksmithing rep needed for rank {rank}: {remainingRepXP} ({itemsNeeded} vouchers, have {currentQuantity})");
-
-                if (remainingRepXP <= 0)
-                    break;
 
                 int toBuy = Math.Max(0, Math.Min(itemsNeeded - currentQuantity, Math.Min(200, 300 - currentQuantity)));
                 if (toBuy > 0)

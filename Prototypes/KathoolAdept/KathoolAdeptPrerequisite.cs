@@ -50,8 +50,8 @@ public class KathoolAdeptPrerequisites
     public void ScriptMain(IScriptInterface bot)
     {
 		
-Core.Logger("use the actual class script at KathoolAdept.cs instead", messageBox: true)
-        Core.Sleep(2000)
+Core.Logger("use the actual class script at KathoolAdept.cs instead", messageBox: true);
+        Core.Sleep(2000);
     }
 	
 	public void FarmPreReqs(bool BuyItems = false)

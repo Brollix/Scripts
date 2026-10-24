@@ -19721,6 +19721,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmyLichWarGoldXp[Mem].cs"
   },
   {
+    "name": "Army Seven Circles War",
+    "description": "Levels an army in /sevencircleswar while farming War Medals and Mega War Medals.",
+    "tags": [
+      "army",
+      "leveling",
+      "seven-circles",
+      "war-medals",
+      "mega-war-medals"
+    ],
+    "path": "Army/Farm/ArmySevenCirclesWar.cs",
+    "size": 4976,
+    "sha256": "a30568ae9e3f6e2f894dd6e8483308dd667a51910c5e856c70db81d3b4acb984",
+    "fileName": "ArmySevenCirclesWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmySevenCirclesWar.cs"
+  },
+  {
     "name": "All accs bank all",
     "description": "banks all items on all accs in the \"thefamily.txt\" file.",
     "tags": [
@@ -30097,8 +30113,8 @@
       "somnia"
     ],
     "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
-    "size": 4101,
-    "sha256": "639df1f89eb07b418a30b132b36ec43e8c815104a6ea52e355a8deba711baa3f",
+    "size": 4104,
+    "sha256": "32a03d3c8ebe9d14b30f59d32ef513b8be357602da0ef66371923aec4850d7cd",
     "fileName": "KathoolAdeptPrerequisite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
   },

@@ -11887,7 +11887,7 @@
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
     "size": 23559,
-    "sha256": "f8037b7e6411f7aaa6ec2d207303a82ea31a8e03d1928f52b9ae29fec32f5e2f",
+    "sha256": "e66cbca0407850e2883b7e33f3c0889ba0669cb85a482849c0305af99ce3ec65",
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -16600,8 +16600,8 @@
       "merge"
     ],
     "path": "Other/MergeShops/HuntersReward.cs",
-    "size": 5945,
-    "sha256": "d9f5d43b52b542b5dcad64820424769fe5fb9ba2355189d66f5e670051e64646",
+    "size": 6135,
+    "sha256": "d4a2aa65dfa3ea83e2e73cd07d8e0fc42af64aa33a149eadae4dd95649e10674",
     "fileName": "HuntersReward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/HuntersReward.cs"
   },
@@ -19719,6 +19719,22 @@
     "sha256": "20f54f4a9017d85ac47e3d22ab3c2b14f9e94c2e6571eda38f9930c30b0595fb",
     "fileName": "ArmyLichWarGoldXp[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmyLichWarGoldXp[Mem].cs"
+  },
+  {
+    "name": "Army Seven Circles War",
+    "description": "Levels an army in /sevencircleswar while farming War Medals and Mega War Medals.",
+    "tags": [
+      "army",
+      "leveling",
+      "seven-circles",
+      "war-medals",
+      "mega-war-medals"
+    ],
+    "path": "Army/Farm/ArmySevenCirclesWar.cs",
+    "size": 4976,
+    "sha256": "a30568ae9e3f6e2f894dd6e8483308dd667a51910c5e856c70db81d3b4acb984",
+    "fileName": "ArmySevenCirclesWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Army/Farm/ArmySevenCirclesWar.cs"
   },
   {
     "name": "All accs bank all",
@@ -30097,8 +30113,8 @@
       "somnia"
     ],
     "path": "Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs",
-    "size": 4101,
-    "sha256": "639df1f89eb07b418a30b132b36ec43e8c815104a6ea52e355a8deba711baa3f",
+    "size": 4104,
+    "sha256": "32a03d3c8ebe9d14b30f59d32ef513b8be357602da0ef66371923aec4850d7cd",
     "fileName": "KathoolAdeptPrerequisite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Prototypes/KathoolAdept/KathoolAdeptPrerequisite.cs"
   },

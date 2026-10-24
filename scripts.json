@@ -12315,6 +12315,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/Classes/ProtoSartorium.cs"
   },
   {
+    "name": "Kathool Adept",
+    "description": "Farms Kathool Adept through Bottom Feeder or the owned Adeptus Kathooli shortcut. Requires level 80 and completes the Voice in the Sea saga.",
+    "tags": [
+      "kathool",
+      "depths",
+      "adept",
+      "class",
+      "callofkathool",
+      "somnia",
+      "fishing"
+    ],
+    "path": "Other/Classes/KathoolAdept.cs",
+    "size": 7871,
+    "sha256": "ea046f2accd4623f555a7577e7dab3f198c50ff217c448671ef42e3e72ead36c",
+    "fileName": "KathoolAdept.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/Classes/KathoolAdept.cs"
+  },
+  {
     "name": "BloodSorceress",
     "description": "null",
     "tags": [
@@ -14158,8 +14176,8 @@
       "thyllian"
     ],
     "path": "Other/MergeShops/KathoolsChestMerge.cs",
-    "size": 9773,
-    "sha256": "8a997e450380d16e2743824ec17185bb4a791a43717107d1211a7fdee56f9ac7",
+    "size": 10189,
+    "sha256": "c22cf327d6eabc9f8a7fe82d30a16956d66aca0fd383354e5bfe2218dcf3b3fe",
     "fileName": "KathoolsChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
   },
@@ -14495,8 +14513,8 @@
       "streams"
     ],
     "path": "Other/MergeShops/AbyssalZoneMerge.cs",
-    "size": 7531,
-    "sha256": "7d70d6053d56476d8bd2f987a34383c7ad50ad3c3d63e829a91cf69bbfddd114",
+    "size": 7822,
+    "sha256": "02165973cbce0d7107bc68ad9a8376cd298e465739f54600f184f15376992422",
     "fileName": "AbyssalZoneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/AbyssalZoneMerge.cs"
   },
@@ -15808,8 +15826,8 @@
       "hook"
     ],
     "path": "Other/MergeShops/SeaviewSouvenirsMerge.cs",
-    "size": 7254,
-    "sha256": "ab722139572747b7a025ab921091e5d7b5ed1de1d2e8bee9ec0d4468dd120f63",
+    "size": 7555,
+    "sha256": "2dd155a7c78d08cf48226e5c58a07be148e9b094970cf8649fb6d6e9684da211",
     "fileName": "SeaviewSouvenirsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/SeaviewSouvenirsMerge.cs"
   },
@@ -16813,8 +16831,8 @@
       "trident"
     ],
     "path": "Other/MergeShops/SeaVoiceMerge.cs",
-    "size": 10434,
-    "sha256": "3cf2d20a14346f3ae52bb6f5e333b3da7608ac12117089f60ce1d2a55136877a",
+    "size": 10732,
+    "sha256": "65b4c66e8e03cae6f9b928795d72c6220ee6f9cf13fa25202d45ac989c476670",
     "fileName": "SeaVoiceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
   },
@@ -16988,8 +17006,8 @@
       "bow"
     ],
     "path": "Other/MergeShops/MidnightZoneMerge.cs",
-    "size": 6562,
-    "sha256": "eefe2815e930caa734b3d7afadb9c252368b155affa567dde5eddd5220918e07",
+    "size": 6863,
+    "sha256": "44770047e383cc8426054d22c4a28535b8b7817cbeebdb6c8a3ddef33a34d453",
     "fileName": "MidnightZoneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/MidnightZoneMerge.cs"
   },
@@ -17221,8 +17239,8 @@
       "streams"
     ],
     "path": "Other/MergeShops/TrenchObserveMerge.cs",
-    "size": 6993,
-    "sha256": "72ae0b982b0ecc7b8f8e0147a2cc2bc500ac5b35a06b0fe173bd4021b6079c42",
+    "size": 7183,
+    "sha256": "fcc844cace91bf0bd3c837870c7e72ef964e6e67536dbe557ddc0549501d5a43",
     "fileName": "TrenchObserveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/TrenchObserveMerge.cs"
   },
@@ -18007,8 +18025,8 @@
       "dirk"
     ],
     "path": "Other/MergeShops/TwilightZoneMerge.cs",
-    "size": 7640,
-    "sha256": "6e423038e5839cfa4ef7a19362341f58006808fe6df29823bbde36c4afb771eb",
+    "size": 7931,
+    "sha256": "d8e2545e7ab2e506ec138f85ad2fe7446ae116f512de556df4b43b15a56dfad4",
     "fileName": "TwilightZoneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/TwilightZoneMerge.cs"
   },
@@ -18216,8 +18234,8 @@
       "glasses"
     ],
     "path": "Other/MergeShops/UndineCommissaryMerge.cs",
-    "size": 6270,
-    "sha256": "b70b487efd7e3750b7b5ea8ebd54a25cad96e65d15470d56940a1955b10c49a6",
+    "size": 6587,
+    "sha256": "db46ad396f9f9e8bd802acafd2e9ebc2a66ecf0aefc67d1ce1a54af8bf1e56a5",
     "fileName": "UndineCommissaryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/UndineCommissaryMerge.cs"
   },

@@ -4185,6 +4185,7 @@ public class CoreAdvanced
                 case "warrior (rare)":
                 case "warriorscythe general":
                 case "witch":
+                case "kathool adept":
                 default: // If the correct enhancement arent unlocked, or the class in question isnt in the Forge Enhancement Lib, use Awe Enhancements Lib
                     type = EnhancementType.Lucky;
                     return false;
@@ -4329,6 +4330,7 @@ public class CoreAdvanced
                 case "void highlord":
                 case "void highlord (ioda)":
                 case "verus doomknight":
+                case "kathool adept":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;

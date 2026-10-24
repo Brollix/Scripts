@@ -181,6 +181,11 @@ public class CoreBots
             client.GetName().Version is Version current && current >= minimum;
     }
 
+    // IsVibeSkuaAvalonia() reflects over the entry assembly and the farm loops check it on
+    // every kill, so cache it: the client can't change while a script runs.
+    private bool? _onVibeSkua;
+    private bool OnVibeSkua => _onVibeSkua ??= IsVibeSkuaAvalonia();
+
     private const string DiscordLink = "https://discord.gg/mScWZYYSKS";
 
     private Stopwatch? _scriptStopwatch;
@@ -7462,7 +7467,7 @@ public class CoreBots
     /// Logs "item x/quant" whenever the farmed count goes up, and returns true when, while in a public
     /// room, there was no progress for <see cref="PublicRoomStuckMinutes"/>. Progress is the item count
     /// going up, any monster dying, or the monsters in our cell losing HP (a long boss fight that is
-    /// still going is not a stall).
+    /// still going is not a stall). Only on VibeSkua; on other clients it always returns false.
     /// </summary>
     private bool TrackFarmProgress(FarmProgress progress, string item, int quant, bool isTemp, bool log) =>
         TrackFarmProgress(progress, item, quant, log,
@@ -7476,6 +7481,10 @@ public class CoreBots
 
     private bool TrackFarmProgress(FarmProgress progress, string label, int quant, bool log, Func<int> quantity)
     {
+        // VibeSkua only: other clients keep the farm loops exactly as they were.
+        if (!OnVibeSkua)
+            return false;
+
         int qty = quantity();
         if (qty != progress.LastQty)
         {

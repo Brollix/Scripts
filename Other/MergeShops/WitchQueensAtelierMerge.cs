@@ -71,7 +71,7 @@ public class WitchQueensAtelierMerge
                         EquipArmyClass();
                     else
                         Core.EquipClass(ClassType.Solo);
-                    
+
                     Core.RegisterQuests(10824);
                     if (Bot.Config.Get<bool>("ArmySetup", "armyMode"))
                     {
@@ -107,7 +107,7 @@ public class WitchQueensAtelierMerge
                         EquipArmyClass();
                     else
                         Core.EquipClass(ClassType.Solo);
-                    
+
                     if (Bot.Config.Get<bool>("ArmySetup", "armyMode"))
                     {
                         Core.Logger("Farming with Army");
@@ -141,17 +141,17 @@ public class WitchQueensAtelierMerge
         }
     }
 
-    public List<IOption> Select = new()
-    {
-        new Option<bool>("Galilera", "Galilera", "Mode: [select] only\nShould the bot buy \"Galilera\" ?", false),
-        new Option<bool>("Dual Galilera", "Dual Galilera", "Mode: [select] only\nShould the bot buy \"Dual Galilera\" ?", false),
-        new Option<bool>("Noble Cavendish Witch", "Noble Cavendish Witch", "Mode: [select] only\nShould the bot buy \"Noble Cavendish Witch\" ?", false),
-        new Option<bool>("Starlight Chaser's Hat", "Starlight Chaser's Hat", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Hat\" ?", false),
-        new Option<bool>("Starlight Chaser's Morph", "Starlight Chaser's Morph", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Morph\" ?", false),
-        new Option<bool>("Starlight Chaser's Visage", "Starlight Chaser's Visage", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Visage\" ?", false),
-        new Option<bool>("Starlight Witch Hat", "Starlight Witch Hat", "Mode: [select] only\nShould the bot buy \"Starlight Witch Hat\" ?", false),
-        new Option<bool>("Visionary Astrolabe", "Visionary Astrolabe", "Mode: [select] only\nShould the bot buy \"Visionary Astrolabe\" ?", false),
-    };
+    public List<IOption> Select =
+     [
+        new Option<bool>("102565", "Noble Cavendish Witch", "Mode: [select] only\nShould the bot buy \"Noble Cavendish Witch\" ?", false),
+        new Option<bool>("102570", "Visionary Astrolabe", "Mode: [select] only\nShould the bot buy \"Visionary Astrolabe\" ?", false),
+        new Option<bool>("102572", "Dual Galilera", "Mode: [select] only\nShould the bot buy \"Dual Galilera\" ?", false),
+        new Option<bool>("102566", "Starlight Chaser's Morph", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Morph\" ?", false),
+        new Option<bool>("102567", "Starlight Chaser's Visage", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Visage\" ?", false),
+        new Option<bool>("102568", "Starlight Chaser's Hat", "Mode: [select] only\nShould the bot buy \"Starlight Chaser's Hat\" ?", false),
+        new Option<bool>("102569", "Starlight Witch Hat", "Mode: [select] only\nShould the bot buy \"Starlight Witch Hat\" ?", false),
+        new Option<bool>("102571", "Galilera", "Mode: [select] only\nShould the bot buy \"Galilera\" ?", false),
+    ];
 
     public List<IOption> ArmySetup = new()
     {
@@ -200,7 +200,7 @@ public class WitchQueensAtelierMerge
                 Core.Logger($"[ArmyClass] Account{i} is invalid ('{accOpt}'). Format must be Username,ClassName");
             }
         }
-        
+
         Core.Logger($"[ArmyClass] No match for '{username}'. Falling back to default Solo class.");
         Core.EquipClass(ClassType.Solo);
     }

@@ -8164,6 +8164,11 @@ public class CoreBots
             if (!ShouldRest || !Bot.Player.Alive)
                 return;
 
+            // Check health before waiting on combat so a healthy player never pays the
+            // combat-exit wait below on every kill.
+            if (Bot.Player.Health >= healthThreshold)
+                return;
+
             // If we just killed something, give the client a moment to leave combat.
             // If a live monster is still targeted, don't interrupt the fight to rest.
             if (Bot.Player.InCombat)
@@ -8176,9 +8181,6 @@ public class CoreBots
                     return;
             }
 
-            if (Bot.Player.Health >= healthThreshold)
-                return;
-
             Bot.Options.RestPackets = true;
             Bot.Player.Rest(false);
             Logger(
@@ -8187,19 +8189,21 @@ public class CoreBots
 
             // Wait until we recover enough HP before starting the next fight.
             // Keep waiting in 20-second chunks until the target is reached, the player
-            // dies, or the bot is stopped. Returning early would let the farm loop start
-            // another fight while still below the configured recovery target.
-            while (Bot.Player.Alive && !Bot.ShouldExit && Bot.Player.Health < targetHealth)
+            // dies, the bot is stopped, or a monster pulls us back into combat (on aggro
+            // maps we must hand control back to the farm loop so it can fight back).
+            while (Bot.Player.Alive && !Bot.ShouldExit && !Bot.Player.InCombat && Bot.Player.Health < targetHealth)
             {
                 Bot.Wait.ForTrue(
-                    () => !Bot.Player.Alive || Bot.ShouldExit || Bot.Player.Health >= targetHealth,
+                    () => !Bot.Player.Alive || Bot.ShouldExit || Bot.Player.InCombat || Bot.Player.Health >= targetHealth,
                     20
                 );
             }
 
             if (Bot.Player.Alive && !Bot.ShouldExit && Bot.Player.Health < targetHealth)
                 Logger(
-                    $"Rest interrupted: Health is still {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                    Bot.Player.InCombat
+                        ? $"Rest interrupted by combat: Health is {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                        : $"Rest interrupted: Health is still {Bot.Player.Health}/{Bot.Player.MaxHealth}."
                 );
         }
         catch (Exception ex)

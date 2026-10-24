@@ -5388,7 +5388,9 @@ public class CoreBots
 
             if (item != null && TrackFarmProgress(progress, item, quant, isTemp, log))
             {
-                HopPublicRoom(map, progress, cell, pad, publicRoom);
+                HopPublicRoom(map, progress, cell, pad);
+                // The old snapshot points at the previous room's monsters.
+                targetMonsters = FindMonstersList(map, "*", MonsterMapID);
                 continue;
             }
 
@@ -5706,7 +5708,7 @@ public class CoreBots
 
                 if (TrackFarmProgress(progress, item, quant, isTemp, log))
                 {
-                    HopPublicRoom(map, progress, publicRoom: publicRoom);
+                    HopPublicRoom(map, progress);
                     continue;
                 }
 
@@ -7432,14 +7434,24 @@ public class CoreBots
 
         return PublicRoomStuckMinutes > 0
             && DateTime.Now - progress.LastChange >= TimeSpan.FromMinutes(PublicRoomStuckMinutes)
-            && inPublicRoom();
+            && inPublicRoom()
+            && !InConfiguredPrivateRoom();
     }
+
+    /// <summary>
+    /// True when the current room is the CBO private room. inPublicRoom() only checks for a number
+    /// below 1000, which also matches a private room configured with a low number.
+    /// </summary>
+    private bool InConfiguredPrivateRoom() =>
+        PrivateRooms
+        && int.TryParse(Bot.Map.FullName.Split('-').Last(), out int nr)
+        && nr == PrivateRoomNumber;
 
     /// <summary>
     /// Leaves the current public room and rejoins the map, which usually lands in a different room
     /// (same as stopping and restarting the bot).
     /// </summary>
-    private void HopPublicRoom(string map, FarmProgress progress, string cell = "Enter", string pad = "Spawn", bool publicRoom = false)
+    private void HopPublicRoom(string map, FarmProgress progress, string cell = "Enter", string pad = "Spawn")
     {
         string oldRoom = Bot.Map.FullName;
         Logger($"No kills or item progress for {PublicRoomStuckMinutes} min in /{oldRoom}, switching room.", "RoomHop");
@@ -7450,7 +7462,8 @@ public class CoreBots
 
         Join("whitemap");
         Bot.Wait.ForMapLoad("whitemap");
-        Join(map, cell, pad, publicRoom: publicRoom);
+        // Only called while in a public room, so stay public even when private rooms are enabled.
+        Join(map, cell, pad, publicRoom: true);
         Bot.Wait.ForMapLoad(map);
 
         Logger($"Now in /{Bot.Map.FullName} (was /{oldRoom}).", "RoomHop");
@@ -12074,6 +12087,8 @@ public class CoreBots
             PrivateRoomNumber = _PrivateRoomNumber;
         if (CBOBool("PublicDifficult", out bool _PublicDifficult))
             PublicDifficult = _PublicDifficult;
+        if (CBOInt("PublicRoomStuckMinutes", out int _PublicRoomStuckMinutes))
+            PublicRoomStuckMinutes = Math.Max(0, _PublicRoomStuckMinutes);
         if (CBOBool("BankMiscAC", out bool _BankMiscAC))
             BankMiscAC = _BankMiscAC;
         if (CBOBool("BankUnenhancedACGear", out bool _BankUnenhGear))

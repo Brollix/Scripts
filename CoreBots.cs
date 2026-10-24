@@ -80,6 +80,12 @@ public class CoreBots
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
 
+    // [Can Change] Start resting when health drops below this percentage of max health
+    public int RestHealthPercent { get; set; } = 60;
+
+    // [Can Change] Resume fighting when health reaches this percentage of max health
+    public int RestTargetHealthPercent { get; set; } = 85;
+
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
     public bool BankMiscAC { get; set; } = false;
     public bool BankUnenhancedACGear { get; set; } = false;
@@ -5182,6 +5188,8 @@ public class CoreBots
         {
             while (!Bot.ShouldExit)
             {
+                Rest(); // 🛌 recover HP between fights
+
                 if (!Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20); // 💀➡️💖
 
@@ -5648,6 +5656,8 @@ public class CoreBots
         {
             while (!Bot.ShouldExit)
             {
+                Rest(); // 🛌 recover HP between fights
+
                 if (Bot.Player != null && !Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -5690,6 +5700,8 @@ public class CoreBots
                 && !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             )
             {
+                Rest(); // 🛌 recover HP between fights
+
                 if (!Bot.Player.Alive)
                     Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -5802,6 +5814,8 @@ public class CoreBots
                 ? Bot.TempInv.Contains(x.item, x.quant)
                 : CheckInventory(x.item, x.quant)))
         {
+            Rest(); // 🛌 recover HP between fights
+
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -5881,6 +5895,8 @@ public class CoreBots
         // Main attack loop
         while (!Bot.ShouldExit && (item == null || !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))))
         {
+            Rest(); // 🛌 recover HP between fights
+
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -7242,6 +7258,8 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
         {
+            Rest(); // 🛌 recover HP between fights
+
             if (Bot.Player.Cell != target.Cell)
             {
                 Bot.Map.Jump(target.Cell, "Left", autoCorrect: inPublicRoom());
@@ -7283,6 +7301,8 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(itemID, quantity) : CheckInventory(itemID, quantity)))
         {
+            Rest(); // 🛌 recover HP between fights
+
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -7341,6 +7361,8 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
         {
+            Rest(); // 🛌 recover HP between fights
+
             if (!Bot.Player.Alive)
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
 
@@ -8122,16 +8144,45 @@ public class CoreBots
                 return;
             }
 
-            // Rest if the player is alive, should rest, and health is below 2% of max health
-            int healthThreshold = (int)Math.Ceiling((double)Bot.Player.MaxHealth / 50); // 50% threshold
+            // The original code used MaxHealth / 50 (2%), despite the comment saying 50%.
+            // That meant the bot only rested when it was already almost dead.
+            int healthThreshold = (int)Math.Ceiling((double)Bot.Player.MaxHealth * (RestHealthPercent / 100.0));
+            int targetHealth = (int)Math.Ceiling((double)Bot.Player.MaxHealth * (RestTargetHealthPercent / 100.0));
 
-            if (ShouldRest && Bot.Player.Alive && Bot.Player.Health < healthThreshold)
+            if (!ShouldRest || !Bot.Player.Alive)
+                return;
+
+            // If we just killed something, give the client a moment to leave combat.
+            // If a live monster is still targeted, don't interrupt the fight to rest.
+            if (Bot.Player.InCombat)
             {
-                Bot.Player.Rest(false);
-                Logger(
-                    $"Resting initiated: Health below threshold ({Bot.Player.Health}/{Bot.Player.MaxHealth})."
-                );
+                if (Bot.Player.HasTarget)
+                    return;
+
+                Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 2);
+                if (Bot.Player.InCombat)
+                    return;
             }
+
+            if (Bot.Player.Health >= healthThreshold)
+                return;
+
+            Bot.Options.RestPackets = true;
+            Bot.Player.Rest(false);
+            Logger(
+                $"Resting initiated: Health below threshold ({Bot.Player.Health}/{Bot.Player.MaxHealth})."
+            );
+
+            // Wait until we recover enough HP before starting the next fight.
+            Bot.Wait.ForTrue(
+                () => !Bot.Player.Alive || Bot.Player.Health >= targetHealth,
+                20
+            );
+
+            if (Bot.Player.Alive && Bot.Player.Health < targetHealth)
+                Logger(
+                    $"Rest timeout: Health is still {Bot.Player.Health}/{Bot.Player.MaxHealth}."
+                );
         }
         catch (Exception ex)
         {
@@ -12056,6 +12107,12 @@ public class CoreBots
             ForceOffMessageboxes = _ForceOffMessageboxes;
         if (CBOBool("RestCheck", out bool _ShouldRest))
             ShouldRest = _ShouldRest;
+        if (CBOInt("RestHealthPercent", out int _RestHealthPercent))
+            RestHealthPercent = Math.Clamp(_RestHealthPercent, 1, 99);
+        if (CBOInt("RestTargetHealthPercent", out int _RestTargetHealthPercent))
+            RestTargetHealthPercent = Math.Clamp(_RestTargetHealthPercent, 2, 100);
+        if (RestTargetHealthPercent <= RestHealthPercent)
+            RestTargetHealthPercent = Math.Min(100, RestHealthPercent + 10);
         if (CBOBool("AntiLag", out bool _AntiLag))
             AntiLag = _AntiLag;
 

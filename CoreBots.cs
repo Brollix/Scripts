@@ -3108,7 +3108,7 @@ public class CoreBots
     private int[] registeredQuests = [];
     private List<Task> _questTasks = [];
 
-    private DateTime _lastTurnInSeen = DateTime.UtcNow;
+    private readonly Dictionary<int, DateTime> _lastTurnInSeen = [];
     private readonly object _turnInSeenLock = new();
     private bool _turnInEventHooked = false;
 
@@ -3124,16 +3124,21 @@ public class CoreBots
     // Turn-in watchdog helpers
     // ============================================================
 
-    private void MarkTurnInSeen()
+    private void MarkTurnInSeen(int questID)
     {
         lock (_turnInSeenLock)
-            _lastTurnInSeen = DateTime.UtcNow;
+            _lastTurnInSeen[questID] = DateTime.UtcNow;
     }
 
-    private TimeSpan TimeSinceLastTurnIn()
+    private TimeSpan TimeSinceLastTurnIn(int questID)
     {
         lock (_turnInSeenLock)
-            return DateTime.UtcNow - _lastTurnInSeen;
+        {
+            if (!_lastTurnInSeen.TryGetValue(questID, out DateTime lastTurnIn))
+                return TimeSpan.Zero;
+
+            return DateTime.UtcNow - lastTurnIn;
+        }
     }
 
     private void EnsureTurnInEventHooked()
@@ -3148,7 +3153,7 @@ public class CoreBots
     private void OnQuestTurnedIn(int questID)
     {
         DebugLogger(this, $"[QuestTurnIn] Turn-in event fired (QuestID={questID}).", "RegisterQuest Debug");
-        MarkTurnInSeen();
+        MarkTurnInSeen(questID);
     }
 
     // ============================================================
@@ -3286,8 +3291,6 @@ public class CoreBots
         questCTS = new();
         CancellationToken token = questCTS.Token;
 
-        MarkTurnInSeen();
-
         Dictionary<int, int> stuckCounts = [];
         List<Quest> allQuests = chooseQuests.Keys
             .Concat(nonChooseQuests.Keys)
@@ -3295,6 +3298,13 @@ public class CoreBots
             .ToList();
 
         registeredQuests = allQuests.Select(q => q.ID).ToArray();
+
+        lock (_turnInSeenLock)
+        {
+            _lastTurnInSeen.Clear();
+            foreach (Quest quest in allQuests)
+                _lastTurnInSeen[quest.ID] = DateTime.UtcNow;
+        }
 
         if (allQuests.Count == 0)
             Logger("No quests left to register (all skipped, e.g. member-only or not available).");
@@ -3487,27 +3497,27 @@ public class CoreBots
 
                     try
                     {
-                        bool anyStuckCompletable = allQuests.Any(q =>
-                            Bot.Quests.IsInProgress(q.ID) && Bot.Quests.CanComplete(q.ID));
+                        List<Quest> stuckCompletable = allQuests
+                            .Where(q => Bot.Quests.IsInProgress(q.ID) && Bot.Quests.CanComplete(q.ID))
+                            .Where(q => TimeSinceLastTurnIn(q.ID) >= threshold)
+                            .ToList();
 
-                        if (!anyStuckCompletable)
-                        {
-                            MarkTurnInSeen();
+                        if (stuckCompletable.Count == 0)
                             continue;
-                        }
 
-                        TimeSpan elapsed = TimeSinceLastTurnIn();
+                        Quest stuckQuest = stuckCompletable[0];
+                        TimeSpan elapsed = TimeSinceLastTurnIn(stuckQuest.ID);
+                        Logger($"Quest {stuckQuest.ID} ({stuckQuest.Name}) has been completable without a turn-in for " +
+                               $"{elapsed.TotalSeconds:F0}s (threshold {threshold.TotalSeconds:F0}s) — nudging quest log.");
 
-                        if (elapsed >= threshold)
-                        {
-                            Logger($"Completable quest unacknowledged for {elapsed.TotalSeconds:F0}s " +
-                                   $"(threshold {threshold.TotalSeconds:F0}s) — nudging quest log.");
+                        await EnsureQuestLogOpenAsync(token);
 
-                            await EnsureQuestLogOpenAsync(token);
+                        // Only reset the watchdog for quests we actually found stuck.
+                        // A successful turn-in for another registered quest must not mask these.
+                        foreach (Quest quest in stuckCompletable)
+                            MarkTurnInSeen(quest.ID);
 
-                            MarkTurnInSeen();
-                            threshold = TimeSpan.FromSeconds(60 + rng.Next(2, 6));
-                        }
+                        threshold = TimeSpan.FromSeconds(60 + rng.Next(2, 6));
                     }
                     catch (OperationCanceledException) when (token.IsCancellationRequested)
                     {
@@ -3573,6 +3583,9 @@ public class CoreBots
 
         lock (_questLogStateLock)
             _questLogAssumedOpen = false;
+
+        lock (_turnInSeenLock)
+            _lastTurnInSeen.Clear();
 
         if (Bot.Quests.Registered.Any())
         {

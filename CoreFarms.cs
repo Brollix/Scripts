@@ -2918,7 +2918,6 @@ public class CoreFarms
 
         int waitTimer = 3500;
         int successful = 1;
-        int failed = 1;
         int startingRep = FactionRep("Fishing");
         int currentRep = startingRep;
 
@@ -3005,7 +3004,7 @@ public class CoreFarms
                     Bot.Send.Packet(
                         $"%xt%zm%getFish%1%{hitDerp.ToString().ToLowerInvariant()}%"
                     );
-                    
+
                     // Wait for the server to confirm the catch before evaluating the result.
                     if (!Bot.Wait.ForTrue(() => receivedCatchResult, 10))
                     {

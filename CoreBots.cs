@@ -3381,26 +3381,37 @@ public class CoreBots
             {
                 while (!Bot.ShouldExit && !token.IsCancellationRequested)
                 {
-                    foreach (Quest quest in allQuests)
+                    try
                     {
-                        if (!Bot.Player.Alive)
-                            continue;
-
-                        if (Bot.Quests.IsInProgress(quest.ID) &&
-                            Bot.Quests.CanComplete(quest.ID))
+                        foreach (Quest quest in allQuests)
                         {
-                            if (TryClaim(quest.ID))
+                            if (!Bot.Player.Alive)
+                                continue;
+
+                            if (Bot.Quests.IsInProgress(quest.ID) &&
+                                Bot.Quests.CanComplete(quest.ID))
                             {
-                                try
+                                if (TryClaim(quest.ID))
                                 {
-                                    await CompleteQuest(quest);
-                                }
-                                finally
-                                {
-                                    Release(quest.ID);
+                                    try
+                                    {
+                                        await CompleteQuest(quest);
+                                    }
+                                    finally
+                                    {
+                                        Release(quest.ID);
+                                    }
                                 }
                             }
                         }
+                    }
+                    catch (OperationCanceledException) when (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger($"[QuestTurnIn] Watcher failed during an iteration; retrying: {ex.Message}");
                     }
 
                     await Task.Delay(Math.Min(ActionDelay, 500), token);
@@ -3417,33 +3428,42 @@ public class CoreBots
             {
                 while (!Bot.ShouldExit && !token.IsCancellationRequested)
                 {
-                    foreach (Quest quest in allQuests)
+                    try
                     {
-                        if (!Bot.Player.Alive)
+                        foreach (Quest quest in allQuests)
                         {
-                            await Task.Delay(ActionDelay, token);
-                            continue;
-                        }
-
-                        lock (inFlightLock)
-                        {
-                            if (inFlight.Contains(quest.ID))
+                            if (!Bot.Player.Alive)
+                            {
+                                await Task.Delay(ActionDelay, token);
                                 continue;
+                            }
+
+                            lock (inFlightLock)
+                            {
+                                if (inFlight.Contains(quest.ID))
+                                    continue;
+                            }
+
+                            Quest? q = Bot.Quests.EnsureLoad(quest.ID);
+                            if (q == null)
+                                continue;
+
+                            if (!Bot.Quests.IsInProgress(quest.ID))
+                                Bot.Quests.Accept(quest.ID);
+
+                            await Task.Delay(ActionDelay * 2, token);
                         }
-
-                        Quest? q = Bot.Quests.EnsureLoad(quest.ID);
-                        if (q == null)
-                            continue;
-
-                        if (!Bot.Quests.IsInProgress(quest.ID))
-                            Bot.Quests.Accept(quest.ID);
-
-                        await Task.Delay(ActionDelay * 2, token);
+                    }
+                    catch (OperationCanceledException) when (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger($"[QuestTurnIn] Quest manager failed during an iteration; retrying: {ex.Message}");
                     }
 
-                    // Without this the loop never yields when allQuests is empty, or when
-                    // every quest hits a `continue` above (in flight / failed to load),
-                    // and spins a CPU core at 100% until the script stops.
+                    // Always yield, including when quest state checks fail repeatedly.
                     await Task.Delay(Math.Max(ActionDelay, 100), token);
                 }
             }
@@ -3465,26 +3485,37 @@ public class CoreBots
                 {
                     await Task.Delay(2000, token);
 
-                    bool anyStuckCompletable = allQuests.Any(q =>
-                        Bot.Quests.IsInProgress(q.ID) && Bot.Quests.CanComplete(q.ID));
-
-                    if (!anyStuckCompletable)
+                    try
                     {
-                        MarkTurnInSeen();
-                        continue;
+                        bool anyStuckCompletable = allQuests.Any(q =>
+                            Bot.Quests.IsInProgress(q.ID) && Bot.Quests.CanComplete(q.ID));
+
+                        if (!anyStuckCompletable)
+                        {
+                            MarkTurnInSeen();
+                            continue;
+                        }
+
+                        TimeSpan elapsed = TimeSinceLastTurnIn();
+
+                        if (elapsed >= threshold)
+                        {
+                            Logger($"Completable quest unacknowledged for {elapsed.TotalSeconds:F0}s " +
+                                   $"(threshold {threshold.TotalSeconds:F0}s) — nudging quest log.");
+
+                            await EnsureQuestLogOpenAsync(token);
+
+                            MarkTurnInSeen();
+                            threshold = TimeSpan.FromSeconds(60 + rng.Next(2, 6));
+                        }
                     }
-
-                    TimeSpan elapsed = TimeSinceLastTurnIn();
-
-                    if (elapsed >= threshold)
+                    catch (OperationCanceledException) when (token.IsCancellationRequested)
                     {
-                        Logger($"Completable quest unacknowledged for {elapsed.TotalSeconds:F0}s " +
-                               $"(threshold {threshold.TotalSeconds:F0}s) — nudging quest log.");
-
-                        await EnsureQuestLogOpenAsync(token);
-
-                        MarkTurnInSeen();
-                        threshold = TimeSpan.FromSeconds(60 + rng.Next(2, 6));
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger($"[QuestTurnIn] Watchdog failed during an iteration; retrying: {ex.Message}");
                     }
                 }
             }

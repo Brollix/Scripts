@@ -140,10 +140,12 @@ public class KathoolAdept
 
         Core.EnsureComplete(10920, 104429);
         Bot.Wait.ForTrue(() => Bot.Inventory.Contains(104429), 20);
-        if (Bot.ShouldExit)
-            return;
         if (Bot.Inventory.Contains(104429))
+        {
             Core.Logger("Kathool Adept obtained.");
+            if (rankUpClass)
+                Adv.RankUpClass("Kathool Adept");
+        }
         else
             Core.Logger("The Kathool Adept reward was not received. Check the quest and inventory space.");
     }

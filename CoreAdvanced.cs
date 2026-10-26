@@ -3995,6 +3995,7 @@ public class CoreAdvanced
                 #region Wizard - Ravenous - Pneuma - Vainglory
                 case "chrono dataknight":
                 case "chrono dragonknight":
+                case "kathool adept":
                     if (!uRavenous() || !uPneuma() || !uVainglory())
                         goto default;
 
@@ -4185,7 +4186,6 @@ public class CoreAdvanced
                 case "warrior (rare)":
                 case "warriorscythe general":
                 case "witch":
-                case "kathool adept":
                 default: // If the correct enhancement arent unlocked, or the class in question isnt in the Forge Enhancement Lib, use Awe Enhancements Lib
                     type = EnhancementType.Lucky;
                     return false;

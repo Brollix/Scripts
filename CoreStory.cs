@@ -913,7 +913,7 @@ public class CoreStory
                     TryComplete(prevQuest, true);
                     // The reset of 'attempts' used to hide this path from the relog below, so a quest
                     // whose missing item never drops looped forever. Stop after a fixed number of tries.
-                    if (++recoveryAttempts >= 10)
+                    if (!Bot.Quests.IsUnlocked(QuestID) && ++recoveryAttempts >= 10)
                     {
                         Core.Logger($"Quest [{QuestID}] \"{questData.Name}\" is still locked after {recoveryAttempts} recovery attempts, stopping. Check the missing items.", "QuestProgression", stopBot: true);
                         return false;

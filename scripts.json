@@ -22954,8 +22954,8 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs",
-    "size": 3889,
-    "sha256": "28d57266fd30f8c64a635829d0b2f2d39c87572e4cb109ba1ca7fc4aff532beb",
+    "size": 4059,
+    "sha256": "84d1829d42b798c5e4d2bf498b81f680fc765a6349159e3176ed375fcbebb90c",
     "fileName": "EvolvedBloodOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs"
   },
@@ -22978,8 +22978,8 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs",
-    "size": 4840,
-    "sha256": "41c53b2fb11ed54a397e9865004d4826dad0ab351b09119b6132fa8a78e6dbe0",
+    "size": 4668,
+    "sha256": "1a4c1706c76b6eeaeb19f61243825b38295b904b78fe06f7a7105273ece4f307",
     "fileName": "EvovledHexOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs"
   },

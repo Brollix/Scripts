@@ -89,7 +89,8 @@ public class EvovledHexOrbItems
         Core.EnsureAccept(4764);
 
         Nation.FarmUni13(3);
-        Core.Logger("Aquiring uni 22 via `The Assistant` (with War-Torn Memorabilia), as otherwise it costs 15m gold ( you can also aquire the \"4th Betrayal Blade of Nulgath\" along the way)");
+        Core.Logger("Aquiring uni 22 via `The Assistant` (with War-Torn Memorabilia),"+
+        "as otherwise it costs 15m gold ( you can also aquire the \"4th Betrayal Blade of Nulgath\" along the way)");
         Nation.TheAssistant("Unidentified 22", 1);
         Nation.KisstheVoid(1, "4th Betrayal Blade of Nulgath");
         Core.EquipClass(ClassType.Solo);

@@ -3781,6 +3781,7 @@ public class CoreAdvanced
 
                 #region Wizard - Lament - Valiance - Pneuma
                 case "scarlet sorceress":
+                case "kathool adept":
                     if (!uLament() || !uValiance() || !uPneuma())
                         goto default;
 
@@ -3995,7 +3996,6 @@ public class CoreAdvanced
                 #region Wizard - Ravenous - Pneuma - Vainglory
                 case "chrono dataknight":
                 case "chrono dragonknight":
-                case "kathool adept":
                     if (!uRavenous() || !uPneuma() || !uVainglory())
                         goto default;
 

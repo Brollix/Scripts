@@ -76,7 +76,7 @@ public class EvovledHexOrbItems
     {
         #region Required Items
 
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33197))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33197) || Core.CheckInventory("Evolved Hex of Nulgath"))
             return;
 
         Adv.BuyItem(Bot.Map.Name, 299, "Oracle");

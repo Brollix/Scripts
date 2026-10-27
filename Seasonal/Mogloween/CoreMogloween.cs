@@ -1313,8 +1313,8 @@ public class CoreMogloween
             "Forest Cultist", // UseableMonsters[2]
             "ShadowSlayer Z", // UseableMonsters[3]
             "Sublime Hunter", // UseableMonsters[4]
-            "Vampiric Ancestor ", // UseableMonsters[5]
-            "Werepyre Ancestor ", // UseableMonsters[6]
+            "Vampiric Ancestor", // UseableMonsters[5]
+            "Werepyre Ancestor", // UseableMonsters[6]
         ];
 
         // 10908 | Wulpurga Medal

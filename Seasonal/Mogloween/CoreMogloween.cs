@@ -1301,7 +1301,7 @@ public class CoreMogloween
 	   
 	public void ShadowSlayerWar()
     {
-        if (Core.isCompletedBefore(10916)||!Core.isSeasonalMapActive("birgittamogloween"))
+        if (Core.isCompletedBefore(10916)||!Core.isSeasonalMapActive("shadowslayerwar"))
             return;
 
         Story.PreLoad(this);

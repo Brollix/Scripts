@@ -1555,7 +1555,7 @@ public class CoreFarms
 
                 if (!Packet())
                 {
-                    Core.Logger("Alchemy craft failed. Stopping script", stopBot: true);
+                    Core.Logger("Alchemy craft failed, stopping loop");
                     if (!Core.CheckInventory(new[] { reagentid1, reagentid2 }))
                         Core.Logger("We've ran out of reagents.");
                     break;

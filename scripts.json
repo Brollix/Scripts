@@ -15980,8 +15980,8 @@
       "bob"
     ],
     "path": "Other/MergeShops/CarcossaCanteenMerge.cs",
-    "size": 10385,
-    "sha256": "69239e3f3c0aa7f82544bb4270b6bb2822ee4d6eca30d6b7bafa9cf0a2500894",
+    "size": 10536,
+    "sha256": "c5dcba84dbead37f8ae4f0e695717251783808b47f0558891dcc1d2b7a0ef6ad",
     "fileName": "CarcossaCanteenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/CarcossaCanteenMerge.cs"
   },
@@ -17141,8 +17141,8 @@
       "dress"
     ],
     "path": "Other/MergeShops/BocklinTreasuryMerge.cs",
-    "size": 10769,
-    "sha256": "6e7d738e19b2c71b6e685ce94f649dbcda41d9d2ca67ed2049d5e437dc9c712a",
+    "size": 10836,
+    "sha256": "b1d23b4a45dc3ecbd7069f420684114da450c2965539b3262c1c9995a4afd3a6",
     "fileName": "BocklinTreasuryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/BocklinTreasuryMerge.cs"
   },
@@ -17718,8 +17718,8 @@
       "fangs"
     ],
     "path": "Other/MergeShops/ForgeMalenoMerge.cs",
-    "size": 10012,
-    "sha256": "8c7c24f8d13d3d2e19ed85a9d6baa66a652edb6d213e901da445fda79da0f1ef",
+    "size": 10216,
+    "sha256": "eef72455c128ac1d27adf09d183d9a72a702501ae2c5f74335a1d22f49082839",
     "fileName": "ForgeMalenoMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/auqw/Scripts/Skua/Other/MergeShops/ForgeMalenoMerge.cs"
   },

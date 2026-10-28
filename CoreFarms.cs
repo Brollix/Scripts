@@ -1543,7 +1543,7 @@ public class CoreFarms
         Core.Logger($"Modifier: {modifier}.");
         Core.Join("alchemy");
 
-        const int mixTimeMs = 12000;
+        const int mixTimeMs = 16000;
         int i = 1;
         if (loop)
         {

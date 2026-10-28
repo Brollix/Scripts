@@ -11,6 +11,7 @@ tags: bocklin, treasury, merge, bocklinsanctum, aldens, liberation, battle, morp
 //cs_include Scripts/Other/MergeShops/BocklinGroveMerge.cs
 //cs_include Scripts/Other/MergeShops/BocklinArmoryMerge.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
+//cs_include Scripts/Story/Lynaria/CoreLynaria.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -102,7 +103,8 @@ public class BocklinTreasuryMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Seppy.ShadowfallRise();
-        Lynaria.BocklinSanctum();
+        //very last quest in core is require for alteon's fragments to drop
+        Lynaria.DoAll();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge(

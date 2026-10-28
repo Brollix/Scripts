@@ -11,7 +11,6 @@ tags: bocklin, treasury, merge, bocklinsanctum, aldens, liberation, battle, morp
 //cs_include Scripts/Other/MergeShops/BocklinGroveMerge.cs
 //cs_include Scripts/Other/MergeShops/BocklinArmoryMerge.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
-//cs_include Scripts/Story/Lynaria/CoreLynaria.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

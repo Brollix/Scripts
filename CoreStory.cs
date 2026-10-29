@@ -916,7 +916,9 @@ public class CoreStory
                     if (!Bot.Quests.IsUnlocked(QuestID) && ++recoveryAttempts >= 10)
                     {
                         Core.Logger($"Quest [{QuestID}] \"{questData.Name}\" is still locked after {recoveryAttempts} recovery attempts, stopping. Check the missing items.", "QuestProgression", stopBot: true);
-                        return false;
+                        // StopSync already throws this on the script thread; throw it here too so no caller
+                        // can treat the stop as "quest not done yet" and keep accepting/farming.
+                        throw new OperationCanceledException($"Quest [{QuestID}] is still locked after recovery attempts.");
                     }
                     continue;
                 }
